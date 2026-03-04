@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Yemek Odaklı</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fdfcfa;
+            color: #362f29;
+        }
+
+        /* Simple Nav */
+        nav {
+            padding: 1.5rem 2rem;
+            background: #fff;
+            border-bottom: 1px solid #e5ddd3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-food {
+            font-family: 'Vollkorn', serif;
+            font-size: 1.6rem;
+            color: #9b7653;
+            font-weight: 700;
+        }
+
+        .menu-nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .menu-nav a {
+            color: #6b5d52;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Hero with Food Image */
+        .food-hero {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .food-hero-image {
+            width: 100%;
+            aspect-ratio: 21/9;
+            background: linear-gradient(rgba(155, 118, 83, 0.3), rgba(155, 118, 83, 0.3)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450"><rect fill="%23c9a88a" width="1200" height="450"/></svg>');
+            background-size: cover;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .food-hero-text h1 {
+            font-family: 'Vollkorn', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .food-hero-text p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        /* Description */
+        .description {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .description h2 {
+            font-family: 'Vollkorn', serif;
+            font-size: 2.5rem;
+            color: #9b7653;
+            margin-bottom: 1.5rem;
+        }
+
+        .description p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #6b5d52;
+        }
+
+        /* Food Gallery */
+        .food-gallery {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .food-gallery h2 {
+            font-family: 'Vollkorn', serif;
+            font-size: 2.8rem;
+            color: #9b7653;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .food-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .food-item-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #d4c4b0;
+        }
+
+        .food-item-content {
+            padding: 2rem;
+        }
+
+        .food-item h3 {
+            font-family: 'Vollkorn', serif;
+            font-size: 1.8rem;
+            color: #9b7653;
+            margin-bottom: 1rem;
+        }
+
+        .food-item p {
+            color: #6b5d52;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .food-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: #f5efe8;
+            color: #9b7653;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+
+        /* CTA */
+        .cta {
+            background: #9b7653;
+            color: #fff;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        .cta h2 {
+            font-family: 'Vollkorn', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            padding: 1.2rem 3rem;
+            background: #fff;
+            color: #9b7653;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: #f5efe8;
+            color: #6b5d52;
+        }
+
+        @media (max-width: 768px) {
+            .food-hero-text h1 { font-size: 2.5rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .menu-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-food">Koala Kaktüs</div>
+        <ul class="menu-nav">
+            <li><a href="#yemekler">Yemekler</a></li>
+            <li><a href="#hakkimizda">Hakkımızda</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <section class="food-hero">
+        <div class="food-hero-image">
+            <div class="food-hero-text">
+                <h1>Antakya Lezzetleri</h1>
+                <p>Özgün tarifler, taze malzemeler, unutulmaz tatlar</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="description" id="hakkimizda">
+        <h2>Lezzetlerimiz</h2>
+        <p>Koala Kaktüs'te, Antakya mutfağının en özel yemeklerini bulabilirsiniz. Her tabak, geleneksel tariflerle ve en taze malzemelerle özenerek hazırlanır.</p>
+    </section>
+
+    <section class="food-gallery" id="yemekler">
+        <h2>Menüden Seçmeler</h2>
+        <div class="gallery-grid">
+            <div class="food-item">
+                <div class="food-item-image"></div>
+                <div class="food-item-content">
+                    <h3>İçli Köfte</h3>
+                    <p>Antakya'nın meşhur içli köftesi. Taş fırında pişmiş, içi kıymalı bulgur köftesi.</p>
+                    <span class="food-tag">Ana Yemek</span>
+                    <span class="food-tag">Geleneksel</span>
+                </div>
+            </div>
+
+            <div class="food-item">
+                <div class="food-item-image"></div>
+                <div class="food-item-content">
+                    <h3>Muhammara</h3>
+                    <p>Ceviz, biber ve özel baharatlarla hazırlanan enfes meze.</p>
+                    <span class="food-tag">Meze</span>
+                    <span class="food-tag">Acılı</span>
+                </div>
+            </div>
+
+            <div class="food-item">
+                <div class="food-item-image"></div>
+                <div class="food-item-content">
+                    <h3>Kağıt Kebabı</h3>
+                    <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen kebap.</p>
+                    <span class="food-tag">Ana Yemek</span>
+                    <span class="food-tag">Et</span>
+                </div>
+            </div>
+
+            <div class="food-item">
+                <div class="food-item-image"></div>
+                <div class="food-item-content">
+                    <h3>Künefe</h3>
+                    <p>Tuzsuz peynir ve kadayıf ile hazırlanan geleneksel tatlı.</p>
+                    <span class="food-tag">Tatlı</span>
+                    <span class="food-tag">Sıcak</span>
+                </div>
+            </div>
+
+            <div class="food-item">
+                <div class="food-item-image"></div>
+                <div class="food-item-content">
+                    <h3>Mütebbel</h3>
+                    <p>Közlenmiş patlıcan, tahin, sarımsak ve nar ekşisi ile.</p>
+                    <span class="food-tag">Meze</span>
+                    <span class="food-tag">Vegan</span>
+                </div>
+            </div>
+
+            <div class="food-item">
+                <div class="food-item-image"></div>
+                <div class="food-item-content">
+                    <h3>Oruk Köftesi</h3>
+                    <p>Ekşi aşı ile servis edilen geleneksel köfte.</p>
+                    <span class="food-tag">Ana Yemek</span>
+                    <span class="food-tag">Özel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="iletisim">
+        <h2>Sizi Bekliyoruz</h2>
+        <p>Rezervasyon yapmak için hemen arayın</p>
+        <button class="cta-button">+90 XXX XXX XX XX</button>
+    </section>
+
+    <footer>
+        <p>Koala Kaktüs - İzmir'de Antakya Mutfağı</p>
+        <p>Her gün 11:00 - 23:00</p>
+    </footer>
+</body>
+</html>

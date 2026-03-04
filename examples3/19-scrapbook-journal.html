@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Scrapbook Journal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Gloria+Hallelujah&family=Indie+Flower&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Kalam', cursive;
+            background: #e8dfd5;
+            color: #3d3026;
+            overflow-x: hidden;
+        }
+
+        /* Journal Pages */
+        .journal {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .page {
+            background: #faf6f0;
+            margin-bottom: 4rem;
+            padding: 4rem;
+            box-shadow:
+                0 2px 10px rgba(0,0,0,0.1),
+                inset 0 0 100px rgba(0,0,0,0.02);
+            border: 1px solid #d4c4b0;
+            position: relative;
+        }
+
+        /* Spiral holes */
+        .page::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            background:
+                radial-gradient(circle at 20px 50px, transparent 8px, #faf6f0 8px) 0 0,
+                radial-gradient(circle at 20px 150px, transparent 8px, #faf6f0 8px) 0 0,
+                radial-gradient(circle at 20px 250px, transparent 8px, #faf6f0 8px) 0 0,
+                radial-gradient(circle at 20px 350px, transparent 8px, #faf6f0 8px) 0 0,
+                radial-gradient(circle at 20px 450px, transparent 8px, #faf6f0 8px) 0 0;
+        }
+
+        /* Header Page */
+        .header-page {
+            text-align: center;
+            padding: 6rem 4rem;
+            background: linear-gradient(135deg, #faf6f0 0%, #f0e6d8 100%);
+        }
+
+        .header-page h1 {
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 7rem;
+            color: #b38b59;
+            margin-bottom: 1rem;
+            transform: rotate(-2deg);
+        }
+
+        .header-page .subtitle {
+            font-family: 'Indie Flower', cursive;
+            font-size: 2.5rem;
+            color: #8a6d4f;
+            transform: rotate(1deg);
+        }
+
+        /* Decorative tape */
+        .washi-tape {
+            position: absolute;
+            height: 40px;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(200, 150, 100, 0.3),
+                rgba(200, 150, 100, 0.3) 10px,
+                rgba(180, 130, 80, 0.3) 10px,
+                rgba(180, 130, 80, 0.3) 20px
+            );
+            opacity: 0.7;
+        }
+
+        .tape-top {
+            top: -20px;
+            left: 10%;
+            right: 10%;
+            transform: rotate(-1deg);
+        }
+
+        .tape-bottom {
+            bottom: -20px;
+            left: 15%;
+            right: 15%;
+            transform: rotate(1deg);
+        }
+
+        /* Scrapbook Grid */
+        .scrapbook-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding-left: 6rem;
+        }
+
+        .scrap-item {
+            position: relative;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            transform: rotate(1deg);
+            border: 2px dashed #d4c4b0;
+        }
+
+        .scrap-item:nth-child(even) {
+            transform: rotate(-2deg);
+        }
+
+        .scrap-item::before {
+            content: '📎';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 2rem;
+            transform: rotate(45deg);
+        }
+
+        .scrap-photo {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #d4c4b0 0%, #b8a594 100%);
+            margin-bottom: 1.5rem;
+            border: 5px solid #fff;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .scrap-item h3 {
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 2rem;
+            color: #b38b59;
+            margin-bottom: 1rem;
+        }
+
+        .scrap-item p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #5a4d42;
+        }
+
+        /* Stickers */
+        .sticker {
+            position: absolute;
+            font-size: 3rem;
+            transform: rotate(-15deg);
+        }
+
+        .sticker-1 { top: 10px; left: 10px; }
+        .sticker-2 { bottom: 10px; right: 10px; transform: rotate(15deg); }
+
+        /* Journal Entry */
+        .journal-entry {
+            padding-left: 6rem;
+            position: relative;
+        }
+
+        .entry-date {
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.5rem;
+            color: #8a6d4f;
+            margin-bottom: 1.5rem;
+        }
+
+        .journal-entry h2 {
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 3.5rem;
+            color: #b38b59;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .journal-entry p {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #5a4d42;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Doodles */
+        .doodle {
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .doodle-star {
+            width: 60px;
+            height: 60px;
+            background: #d4a574;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            top: 20px;
+            right: 50px;
+        }
+
+        .doodle-heart {
+            font-size: 4rem;
+            color: #d4a574;
+            bottom: 20px;
+            left: 80px;
+        }
+
+        /* Menu List Style */
+        .menu-list-journal {
+            list-style: none;
+            padding-left: 6rem;
+        }
+
+        .menu-list-journal li {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 5px solid #b38b59;
+            position: relative;
+        }
+
+        .menu-list-journal li::before {
+            content: '✓';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #b38b59;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .menu-list-journal h4 {
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 2rem;
+            color: #b38b59;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-list-journal p {
+            font-size: 1.2rem;
+            color: #5a4d42;
+            line-height: 1.6;
+        }
+
+        .menu-emoji {
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+
+        /* Contact Page */
+        .contact-page {
+            text-align: center;
+            padding: 5rem 4rem;
+            background: #f0e6d8;
+        }
+
+        .contact-page h2 {
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 5rem;
+            color: #b38b59;
+            margin-bottom: 3rem;
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card-journal {
+            padding: 2rem;
+            background: #fff;
+            border: 3px solid #b38b59;
+            transform: rotate(-2deg);
+            min-width: 200px;
+        }
+
+        .contact-card-journal:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .contact-card-journal h4 {
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 1.5rem;
+            color: #b38b59;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card-journal p {
+            font-size: 1.2rem;
+            color: #5a4d42;
+        }
+
+        .btn-journal {
+            padding: 1.5rem 4rem;
+            background: #b38b59;
+            color: #fff;
+            border: 3px solid #8a6d4f;
+            font-family: 'Gloria Hallelujah', cursive;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transform: rotate(-1deg);
+            box-shadow: 5px 5px 0px #8a6d4f;
+            transition: all 0.3s;
+        }
+
+        .btn-journal:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 8px 8px 0px #8a6d4f;
+        }
+
+        @media (max-width: 1024px) {
+            .scrapbook-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-page h1 { font-size: 4rem; }
+            .page { padding: 2rem; }
+            .scrapbook-grid,
+            .journal-entry,
+            .menu-list-journal {
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="journal">
+        <!-- Header Page -->
+        <div class="page header-page">
+            <div class="washi-tape tape-top"></div>
+            <h1>Koala Kaktüs</h1>
+            <p class="subtitle">~ Antakya Mutfağının Günlüğü ~</p>
+            <div class="washi-tape tape-bottom"></div>
+        </div>
+
+        <!-- About Page -->
+        <div class="page journal-entry">
+            <div class="doodle doodle-star"></div>
+            <div class="doodle doodle-heart">❤️</div>
+            <div class="entry-date">İzmir, 2026</div>
+            <h2>Bizim Hikayemiz...</h2>
+            <p>Koala Kaktüs, İzmir'de Antakya mutfağının en özgün lezzetlerini sunan küçük ama çok özel bir restoran.</p>
+            <p>Her yemeğimiz, nesillerdir aktarılan geleneksel tariflerle ve en taze malzemelerle özenle hazırlanır.</p>
+            <p>Samimi atmosferimizde, misafirlerimiz kendilerini evlerinde gibi hissederler!</p>
+        </div>
+
+        <!-- Menu Scrapbook -->
+        <div class="page">
+            <h2 style="font-family: 'Gloria Hallelujah', cursive; font-size: 4rem; color: #b38b59; text-align: center; margin-bottom: 3rem;">Yemek Albümümüz</h2>
+            <div class="scrapbook-grid">
+                <div class="scrap-item">
+                    <div class="sticker sticker-1">🥙</div>
+                    <div class="scrap-photo"></div>
+                    <h3>İçli Köfte</h3>
+                    <p>Taş fırında pişmiş bulgur köftesi</p>
+                </div>
+
+                <div class="scrap-item">
+                    <div class="sticker sticker-1">🌶️</div>
+                    <div class="scrap-photo"></div>
+                    <h3>Muhammara</h3>
+                    <p>Cevizli biber ezmesi</p>
+                </div>
+
+                <div class="scrap-item">
+                    <div class="sticker sticker-1">✨</div>
+                    <div class="scrap-photo"></div>
+                    <h3>Künefe</h3>
+                    <p>Peynirli Antakya tatlısı</p>
+                </div>
+
+                <div class="scrap-item">
+                    <div class="sticker sticker-1">🍢</div>
+                    <div class="scrap-photo"></div>
+                    <h3>Kağıt Kebabı</h3>
+                    <p>Kağıtta pişirilen kebap</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu List -->
+        <div class="page">
+            <h2 style="font-family: 'Gloria Hallelujah', cursive; font-size: 4rem; color: #b38b59; margin-bottom: 3rem; padding-left: 6rem;">Menü Listesi</h2>
+            <ul class="menu-list-journal">
+                <li>
+                    <span class="menu-emoji">🥙</span>
+                    <h4>İçli Köfte</h4>
+                    <p>Antakya usulü taş fırında pişmiş bulgur köftesi</p>
+                </li>
+                <li>
+                    <span class="menu-emoji">🌶️</span>
+                    <h4>Muhammara</h4>
+                    <p>Cevizli biber ezmesi, geleneksel Antakya mezesi</p>
+                </li>
+                <li>
+                    <span class="menu-emoji">🍢</span>
+                    <h4>Kağıt Kebabı</h4>
+                    <p>Özel baharatlarla marine edilmiş kebap</p>
+                </li>
+                <li>
+                    <span class="menu-emoji">✨</span>
+                    <h4>Künefe</h4>
+                    <p>Tuzsuz peynirli Antakya künefesi</p>
+                </li>
+                <li>
+                    <span class="menu-emoji">🥗</span>
+                    <h4>Mütebbel</h4>
+                    <p>Közlenmiş patlıcan, tahin ve nar ekşisi</p>
+                </li>
+                <li>
+                    <span class="menu-emoji">🍖</span>
+                    <h4>Oruk Köftesi</h4>
+                    <p>Ekşi aşı ile servis edilen köfte</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contact Page -->
+        <div class="page contact-page">
+            <h2>Gel, Tanışalım!</h2>
+            <div class="contact-cards">
+                <div class="contact-card-journal">
+                    <h4>📍 Adres</h4>
+                    <p>İzmir, Türkiye</p>
+                </div>
+                <div class="contact-card-journal">
+                    <h4>📞 Telefon</h4>
+                    <p>+90 XXX XXX XX XX</p>
+                </div>
+                <div class="contact-card-journal">
+                    <h4>🕐 Saatler</h4>
+                    <p>11:00 - 23:00</p>
+                </div>
+            </div>
+            <button class="btn-journal">Rezervasyon Yap!</button>
+        </div>
+    </div>
+</body>
+</html>

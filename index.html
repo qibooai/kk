@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Tasarım Örnekleri</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2520 100%);
+            color: #e8e8e8;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #d4a574;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #a8a8a8;
+            margin-bottom: 4rem;
+        }
+
+        .category {
+            margin-bottom: 5rem;
+        }
+
+        .category h2 {
+            font-size: 2.5rem;
+            color: #d4a574;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .category-desc {
+            font-size: 1.1rem;
+            color: #a8a8a8;
+            margin-bottom: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #d4a574;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card-number {
+            display: inline-block;
+            background: #d4a574;
+            color: #1a1410;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: #a8a8a8;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #d4a574;
+            color: #1a1410;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .card-link:hover {
+            background: #e8b87f;
+            transform: scale(1.05);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 12px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            color: #d4a574;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: #a8a8a8;
+            margin-top: 0.5rem;
+        }
+
+        .instructions {
+            background: rgba(212, 165, 116, 0.1);
+            border-left: 4px solid #d4a574;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .instructions h3 {
+            color: #d4a574;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .instructions p {
+            color: #e8e8e8;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .instructions code {
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            color: #d4a574;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Koala Kaktüs</h1>
+        <p class="subtitle">Tasarım Örnekleri - Tüm Koleksiyon</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Toplam Tasarım</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Farklı Koleksiyon</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Ödül Seviyesi</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📖 Nasıl Görüntülenir?</h3>
+            <p><strong>1. Lokal Server (Önerilen):</strong></p>
+            <p>Terminal'de bu klasörde: <code>python3 -m http.server 8000</code></p>
+            <p>Sonra tarayıcıda: <code>http://localhost:8000</code></p>
+            <br>
+            <p><strong>2. Doğrudan Dosya:</strong></p>
+            <p>Her bir .html dosyasına çift tıklayarak tarayıcıda açabilirsiniz.</p>
+        </div>
+
+        <!-- EXAMPLES KOLEKSIYONU -->
+        <div class="category">
+            <h2>📁 Examples Koleksiyonu</h2>
+            <p class="category-desc">İlk 10 tasarım - Farklı konseptler ve stiller</p>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-number">01</span>
+                    <h3>Modern Elegant</h3>
+                    <p>Zarif ve modern, gradient arka planlar</p>
+                    <a href="examples/example1.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">02</span>
+                    <h3>Classic Dark</h3>
+                    <p>Koyu tema, klasik restaurant tarzı</p>
+                    <a href="examples/example2.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">03</span>
+                    <h3>Warm Natural</h3>
+                    <p>Sıcak renkler, doğal hissiyat</p>
+                    <a href="examples/example3.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">04</span>
+                    <h3>Minimalist Clean</h3>
+                    <p>Minimalist, temiz tasarım</p>
+                    <a href="examples/example4.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">05</span>
+                    <h3>Playful Cute</h3>
+                    <p>Şirin ve eğlenceli tasarım</p>
+                    <a href="examples/example5.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">06</span>
+                    <h3>Elegant Traditional</h3>
+                    <p>Geleneksel ve zarif</p>
+                    <a href="examples/example6.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">07</span>
+                    <h3>Bold Typography</h3>
+                    <p>Cesur tipografi kullanımı</p>
+                    <a href="examples/example7.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">08</span>
+                    <h3>Artistic Handmade</h3>
+                    <p>Sanatsal, el yapımı hissi</p>
+                    <a href="examples/example8.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">09</span>
+                    <h3>Friendly Inviting</h3>
+                    <p>Samimi ve davetkar</p>
+                    <a href="examples/example9.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">10</span>
+                    <h3>Professional Premium</h3>
+                    <p>Profesyonel ve premium</p>
+                    <a href="examples/example10.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLES2 KOLEKSIYONU -->
+        <div class="category">
+            <h2>📁 Examples2 Koleksiyonu</h2>
+            <p class="category-desc">Premium restaurant tasarımları - 14 farklı stil</p>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-number">01</span>
+                    <h3>Dark Luxury</h3>
+                    <p>Koyu lüks restaurant teması</p>
+                    <a href="examples2/design01-dark-luxury.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">02</span>
+                    <h3>Warm Inviting</h3>
+                    <p>Sıcak ve davetkar atmosfer</p>
+                    <a href="examples2/design02-warm-inviting.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">03</span>
+                    <h3>Bold Modern</h3>
+                    <p>Cesur ve modern yaklaşım</p>
+                    <a href="examples2/design03-bold-modern.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">04</span>
+                    <h3>Elegant Serif</h3>
+                    <p>Zarif serif tipografi</p>
+                    <a href="examples2/design04-elegant-serif.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">05</span>
+                    <h3>Story Telling</h3>
+                    <p>Hikaye anlatımı odaklı</p>
+                    <a href="examples2/design05-story-telling.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">06</span>
+                    <h3>Grid Showcase</h3>
+                    <p>Grid tabanlı vitrin</p>
+                    <a href="examples2/design06-grid-showcase.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">07</span>
+                    <h3>Heritage Classic</h3>
+                    <p>Klasik miras teması</p>
+                    <a href="examples2/design07-heritage-classic.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">08</span>
+                    <h3>Contemporary Chic</h3>
+                    <p>Çağdaş ve şık</p>
+                    <a href="examples2/design08-contemporary-chic.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">09</span>
+                    <h3>Rustic Warm</h3>
+                    <p>Rustik sıcak tasarım</p>
+                    <a href="examples2/design09-rustic-warm.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">10</span>
+                    <h3>Authentic Heritage</h3>
+                    <p>Otantik miras konsepti</p>
+                    <a href="examples2/design10-authentic-heritage.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">11</span>
+                    <h3>Food Focused</h3>
+                    <p>Yemek odaklı sunum</p>
+                    <a href="examples2/design11-food-focused.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">12</span>
+                    <h3>Classic Elegant</h3>
+                    <p>Klasik zarif yaklaşım</p>
+                    <a href="examples2/design12-classic-elegant.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">13</span>
+                    <h3>Modern Minimal</h3>
+                    <p>Modern minimalist</p>
+                    <a href="examples2/design13-modern-minimal.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">14</span>
+                    <h3>Card Based</h3>
+                    <p>Kart tabanlı layout</p>
+                    <a href="examples2/design14-card-based.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLES3 KOLEKSIYONU - ÖDÜL SEVİYESİ -->
+        <div class="category">
+            <h2>🏆 Examples3 Koleksiyonu - Ödül Seviyesi</h2>
+            <p class="category-desc">20 tamamen farklı, yarışma seviyesi tasarım - Her biri benzersiz!</p>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-number">⭐ 01</span>
+                    <h3>Parallax Story</h3>
+                    <p>Scroll-based parallax hikaye anlatımı</p>
+                    <a href="examples3/01-parallax-story.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 02</span>
+                    <h3>Bento Grid</h3>
+                    <p>Japon bento kutusu asimetrik grid</p>
+                    <a href="examples3/02-bento-grid.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 03</span>
+                    <h3>Circular Radial</h3>
+                    <p>Dairesel orbital menü navigasyonu</p>
+                    <a href="examples3/03-circular-radial.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 04</span>
+                    <h3>Magazine Editorial</h3>
+                    <p>Dergi yayın stili layout</p>
+                    <a href="examples3/04-magazine-editorial.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 05</span>
+                    <h3>Diagonal Dynamic</h3>
+                    <p>Çapraz eğimli dinamik bölümler</p>
+                    <a href="examples3/05-diagonal-dynamic.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 06</span>
+                    <h3>Masonry Pinterest</h3>
+                    <p>Pinterest tarzı masonry grid</p>
+                    <a href="examples3/06-masonry-pinterest.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 07</span>
+                    <h3>Horizontal Scroll</h3>
+                    <p>Yatay kaydırmalı galeri</p>
+                    <a href="examples3/07-horizontal-scroll.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 08</span>
+                    <h3>Split Screen</h3>
+                    <p>Bölünmüş ekran (sol sabit, sağ scroll)</p>
+                    <a href="examples3/08-split-screen.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 09</span>
+                    <h3>Overlapping Cards</h3>
+                    <p>Z-eksen üst üste binmiş kartlar</p>
+                    <a href="examples3/09-overlapping-cards.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 10</span>
+                    <h3>Fullscreen Slides</h3>
+                    <p>Tam ekran slayt gösterisi</p>
+                    <a href="examples3/10-fullscreen-slides.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 11</span>
+                    <h3>Geometric Pattern</h3>
+                    <p>Geometrik overlay desenleri</p>
+                    <a href="examples3/11-geometric-pattern.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 12</span>
+                    <h3>Hand Drawn Sketch</h3>
+                    <p>El çizimi illüstrasyon stili</p>
+                    <a href="examples3/12-hand-drawn-sketch.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 13</span>
+                    <h3>Vintage Poster</h3>
+                    <p>Vintage poster estetiği</p>
+                    <a href="examples3/13-vintage-poster.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 14</span>
+                    <h3>3D Perspective</h3>
+                    <p>3D perspektif efektleri</p>
+                    <a href="examples3/14-3d-perspective.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 15</span>
+                    <h3>Mixed Media Collage</h3>
+                    <p>Karışık medya kolaj stili</p>
+                    <a href="examples3/15-mixed-media-collage.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 16</span>
+                    <h3>Menu Hero</h3>
+                    <p>Menü öğeleri ana hero olarak</p>
+                    <a href="examples3/16-menu-hero.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 17</span>
+                    <h3>Liquid Organic</h3>
+                    <p>Sıvı organik morph efektleri</p>
+                    <a href="examples3/17-liquid-organic.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 18</span>
+                    <h3>Split Color Block</h3>
+                    <p>Renkli blok grid sistemi</p>
+                    <a href="examples3/18-split-color-block.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 19</span>
+                    <h3>Scrapbook Journal</h3>
+                    <p>Scrapbook/günlük stili</p>
+                    <a href="examples3/19-scrapbook-journal.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+                <div class="card">
+                    <span class="card-number">⭐ 20</span>
+                    <h3>Neon Retro</h3>
+                    <p>Neon retro fütürist</p>
+                    <a href="examples3/20-neon-retro.html" class="card-link" target="_blank">Görüntüle →</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem; padding: 2rem; color: #a8a8a8;">
+            <p>© 2026 Koala Kaktüs - Tasarım Örnekleri</p>
+            <p style="margin-top: 1rem;">Toplam <strong style="color: #d4a574;">44 farklı tasarım</strong></p>
+        </div>
+    </div>
+</body>
+</html>

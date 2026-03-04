@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Menu as Hero</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Lexend:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: #1c1410;
+            color: #e8e8e8;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            padding: 1.5rem 3rem;
+            background: rgba(28, 20, 16, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(190, 140, 70, 0.3);
+        }
+
+        .logo-hero {
+            font-family: 'Righteous', cursive;
+            font-size: 1.8rem;
+            color: #be8c46;
+        }
+
+        .top-info {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.9rem;
+            color: #a8a8a8;
+        }
+
+        /* Hero Menu Grid */
+        .hero-menu {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .menu-hero-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-hero-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(190, 140, 70, 0.3) 0%, rgba(28, 20, 16, 0.8) 100%);
+            z-index: 1;
+            transition: all 0.5s;
+        }
+
+        .menu-hero-item:hover::before {
+            background: linear-gradient(135deg, rgba(190, 140, 70, 0.6) 0%, rgba(28, 20, 16, 0.5) 100%);
+        }
+
+        .menu-hero-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .menu-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s;
+        }
+
+        .menu-hero-item:hover .menu-bg {
+            transform: scale(1.1);
+        }
+
+        /* Different backgrounds */
+        .menu-hero-item:nth-child(1) .menu-bg {
+            background: linear-gradient(135deg, #be8c46 0%, #8a5c2e 100%);
+        }
+
+        .menu-hero-item:nth-child(2) .menu-bg {
+            background: linear-gradient(135deg, #c47850 0%, #8a4c2e 100%);
+        }
+
+        .menu-hero-item:nth-child(3) .menu-bg {
+            background: linear-gradient(135deg, #d4a460 0%, #a8784a 100%);
+        }
+
+        .menu-hero-item:nth-child(4) .menu-bg {
+            background: linear-gradient(135deg, #8a6840 0%, #5a4428 100%);
+        }
+
+        .menu-hero-item:nth-child(5) .menu-bg {
+            background: linear-gradient(135deg, #a88c5c 0%, #7a5c38 100%);
+        }
+
+        .menu-hero-item:nth-child(6) .menu-bg {
+            background: linear-gradient(135deg, #c49c68 0%, #946c40 100%);
+        }
+
+        .menu-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-number {
+            font-family: 'Righteous', cursive;
+            font-size: 8rem;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 400;
+        }
+
+        .menu-details {
+            margin-top: auto;
+        }
+
+        .menu-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+        }
+
+        .menu-hero-item h2 {
+            font-family: 'Righteous', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .menu-hero-item p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: #be8c46;
+            color: #1c1410;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
+
+        /* First item - larger */
+        .menu-hero-item:first-child {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+        }
+
+        .menu-hero-item:first-child .menu-number {
+            font-size: 12rem;
+        }
+
+        .menu-hero-item:first-child h2 {
+            font-size: 5rem;
+        }
+
+        /* About Section */
+        .about-hero {
+            padding: 8rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-hero h2 {
+            font-family: 'Righteous', cursive;
+            font-size: 6rem;
+            color: #be8c46;
+            margin-bottom: 3rem;
+        }
+
+        .about-hero p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #c8c8c8;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        /* Stats */
+        .stats-hero {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            margin-top: 5rem;
+        }
+
+        .stat-hero {
+            text-align: center;
+        }
+
+        .stat-hero .number {
+            font-family: 'Righteous', cursive;
+            font-size: 6rem;
+            color: #be8c46;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-hero .label {
+            font-size: 1.2rem;
+            color: #a8a8a8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Contact */
+        .contact-hero {
+            padding: 10rem 4rem;
+            background: linear-gradient(135deg, #be8c46 0%, #8a5c2e 100%);
+            text-align: center;
+        }
+
+        .contact-hero h2 {
+            font-family: 'Righteous', cursive;
+            font-size: 7rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .contact-info-hero {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .info-hero {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .btn-hero {
+            padding: 1.8rem 5rem;
+            background: #1c1410;
+            color: #be8c46;
+            border: none;
+            font-family: 'Righteous', cursive;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-hero:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 1200px) {
+            .hero-menu {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+            .menu-hero-item:first-child {
+                grid-column: 1 / 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-menu {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .menu-hero-item:first-child {
+                grid-column: 1;
+            }
+            .menu-hero-item h2 { font-size: 2.5rem; }
+            .about-hero h2 { font-size: 4rem; }
+            .contact-hero h2 { font-size: 4rem; }
+            .top-info { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo-hero">Koala Kaktüs</div>
+        <div class="top-info">
+            <span>📍 İzmir</span>
+            <span>📞 +90 XXX XXX XX XX</span>
+            <span>🕐 11:00 - 23:00</span>
+        </div>
+    </div>
+
+    <section class="hero-menu">
+        <div class="menu-hero-item">
+            <div class="menu-bg"></div>
+            <div class="menu-badge">Özel</div>
+            <div class="menu-content">
+                <div class="menu-number">01</div>
+                <div class="menu-details">
+                    <span class="menu-icon">🥙</span>
+                    <h2>İçli Köfte</h2>
+                    <p>Antakya usulü taş fırında pişmiş, içi nefis kıymalı bulgur köftesi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-hero-item">
+            <div class="menu-bg"></div>
+            <div class="menu-badge">Popüler</div>
+            <div class="menu-content">
+                <div class="menu-number">02</div>
+                <div class="menu-details">
+                    <span class="menu-icon">🌶️</span>
+                    <h2>Muhammara</h2>
+                    <p>Ceviz ve biberle hazırlanan enfes Antakya mezesi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-hero-item">
+            <div class="menu-bg"></div>
+            <div class="menu-badge">Yeni</div>
+            <div class="menu-content">
+                <div class="menu-number">03</div>
+                <div class="menu-details">
+                    <span class="menu-icon">🍢</span>
+                    <h2>Kağıt Kebabı</h2>
+                    <p>Özel baharatlarla marine edilmiş kebap</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-hero-item">
+            <div class="menu-bg"></div>
+            <div class="menu-content">
+                <div class="menu-number">04</div>
+                <div class="menu-details">
+                    <span class="menu-icon">✨</span>
+                    <h2>Künefe</h2>
+                    <p>Tuzsuz peynirli Antakya künefesi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-hero-item">
+            <div class="menu-bg"></div>
+            <div class="menu-content">
+                <div class="menu-number">05</div>
+                <div class="menu-details">
+                    <span class="menu-icon">🥗</span>
+                    <h2>Mütebbel</h2>
+                    <p>Közlenmiş patlıcan mezesi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-hero-item">
+            <div class="menu-bg"></div>
+            <div class="menu-content">
+                <div class="menu-number">06</div>
+                <div class="menu-details">
+                    <span class="menu-icon">🍖</span>
+                    <h2>Oruk Köftesi</h2>
+                    <p>Ekşi aşı ile servis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-hero">
+        <h2>İzmir'de Antakya</h2>
+        <p>Koala Kaktüs'te, Antakya mutfağının en özgün lezzetlerini bulacaksınız. Her yemeğimiz, nesillerdir aktarılan geleneksel tariflerle ve en taze malzemelerle özenle hazırlanır.</p>
+        <p>Küçük ama özel restoranımızda, samimi atmosferimizle misafirlerimize unutulmaz bir deneyim sunuyoruz.</p>
+
+        <div class="stats-hero">
+            <div class="stat-hero">
+                <div class="number">5.0</div>
+                <div class="label">Puan</div>
+            </div>
+            <div class="stat-hero">
+                <div class="number">30+</div>
+                <div class="label">Yemek</div>
+            </div>
+            <div class="stat-hero">
+                <div class="number">8+</div>
+                <div class="label">Yıl</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-hero">
+        <h2>Sizi Bekliyoruz</h2>
+        <div class="contact-info-hero">
+            <div class="info-hero">📍 İzmir, Türkiye</div>
+            <div class="info-hero">📞 +90 XXX XXX XX XX</div>
+            <div class="info-hero">🕐 11:00 - 23:00</div>
+        </div>
+        <button class="btn-hero">Rezervasyon Yap</button>
+    </section>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Playful Cartoon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Patrick+Hand&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Baloo 2', cursive;
+            background: #fef9e7;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* Wavy background */
+        .wave-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(180deg, transparent 0%, #ffe4e1 100%);
+            z-index: 0;
+        }
+
+        /* Floating elements */
+        @keyframes float-around {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -15px) rotate(5deg); }
+            50% { transform: translate(5px, -10px) rotate(-5deg); }
+            75% { transform: translate(-5px, -20px) rotate(3deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        .floating-doodle {
+            position: fixed;
+            font-size: 4rem;
+            animation: float-around 5s ease-in-out infinite;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .doodle-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .doodle-2 { top: 20%; right: 8%; animation-delay: 1s; }
+        .doodle-3 { top: 50%; left: 10%; animation-delay: 2s; }
+        .doodle-4 { top: 70%; right: 12%; animation-delay: 3s; }
+        .doodle-5 { top: 85%; left: 15%; animation-delay: 4s; }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 1.5rem;
+            box-shadow: 0 8px 0 #ff6b9d;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #ff6b9d;
+            text-shadow: 3px 3px 0 #ffd93d;
+            transform: rotate(-3deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6bcf7f;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 0.8rem 1.8rem;
+            background: #fff;
+            border: 4px solid #6bcf7f;
+            border-radius: 25px;
+            box-shadow: 4px 4px 0 #6bcf7f;
+            transition: all 0.2s ease;
+            transform: rotate(-1deg);
+        }
+
+        .nav-links a:hover {
+            transform: rotate(1deg) translateY(-3px);
+            box-shadow: 6px 6px 0 #6bcf7f;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 800;
+            color: #ff6b9d;
+            text-shadow: 5px 5px 0 #ffd93d;
+            margin-bottom: 1.5rem;
+            transform: rotate(-2deg);
+            line-height: 1.1;
+        }
+
+        .speech-bubble {
+            background: #fff;
+            border: 5px solid #6bcf7f;
+            border-radius: 40px;
+            padding: 2rem 3rem;
+            margin: 2rem auto;
+            max-width: 700px;
+            position: relative;
+            box-shadow: 6px 6px 0 #6bcf7f;
+            transform: rotate(1deg);
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid #6bcf7f;
+        }
+
+        .speech-bubble p {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .cta-cartoon {
+            display: inline-block;
+            padding: 1.8rem 4rem;
+            background: #ff6b9d;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 800;
+            border-radius: 50px;
+            box-shadow: 6px 6px 0 #c44569;
+            margin-top: 3rem;
+            transform: rotate(-2deg);
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .cta-cartoon:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 8px 8px 0 #c44569;
+        }
+
+        /* Comic Cards */
+        .comic-section {
+            max-width: 1300px;
+            margin: 5rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .comic-card {
+            background: #fff;
+            border: 5px solid #2c3e50;
+            border-radius: 30px;
+            padding: 2.5rem;
+            box-shadow: 8px 8px 0 #ffd93d;
+            transition: all 0.3s ease;
+            transform: rotate(-1deg);
+        }
+
+        .comic-card:nth-child(2) {
+            transform: rotate(1deg);
+            box-shadow: 8px 8px 0 #ff6b9d;
+        }
+
+        .comic-card:nth-child(3) {
+            transform: rotate(0deg);
+            box-shadow: 8px 8px 0 #6bcf7f;
+        }
+
+        .comic-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+        }
+
+        .comic-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .comic-card h3 {
+            font-size: 2.2rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .comic-card p {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Menu Section */
+        .menu-comic {
+            max-width: 1300px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+            background: #fff;
+            border: 8px solid #2c3e50;
+            border-radius: 50px;
+            box-shadow: 12px 12px 0 #ff6b9d;
+            position: relative;
+            z-index: 10;
+            transform: rotate(-1deg);
+        }
+
+        .menu-comic h2 {
+            font-size: 4rem;
+            color: #6bcf7f;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 4px 4px 0 #ffd93d;
+            font-weight: 800;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-box {
+            background: #fef9e7;
+            border: 4px solid #2c3e50;
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .menu-box:hover {
+            background: #ffe4e1;
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .menu-emoji {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .menu-box h4 {
+            font-size: 1.8rem;
+            color: #ff6b9d;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .menu-box p {
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        /* Sticker Section */
+        .sticker-bar {
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #ffd93d 0%, #ffb6c1 100%);
+            border-radius: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border: 6px solid #fff;
+            box-shadow: 8px 8px 0 #2c3e50;
+        }
+
+        .sticker-bar h3 {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 4px 4px 0 #2c3e50;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .stickers {
+            font-size: 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .sticker {
+            animation: float-around 3s ease-in-out infinite;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 4rem 2rem;
+            margin-top: 6rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border-top: 8px solid #ffd93d;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-size: 3rem;
+            color: #ffd93d;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .footer-content p {
+            font-size: 1.3rem;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+            .comic-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-bg"></div>
+    <div class="floating-doodle doodle-1">⭐</div>
+    <div class="floating-doodle doodle-2">🌵</div>
+    <div class="floating-doodle doodle-3">🐨</div>
+    <div class="floating-doodle doodle-4">💚</div>
+    <div class="floating-doodle doodle-5">🍕</div>
+
+    <header>
+        <nav>
+            <div class="logo">🐨 Koala Kaktüs 🌵</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#about">Hikaye</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Süper Lezzetli<br>Antakya Yemekleri!</h1>
+        <div class="speech-bubble">
+            <p>🎉 İzmir'in en eğlenceli ve lezzetli restoranına hoş geldiniz! 🎊</p>
+        </div>
+        <a href="#rezervasyon" class="cta-cartoon">Hemen Rezervasyon! 🚀</a>
+    </section>
+
+    <section class="comic-section">
+        <div class="comic-card">
+            <span class="comic-icon">🎨</span>
+            <h3>Renkli Tatlar!</h3>
+            <p>Her tabak bir sanat eseri! Antakya'nın en özel yemeklerini sizin için hazırlıyoruz.</p>
+        </div>
+        <div class="comic-card">
+            <span class="comic-icon">⚡</span>
+            <h3>Hızlı Servis!</h3>
+            <p>Süper hızlı ama süper lezzetli! Acıkmış karnınız mutlu olacak!</p>
+        </div>
+        <div class="comic-card">
+            <span class="comic-icon">💖</span>
+            <h3>Mutluluk Garantili!</h3>
+            <p>Güler yüzlü ekibimiz ve sıcacık atmosferimizle harika vakit geçireceksiniz!</p>
+        </div>
+    </section>
+
+    <section class="menu-comic">
+        <h2>Süper Menümüz! 🌟</h2>
+        <div class="menu-grid">
+            <div class="menu-box">
+                <span class="menu-emoji">🥙</span>
+                <h4>İçli Köfte</h4>
+                <p>Taş fırından çıktı, hemen gelin!</p>
+            </div>
+            <div class="menu-box">
+                <span class="menu-emoji">🔥</span>
+                <h4>Kağıt Kebabı</h4>
+                <p>Çok baharatlı, çok lezzetli!</p>
+            </div>
+            <div class="menu-box">
+                <span class="menu-emoji">🌶️</span>
+                <h4>Muhammara</h4>
+                <p>Acısıyla, tatlısıyla süper meze!</p>
+            </div>
+            <div class="menu-box">
+                <span class="menu-emoji">✨</span>
+                <h4>Künefe</h4>
+                <p>Peynirli, şerbetli, muhteşem!</p>
+            </div>
+            <div class="menu-box">
+                <span class="menu-emoji">🍯</span>
+                <h4>Peynirli Helva</h4>
+                <p>Tatlı mı tatlı! Bayılacaksınız!</p>
+            </div>
+            <div class="menu-box">
+                <span class="menu-emoji">🎯</span>
+                <h4>Oruk Köftesi</h4>
+                <p>Antakya'nın sırrı burada!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sticker-bar">
+        <h3>Harika Özellikler! ⭐</h3>
+        <div class="stickers">
+            <span class="sticker">🌟</span>
+            <span class="sticker">🎊</span>
+            <span class="sticker">💚</span>
+            <span class="sticker">🎉</span>
+            <span class="sticker">✨</span>
+            <span class="sticker">🌈</span>
+            <span class="sticker">🎨</span>
+            <span class="sticker">🚀</span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>🐨 Koala Kaktüs 🌵</h3>
+            <p>📍 İzmir, Türkiye</p>
+            <p>📞 Telefon: +90 XXX XXX XX XX</p>
+            <p>🕐 Her gün 11:00 - 23:00</p>
+            <p>💌 Sizi bekliyoruz!</p>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2026 Koala Kaktüs - En Eğlenceli Restoran!</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Hand-drawn Whimsy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand+SC&family=Kalam:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kalam', cursive;
+            background: #fffef9;
+            color: #2d2d2d;
+            overflow-x: hidden;
+        }
+
+        /* Sketchy background */
+        .sketch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 1c-1 0-2 .5-3 1.5S25 4 25 5s.5 2.5 1.5 3.5S28 10 29 10s2-.5 3-1.5S34 7 34 6s-.5-2.5-1.5-3.5S31 1 30 1z' fill='%23e0e0e0' fill-opacity='0.3'/%3E%3C/svg%3E");
+            z-index: 0;
+        }
+
+        /* Doodles */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-2deg) translateY(0); }
+            50% { transform: rotate(2deg) translateY(-5px); }
+        }
+
+        .doodle {
+            position: fixed;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: wiggle 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .doodle-1 { top: 5%; left: 10%; animation-delay: 0s; }
+        .doodle-2 { top: 15%; right: 15%; animation-delay: 1s; }
+        .doodle-3 { top: 45%; left: 5%; animation-delay: 2s; }
+        .doodle-4 { top: 70%; right: 10%; animation-delay: 3s; }
+        .doodle-5 { bottom: 10%; left: 20%; animation-delay: 4s; }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 2rem;
+            border-bottom: 3px dashed #ff7675;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-sketch {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff7675;
+            transform: rotate(-3deg);
+            text-shadow: 2px 2px 0 #74b9ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Patrick Hand SC', cursive;
+            color: #636e72;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid #636e72;
+            border-radius: 20px 5px 20px 5px;
+            transition: all 0.3s ease;
+            transform: rotate(-1deg);
+        }
+
+        .nav-links a:hover {
+            background: #ffeaa7;
+            border-color: #fdcb6e;
+            transform: rotate(1deg);
+        }
+
+        /* Hero Section */
+        .hero-sketch {
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sketch-arrow {
+            font-size: 4rem;
+            color: #ff7675;
+            transform: rotate(-15deg);
+            display: inline-block;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+
+        .hero-sketch h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 6rem;
+            color: #ff7675;
+            margin: 2rem 0;
+            transform: rotate(-2deg);
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .underline-sketch {
+            width: 300px;
+            height: 8px;
+            background: #74b9ff;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .bubble-text {
+            background: #fff;
+            border: 3px solid #2d3436;
+            border-radius: 30px 30px 30px 5px;
+            padding: 2rem 3rem;
+            display: inline-block;
+            margin: 2rem auto;
+            position: relative;
+            box-shadow: 5px 5px 0 #ffeaa7;
+            transform: rotate(1deg);
+        }
+
+        .bubble-text::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50px;
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-left: 3px solid #2d3436;
+            border-bottom: 3px solid #2d3436;
+            transform: rotate(-45deg);
+            border-radius: 0 0 0 50%;
+        }
+
+        .bubble-text p {
+            font-family: 'Kalam', cursive;
+            font-size: 1.5rem;
+            color: #2d3436;
+            font-weight: 400;
+        }
+
+        .btn-sketch {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: #55efc4;
+            color: #2d3436;
+            text-decoration: none;
+            font-family: 'Patrick Hand SC', cursive;
+            font-size: 1.5rem;
+            border: 3px solid #2d3436;
+            border-radius: 15px 5px 15px 5px;
+            box-shadow: 5px 5px 0 #00b894;
+            margin-top: 3rem;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+
+        .btn-sketch:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 7px 7px 0 #00b894;
+        }
+
+        /* Sketch Cards */
+        .sketch-cards {
+            max-width: 1300px;
+            margin: 5rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .sketch-card {
+            background: #fff;
+            border: 3px solid #2d3436;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 8px 8px 0 #dfe6e9;
+            transition: all 0.3s ease;
+        }
+
+        .sketch-card:nth-child(1) {
+            border-radius: 20px 5px 20px 5px;
+            transform: rotate(-1deg);
+        }
+
+        .sketch-card:nth-child(2) {
+            border-radius: 5px 20px 5px 20px;
+            transform: rotate(1deg);
+        }
+
+        .sketch-card:nth-child(3) {
+            border-radius: 20px 20px 5px 5px;
+            transform: rotate(-0.5deg);
+        }
+
+        .sketch-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+            box-shadow: 12px 12px 0 #dfe6e9;
+        }
+
+        .sketch-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transform: rotate(-10deg);
+        }
+
+        .sketch-card h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            color: #ff7675;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .sketch-card p {
+            font-family: 'Kalam', cursive;
+            font-size: 1.1rem;
+            color: #636e72;
+            line-height: 1.7;
+        }
+
+        /* Menu Section */
+        .menu-sketch {
+            max-width: 1300px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+            background: #fff;
+            border: 4px dashed #ff7675;
+            border-radius: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-sketch h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 5rem;
+            color: #ff7675;
+            text-align: center;
+            margin-bottom: 1rem;
+            transform: rotate(-2deg);
+            font-weight: 700;
+        }
+
+        .menu-subtitle {
+            text-align: center;
+            font-family: 'Patrick Hand SC', cursive;
+            font-size: 1.5rem;
+            color: #74b9ff;
+            margin-bottom: 4rem;
+        }
+
+        .menu-grid-sketch {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item-sketch {
+            background: #ffeaa7;
+            border: 3px solid #2d3436;
+            border-radius: 15px 5px 15px 5px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            transform: rotate(-1deg);
+        }
+
+        .menu-item-sketch:nth-child(even) {
+            background: #dfe6e9;
+            border-radius: 5px 15px 5px 15px;
+            transform: rotate(1deg);
+        }
+
+        .menu-item-sketch:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 5px 5px 0 #fdcb6e;
+        }
+
+        .menu-emoji {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item-sketch h4 {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .menu-item-sketch p {
+            font-family: 'Kalam', cursive;
+            font-size: 1rem;
+            color: #636e72;
+        }
+
+        /* Handwritten Note */
+        .note-section {
+            max-width: 800px;
+            margin: 5rem auto;
+            padding: 3rem;
+            background: #fff9e6;
+            border: 2px solid #fdcb6e;
+            border-radius: 5px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            transform: rotate(-1deg);
+        }
+
+        .note-section::before {
+            content: '📌';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+        }
+
+        .note-section h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 3rem;
+            color: #ff7675;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .note-section p {
+            font-family: 'Kalam', cursive;
+            font-size: 1.3rem;
+            color: #2d3436;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3436;
+            color: #fff;
+            padding: 4rem 2rem;
+            margin-top: 6rem;
+            border-top: 5px dashed #ff7675;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-sketch {
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-sketch h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            color: #ffeaa7;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .footer-sketch p {
+            font-family: 'Kalam', cursive;
+            font-size: 1.2rem;
+            margin: 0.8rem 0;
+            color: #dfe6e9;
+        }
+
+        .footer-doodle {
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-sketch h1 { font-size: 3.5rem; }
+            .sketch-cards { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sketch-bg"></div>
+    <div class="doodle doodle-1">~</div>
+    <div class="doodle doodle-2">*</div>
+    <div class="doodle doodle-3">✨</div>
+    <div class="doodle doodle-4">♡</div>
+    <div class="doodle doodle-5">~</div>
+
+    <header>
+        <nav>
+            <div class="logo-sketch">🐨 Koala Kaktüs 🌵</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#about">Hikaye</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-sketch">
+        <div class="sketch-arrow">↓</div>
+        <h1>Elle Çizilmiş<br>Lezzetler!</h1>
+        <div class="underline-sketch"></div>
+        <div class="bubble-text">
+            <p>Antakya'nın en samimi restoranına hoş geldiniz! ♡</p>
+        </div>
+        <a href="#rezervasyon" class="btn-sketch">Masanı Ayırt! →</a>
+    </section>
+
+    <section class="sketch-cards">
+        <div class="sketch-card">
+            <div class="sketch-icon">✏️</div>
+            <h3>El Yapımı Lezzetler</h3>
+            <p>Her yemek özenle, sevgiyle ve geleneksel tariflerle hazırlanıyor!</p>
+        </div>
+        <div class="sketch-card">
+            <div class="sketch-icon">💚</div>
+            <h3>Samimi Atmosfer</h3>
+            <p>Evinizin sıcaklığında, dostça bir ortamda keyifli vakit geçirin!</p>
+        </div>
+        <div class="sketch-card">
+            <div class="sketch-icon">🎨</div>
+            <h3>Yaratıcı Sunumlar</h3>
+            <p>Her tabak bir sanat eseri gibi, görsel şölen sunuyoruz!</p>
+        </div>
+    </section>
+
+    <section class="menu-sketch">
+        <h2>Menümüz ~</h2>
+        <p class="menu-subtitle">(Hepsi çok lezzetli! ♡)</p>
+        <div class="menu-grid-sketch">
+            <div class="menu-item-sketch">
+                <span class="menu-emoji">🥙</span>
+                <h4>İçli Köfte</h4>
+                <p>Taş fırında pişmiş, enfes!</p>
+            </div>
+            <div class="menu-item-sketch">
+                <span class="menu-emoji">🔥</span>
+                <h4>Kağıt Kebabı</h4>
+                <p>Baharatlı ve aromalı</p>
+            </div>
+            <div class="menu-item-sketch">
+                <span class="menu-emoji">🌶️</span>
+                <h4>Muhammara</h4>
+                <p>Cevizli, biber ezmeli</p>
+            </div>
+            <div class="menu-item-sketch">
+                <span class="menu-emoji">✨</span>
+                <h4>Künefe</h4>
+                <p>Tuzsuz peynirli, şerbetli</p>
+            </div>
+            <div class="menu-item-sketch">
+                <span class="menu-emoji">🍆</span>
+                <h4>Mütebbel</h4>
+                <p>Közlenmiş patlıcan mezesi</p>
+            </div>
+            <div class="menu-item-sketch">
+                <span class="menu-emoji">🍯</span>
+                <h4>Peynirli Helva</h4>
+                <p>Geleneksel tatlımız</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="note-section">
+        <h3>Küçük Notumuz ♡</h3>
+        <p>Merhaba! Koala Kaktüs'e hoş geldiniz!</p>
+        <p>Biz İzmir'in en samimi Antakya mutfağıyız. Her yemeğimizi sevgiyle, geleneksel tariflerle hazırlıyoruz.</p>
+        <p>Aileniz ve sevdiklerinizle güzel anılar biriktirmek için sizi bekliyoruz!</p>
+        <p style="text-align: right; margin-top: 2rem;">~ Koala Kaktüs Ailesi ♡</p>
+    </section>
+
+    <footer>
+        <div class="footer-sketch">
+            <h3>🐨 Koala Kaktüs 🌵</h3>
+            <div class="footer-doodle">~ ♡ ~ ♡ ~</div>
+            <p>📍 İzmir, Türkiye</p>
+            <p>📞 +90 XXX XXX XX XX</p>
+            <p>🕐 Her gün 11:00 - 23:00</p>
+            <p>💌 Sevgiyle yapılmış lezzetler</p>
+            <div class="footer-doodle">✨ ✨ ✨</div>
+            <p style="margin-top: 2rem; opacity: 0.7;">© 2026 Koala Kaktüs - Elle Çizilmiş Lezzetler</p>
+        </div>
+    </footer>
+</body>
+</html>

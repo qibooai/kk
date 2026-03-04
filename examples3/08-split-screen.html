@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Split Screen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Split Container */
+        .split-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left Side - Fixed */
+        .left-side {
+            width: 50%;
+            background: #0d0c0a;
+            color: #f5f1ed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-side::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(205, 164, 94, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .brand {
+            position: absolute;
+            top: 3rem;
+            left: 5rem;
+        }
+
+        .brand h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: #cda45e;
+            font-weight: 600;
+        }
+
+        .brand p {
+            font-size: 0.9rem;
+            color: #8a7968;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .left-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .left-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #f5f1ed;
+        }
+
+        .left-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #c4b8aa;
+            margin-bottom: 3rem;
+        }
+
+        .left-stats {
+            display: flex;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #cda45e;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #8a7968;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Right Side - Scrollable */
+        .right-side {
+            width: 50%;
+            background: #f5f1ed;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .right-side::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .right-side::-webkit-scrollbar-track {
+            background: #e8e4df;
+        }
+
+        .right-side::-webkit-scrollbar-thumb {
+            background: #cda45e;
+            border-radius: 10px;
+        }
+
+        /* Menu Navigation */
+        .menu-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(245, 241, 237, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 3rem;
+            border-bottom: 1px solid #d4c4b0;
+            z-index: 100;
+        }
+
+        .menu-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .menu-nav a {
+            color: #5a4d42;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .menu-nav a:hover {
+            color: #cda45e;
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            padding: 4rem 3rem;
+        }
+
+        .menu-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #cda45e;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .menu-items {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0d5c7;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #2d2520;
+        }
+
+        .menu-item-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #6d5e52;
+        }
+
+        .menu-item-tag {
+            display: inline-block;
+            margin-top: 0.8rem;
+            padding: 0.4rem 1rem;
+            background: rgba(205, 164, 94, 0.15);
+            color: #cda45e;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            padding: 3rem;
+        }
+
+        .grid-image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #cda45e 0%, #8a7968 100%);
+            border-radius: 12px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 3rem;
+            background: #2d2520;
+            color: #f5f1ed;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #cda45e;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin-bottom: 3rem;
+        }
+
+        .contact-details p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .reservation-btn {
+            padding: 1.2rem 3rem;
+            background: #cda45e;
+            color: #0d0c0a;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .reservation-btn:hover {
+            background: #d4b06e;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .split-container {
+                flex-direction: column;
+            }
+            .left-side,
+            .right-side {
+                width: 100%;
+                height: auto;
+            }
+            .left-side {
+                padding: 4rem 2rem;
+            }
+            body {
+                overflow: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-container">
+        <!-- Left Side - Fixed Info -->
+        <div class="left-side">
+            <div class="brand">
+                <h1>Koala Kaktüs</h1>
+                <p>Antakya Mutfağı</p>
+            </div>
+
+            <div class="left-content">
+                <h2>İzmir'de<br>Antakya'nın<br>Özgün Tadı</h2>
+                <p>Küçük ama özel restoranımızda, geleneksel Antakya mutfağının en özel lezzetlerini deneyimleyin.</p>
+
+                <div class="left-stats">
+                    <div class="stat">
+                        <div class="stat-number">5.0</div>
+                        <div class="stat-label">Puan</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Yemek</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Yıl</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Scrollable Menu -->
+        <div class="right-side">
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="#mezeler">Mezeler</a></li>
+                    <li><a href="#ana-yemekler">Ana Yemekler</a></li>
+                    <li><a href="#tatlilar">Tatlılar</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mezeler -->
+            <section id="mezeler" class="menu-section">
+                <h3>Mezeler</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">🌶️</span>Muhammara</h4>
+                        </div>
+                        <p>Ceviz, biber ve özel baharatlarla hazırlanan geleneksel Antakya mezesi</p>
+                        <span class="menu-item-tag">Acılı</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">🥗</span>Mütebbel</h4>
+                        </div>
+                        <p>Közlenmiş patlıcan, tahin, sarımsak ve nar ekşisi ile</p>
+                        <span class="menu-item-tag">Vegan</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">🫒</span>Zeytin Ezmesi</h4>
+                        </div>
+                        <p>Özel Antakya zeytinleriyle hazırlanan nefis ezme</p>
+                        <span class="menu-item-tag">Geleneksel</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="image-grid">
+                <div class="grid-image"></div>
+                <div class="grid-image"></div>
+            </div>
+
+            <!-- Ana Yemekler -->
+            <section id="ana-yemekler" class="menu-section">
+                <h3>Ana Yemekler</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">🥙</span>İçli Köfte</h4>
+                        </div>
+                        <p>Antakya usulü taş fırında pişmiş, içi nefis kıymalı bulgur köftesi</p>
+                        <span class="menu-item-tag">Özel</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">🍢</span>Kağıt Kebabı</h4>
+                        </div>
+                        <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen enfes kebap</p>
+                        <span class="menu-item-tag">Popüler</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">🍖</span>Oruk Köftesi</h4>
+                        </div>
+                        <p>Ekşi aşı ile servis edilen geleneksel Antakya köftesi</p>
+                        <span class="menu-item-tag">Geleneksel</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="image-grid">
+                <div class="grid-image"></div>
+                <div class="grid-image"></div>
+            </div>
+
+            <!-- Tatlılar -->
+            <section id="tatlilar" class="menu-section">
+                <h3>Tatlılar</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">✨</span>Künefe</h4>
+                        </div>
+                        <p>Tuzsuz peynir, kadayıf ve şerbetle hazırlanan meşhur Antakya tatlısı</p>
+                        <span class="menu-item-tag">Sıcak</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4><span class="menu-item-icon">🍯</span>Tel Kadayıf</h4>
+                        </div>
+                        <p>Özel fıstıklı kadayıf tatlısı</p>
+                        <span class="menu-item-tag">Tatlı</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="iletisim" class="contact-section">
+                <h3>Rezervasyon</h3>
+                <div class="contact-details">
+                    <p>📍 İzmir, Türkiye</p>
+                    <p>📞 +90 XXX XXX XX XX</p>
+                    <p>🕐 Her gün 11:00 - 23:00</p>
+                </div>
+                <button class="reservation-btn">Rezervasyon Yap</button>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

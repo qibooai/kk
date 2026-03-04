@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Diagonal Dynamic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Diagonal Section Base */
+        .diagonal-section {
+            position: relative;
+            padding: 10rem 0;
+            overflow: hidden;
+        }
+
+        .diagonal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            transform: skewY(-6deg);
+            transform-origin: top left;
+            z-index: -1;
+        }
+
+        /* Section 1: Hero Diagonal */
+        .section-hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #c49461 0%, #8b6914 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .section-hero::before {
+            transform: skewY(-8deg);
+        }
+
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 10rem;
+            font-weight: 700;
+            letter-spacing: 10px;
+            color: #0f0f0f;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content p {
+            font-size: 2rem;
+            color: rgba(15,15,15,0.8);
+            letter-spacing: 8px;
+        }
+
+        /* Section 2: About Diagonal */
+        .section-about {
+            background: #1a1a1a;
+        }
+
+        .section-about::before {
+            transform: skewY(4deg);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #c49461;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .about-text p {
+            font-size: 1.3rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(196, 148, 97, 0.1);
+            border-left: 5px solid #c49461;
+        }
+
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #c49461;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Section 3: Menu Diagonal */
+        .section-menu {
+            background: #c49461;
+            color: #0f0f0f;
+        }
+
+        .section-menu::before {
+            transform: skewY(-5deg);
+        }
+
+        .menu-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .menu-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .menu-card {
+            background: #0f0f0f;
+            color: #fff;
+            padding: 3rem;
+            transform: skewY(3deg);
+            transition: all 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: skewY(0deg) scale(1.05);
+        }
+
+        .menu-card .icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #c49461;
+        }
+
+        .menu-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Section 4: Features Diagonal */
+        .section-features {
+            background: #2a2a2a;
+        }
+
+        .section-features::before {
+            transform: skewY(6deg);
+        }
+
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .feature-item {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .feature-item:nth-child(even) {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .feature-item:nth-child(even) .feature-text {
+            order: -1;
+        }
+
+        .feature-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 15rem;
+            font-weight: 700;
+            color: rgba(196, 148, 97, 0.2);
+            line-height: 1;
+        }
+
+        .feature-text h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: #c49461;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .feature-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Section 5: CTA Diagonal */
+        .section-cta {
+            background: linear-gradient(135deg, #8b6914 0%, #c49461 100%);
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .section-cta::before {
+            transform: skewY(-7deg);
+        }
+
+        .cta-content h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 7rem;
+            font-weight: 700;
+            color: #0f0f0f;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .cta-button {
+            padding: 2rem 6rem;
+            background: #0f0f0f;
+            color: #c49461;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            transform: skewX(-10deg);
+        }
+
+        .cta-button:hover {
+            transform: skewX(0deg) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 4rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .feature-item { grid-template-columns: 1fr !important; }
+            .feature-item:nth-child(even) .feature-text { order: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Section 1: Hero -->
+    <section class="diagonal-section section-hero">
+        <div class="hero-content">
+            <h1>KOALA<br>KAKTÜS</h1>
+            <p>ANTAKYA × İZMİR</p>
+        </div>
+    </section>
+
+    <!-- Section 2: About -->
+    <section class="diagonal-section section-about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>İZMİR'DE<br>ANTAKYA</h2>
+                <p>Küçük ama özel restoranımızda, Antakya mutfağının en özgün lezzetlerini bulacaksınız.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <div class="stat-number">5★</div>
+                    <div class="stat-label">Müşteri Puanı</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Özel Yemek</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Menu -->
+    <section class="diagonal-section section-menu">
+        <div class="menu-content">
+            <h2 class="menu-title">MENÜ</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="icon">🥙</div>
+                    <h3>İÇLİ KÖFTE</h3>
+                    <p>Antakya usulü taş fırında pişmiş</p>
+                </div>
+                <div class="menu-card">
+                    <div class="icon">🌶️</div>
+                    <h3>MUHAMMARA</h3>
+                    <p>Cevizli biber ezmesi</p>
+                </div>
+                <div class="menu-card">
+                    <div class="icon">✨</div>
+                    <h3>KÜNEFE</h3>
+                    <p>Tuzsuz peynirli tatlı</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Features -->
+    <section class="diagonal-section section-features">
+        <div class="features-content">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-number">01</div>
+                    <div class="feature-text">
+                        <h3>TAZE MALZEME</h3>
+                        <p>Her gün en taze ve kaliteli malzemeler kullanıyoruz</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">02</div>
+                    <div class="feature-text">
+                        <h3>USTA ŞEF</h3>
+                        <p>Deneyimli şeflerimiz her yemeği özenle hazırlar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: CTA -->
+    <section class="diagonal-section section-cta">
+        <div class="cta-content">
+            <h2>SİZİ<br>BEKLİYORUZ</h2>
+            <button class="cta-button">REZERVASYON</button>
+        </div>
+    </section>
+</body>
+</html>

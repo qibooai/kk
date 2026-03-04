@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Liquid Organic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=Comfortaa:wght@300;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #f4e9dd;
+            color: #3d2f2f;
+            overflow-x: hidden;
+        }
+
+        /* Floating blobs background */
+        .blob-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            opacity: 0.4;
+            animation: morph 20s infinite;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #d4a574 0%, #c49461 100%);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #e8c9a6 0%, #d4b494 100%);
+            bottom: -100px;
+            left: -50px;
+            animation-delay: 5s;
+        }
+
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #c19a73 0%, #a87f5b 100%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes morph {
+            0%, 100% {
+                border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+                transform: rotate(0deg);
+            }
+            25% {
+                border-radius: 60% 40% 50% 70% / 60% 30% 70% 40%;
+                transform: rotate(90deg);
+            }
+            50% {
+                border-radius: 50% 60% 40% 60% / 50% 60% 50% 40%;
+                transform: rotate(180deg);
+            }
+            75% {
+                border-radius: 70% 40% 60% 50% / 40% 60% 40% 60%;
+                transform: rotate(270deg);
+            }
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .liquid-header {
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .liquid-logo {
+            font-family: 'Comfortaa', cursive;
+            font-size: 2.5rem;
+            color: #c49461;
+            font-weight: 600;
+        }
+
+        .liquid-nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .liquid-nav a {
+            color: #6b5742;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .liquid-nav a:hover {
+            color: #c49461;
+        }
+
+        /* Hero */
+        .liquid-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .liquid-hero h1 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 8rem;
+            color: #c49461;
+            margin-bottom: 2rem;
+            line-height: 1;
+            font-weight: 600;
+        }
+
+        .liquid-hero p {
+            font-size: 2rem;
+            color: #6b5742;
+            font-weight: 300;
+        }
+
+        /* Organic Cards */
+        .organic-section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .organic-section h2 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 5rem;
+            text-align: center;
+            color: #c49461;
+            margin-bottom: 5rem;
+        }
+
+        .organic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .organic-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+            transition: all 0.6s ease;
+            border: 3px solid rgba(196, 148, 97, 0.3);
+        }
+
+        .organic-card:hover {
+            border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+            transform: scale(1.05) rotate(5deg);
+            border-color: #c49461;
+            box-shadow: 0 20px 60px rgba(196, 148, 97, 0.3);
+        }
+
+        .organic-card:nth-child(even):hover {
+            transform: scale(1.05) rotate(-5deg);
+        }
+
+        .organic-icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .organic-card h3 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 2.5rem;
+            color: #c49461;
+            margin-bottom: 1.5rem;
+        }
+
+        .organic-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #6b5742;
+        }
+
+        /* Flowing text section */
+        .flow-section {
+            padding: 8rem 4rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(228, 201, 166, 0.6) 100%);
+            clip-path: ellipse(100% 100% at 50% 50%);
+            margin: 4rem 0;
+        }
+
+        .flow-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .flow-content h2 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 6rem;
+            color: #c49461;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+        }
+
+        .flow-content p {
+            font-size: 1.5rem;
+            line-height: 1.9;
+            color: #6b5742;
+            margin-bottom: 2rem;
+        }
+
+        /* Wave shapes */
+        .wave-section {
+            position: relative;
+            padding: 8rem 4rem;
+            background: rgba(196, 148, 97, 0.15);
+            clip-path: polygon(
+                0 10%,
+                100% 0,
+                100% 90%,
+                0 100%
+            );
+        }
+
+        .wave-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .wave-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transition: all 0.6s;
+        }
+
+        .wave-item:hover {
+            border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+            transform: translateY(-20px);
+        }
+
+        .wave-number {
+            font-family: 'Comfortaa', cursive;
+            font-size: 4rem;
+            color: rgba(196, 148, 97, 0.4);
+            margin-bottom: 1rem;
+        }
+
+        .wave-item h4 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 2rem;
+            color: #c49461;
+            margin-bottom: 1rem;
+        }
+
+        .wave-item p {
+            font-size: 1rem;
+            color: #6b5742;
+            line-height: 1.6;
+        }
+
+        /* Organic CTA */
+        .organic-cta {
+            padding: 10rem 4rem;
+            text-align: center;
+        }
+
+        .cta-blob {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 6rem 4rem;
+            background: linear-gradient(135deg, #c49461 0%, #a87f5b 100%);
+            border-radius: 40% 60% 50% 40% / 60% 40% 60% 50%;
+            animation: morph 15s infinite;
+            box-shadow: 0 30px 80px rgba(196, 148, 97, 0.4);
+        }
+
+        .cta-blob h2 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 5rem;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+
+        .cta-blob p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 3rem;
+        }
+
+        .btn-liquid {
+            padding: 1.5rem 4rem;
+            background: #fff;
+            color: #c49461;
+            border: none;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .btn-liquid:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .liquid-hero h1 { font-size: 5rem; }
+            .wave-content { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .liquid-hero h1 { font-size: 4rem; }
+            .liquid-nav { display: none; }
+            .organic-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blob-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="content">
+        <header class="liquid-header">
+            <div class="liquid-logo">Koala Kaktüs</div>
+            <nav class="liquid-nav">
+                <a href="#menu">Menü</a>
+                <a href="#about">Hakkımızda</a>
+                <a href="#contact">İletişim</a>
+            </nav>
+        </header>
+
+        <section class="liquid-hero">
+            <div>
+                <h1>Antakya'nın<br>Sıcak Dokunuşu</h1>
+                <p>İzmir'de özgün lezzetler</p>
+            </div>
+        </section>
+
+        <section class="organic-section" id="menu">
+            <h2>Menümüz</h2>
+            <div class="organic-grid">
+                <div class="organic-card">
+                    <span class="organic-icon">🥙</span>
+                    <h3>İçli Köfte</h3>
+                    <p>Taş fırında pişmiş bulgur köftesi, Antakya'nın geleneksel lezzeti</p>
+                </div>
+
+                <div class="organic-card">
+                    <span class="organic-icon">🌶️</span>
+                    <h3>Muhammara</h3>
+                    <p>Cevizli biber ezmesi, geleneksel Antakya mezesi</p>
+                </div>
+
+                <div class="organic-card">
+                    <span class="organic-icon">🍢</span>
+                    <h3>Kağıt Kebabı</h3>
+                    <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen kebap</p>
+                </div>
+
+                <div class="organic-card">
+                    <span class="organic-icon">✨</span>
+                    <h3>Künefe</h3>
+                    <p>Tuzsuz peynirli, kadayıflı meşhur Antakya tatlısı</p>
+                </div>
+
+                <div class="organic-card">
+                    <span class="organic-icon">🥗</span>
+                    <h3>Mütebbel</h3>
+                    <p>Közlenmiş patlıcan, tahin ve nar ekşisi ile hazırlanır</p>
+                </div>
+
+                <div class="organic-card">
+                    <span class="organic-icon">🍖</span>
+                    <h3>Oruk Köftesi</h3>
+                    <p>Ekşi aşı ile servis edilen geleneksel Antakya köftesi</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="flow-section" id="about">
+            <div class="flow-content">
+                <h2>Küçük Ama<br>Çok Özel</h2>
+                <p>Koala Kaktüs'te, Antakya mutfağının en özgün lezzetlerini bulacaksınız.</p>
+                <p>Her yemeğimiz, nesillerdir aktarılan geleneksel tariflerle ve en taze malzemelerle özenle hazırlanır.</p>
+                <p>Samimi atmosferimizde, kendinizi evinizde gibi hissedeceksiniz.</p>
+            </div>
+        </section>
+
+        <section class="wave-section">
+            <div class="wave-content">
+                <div class="wave-item">
+                    <div class="wave-number">01</div>
+                    <h4>Taze Malzeme</h4>
+                    <p>Her gün en taze ve kaliteli malzemeler kullanıyoruz</p>
+                </div>
+
+                <div class="wave-item">
+                    <div class="wave-number">02</div>
+                    <h4>Geleneksel Tarifler</h4>
+                    <p>Nesillerdir aktarılan özgün Antakya tarifleri</p>
+                </div>
+
+                <div class="wave-item">
+                    <div class="wave-number">03</div>
+                    <h4>Samimi Ortam</h4>
+                    <p>Sıcak ve samimi bir atmosfer</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="organic-cta" id="contact">
+            <div class="cta-blob">
+                <h2>Sizi Bekliyoruz</h2>
+                <p>📍 İzmir, Türkiye<br>📞 +90 XXX XXX XX XX<br>🕐 11:00 - 23:00</p>
+                <button class="btn-liquid">Rezervasyon Yap</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

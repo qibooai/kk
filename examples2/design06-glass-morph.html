@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Glass Morphism</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Crimson+Pro:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Glass Header */
+        header {
+            padding: 2rem 3rem;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-glass {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .nav-glass {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-glass a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Hero Glass */
+        .hero-glass {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .glass-card-large {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 6rem 4rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card-large h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 5.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .glass-card-large p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-glass {
+            padding: 1.2rem 3rem;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Features Glass */
+        .features-glass {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.3s;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .glass-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .glass-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .glass-card p {
+            font-size: 1rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        /* Menu Glass */
+        .menu-glass {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+        }
+
+        .menu-glass-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .menu-glass-header h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-grid-glass {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .menu-card-glass {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .menu-card-glass h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card-glass p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Footer Glass */
+        footer {
+            margin-top: 8rem;
+            padding: 4rem 3rem;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        footer p {
+            opacity: 0.85;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card-large h1 { font-size: 3rem; }
+            .features-glass { grid-template-columns: 1fr; }
+            .menu-grid-glass { grid-template-columns: 1fr; }
+            .nav-glass { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-glass">Koala Kaktüs</div>
+            <ul class="nav-glass">
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-glass">
+        <div class="glass-card-large">
+            <h1>Modern Antakya<br>Deneyimi</h1>
+            <p>Geleneksel Antakya mutfağını modern ve şık bir atmosferde deneyimleyin</p>
+            <button class="btn-glass">Rezervasyon Yap</button>
+        </div>
+    </section>
+
+    <section class="features-glass" id="about">
+        <div class="glass-card">
+            <div class="glass-icon">🍽️</div>
+            <h3>Özel Tarifler</h3>
+            <p>Nesillerdir aktarılan geleneksel Antakya tariflerini modern yorumla sunuyoruz</p>
+        </div>
+        <div class="glass-card">
+            <div class="glass-icon">✨</div>
+            <h3>Benzersiz Atmosfer</h3>
+            <p>Şık ve rahat ortamımızda unutulmaz anılar biriktirin</p>
+        </div>
+        <div class="glass-card">
+            <div class="glass-icon">🌟</div>
+            <h3>Kalite Garantisi</h3>
+            <p>En kaliteli malzemelerle hazırlanan yemeklerimiz</p>
+        </div>
+    </section>
+
+    <section class="menu-glass" id="menu">
+        <div class="menu-glass-header">
+            <h2>Menü Seçkisi</h2>
+        </div>
+        <div class="menu-grid-glass">
+            <div class="menu-card-glass">
+                <h4>İçli Köfte</h4>
+                <p>Antakya usulü, taş fırında pişmiş içli köfte</p>
+            </div>
+            <div class="menu-card-glass">
+                <h4>Muhammara</h4>
+                <p>Ceviz ve biber ezmesi, özel tarif</p>
+            </div>
+            <div class="menu-card-glass">
+                <h4>Kağıt Kebabı</h4>
+                <p>Özel baharatlarla marine edilmiş</p>
+            </div>
+            <div class="menu-card-glass">
+                <h4>Künefe</h4>
+                <p>Tuzsuz peynir, kadayıf ve şerbet</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h3>Koala Kaktüs</h3>
+        <p>İzmir, Türkiye</p>
+        <p>+90 XXX XXX XX XX</p>
+        <p>Her gün 11:00 - 23:00</p>
+    </footer>
+</body>
+</html>

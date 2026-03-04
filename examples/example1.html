@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐨 Koala Kaktüs - Cute Kawaii Style</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff4e6 100%);
+            color: #5a4a42;
+            overflow-x: hidden;
+        }
+
+        /* Floating elements animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-icon {
+            position: fixed;
+            animation: float 3s ease-in-out infinite;
+            font-size: 3rem;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .icon-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .icon-2 { top: 20%; right: 10%; animation-delay: 0.5s; }
+        .icon-3 { top: 60%; left: 8%; animation-delay: 1s; }
+        .icon-4 { top: 80%; right: 15%; animation-delay: 1.5s; }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ffb7d5 0%, #ffd4a3 100%);
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(255, 183, 213, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 3px 3px 0 #ff6b9d;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: #ff6b9d;
+            margin-bottom: 1.5rem;
+            text-shadow: 5px 5px 0 #ffd4a3;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #7a6a62;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            padding: 1.5rem 4rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(255, 183, 213, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 4px solid #ffd4a3;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 50px rgba(255, 107, 157, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #ff6b9d;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #7a6a62;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Menu Preview */
+        .menu-preview {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #ffd4a3 0%, #ffb7d5 100%);
+            border-radius: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .menu-preview h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 3px 3px 0 #ff6b9d;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .menu-item-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item h4 {
+            color: #ff6b9d;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        footer h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { padding: 0.6rem 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating background icons -->
+    <div class="floating-icon icon-1">🌵</div>
+    <div class="floating-icon icon-2">🐨</div>
+    <div class="floating-icon icon-3">🌸</div>
+    <div class="floating-icon icon-4">🍽️</div>
+
+    <header>
+        <nav>
+            <div class="logo">🐨 Koala Kaktüs</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+                <li><a href="#rezervasyon">Rezervasyon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Antakya Lezzetleri 🌟</h1>
+        <p>İzmir'in kalbinde Antakya'nın en özel tatlarını keşfedin!</p>
+        <a href="#rezervasyon" class="cta-button">Hemen Rezervasyon Yap ✨</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🍽️</div>
+            <h3>Otantik Lezzetler</h3>
+            <p>Geleneksel Antakya mutfağının en özel yemekleri ustalarımızın elinden</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🌿</div>
+            <h3>Taze Malzemeler</h3>
+            <p>Her gün taze, doğal ve özenle seçilmiş malzemelerle hazırlanan yemekler</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💕</div>
+            <h3>Sıcak Atmosfer</h3>
+            <p>Aileniz ve sevdiklerinizle keyifli vakit geçirebileceğiniz şirin mekan</p>
+        </div>
+    </section>
+
+    <section class="menu-preview">
+        <h2>Popüler Lezzetlerimiz 🌟</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <div class="menu-item-icon">🥙</div>
+                <h4>İçli Köfte</h4>
+                <p>Antakya usulü</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon">🍯</div>
+                <h4>Künefe</h4>
+                <p>Tuzsuz peynirli</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon">🥗</div>
+                <h4>Muhammara</h4>
+                <p>Cevizli biber ezmesi</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-icon">🍖</div>
+                <h4>Kağıt Kebabı</h4>
+                <p>Özel baharatlarla</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3>🐨 Koala Kaktüs</h3>
+        <p>📍 İzmir, Türkiye</p>
+        <p>📞 İletişim: +90 XXX XXX XX XX</p>
+        <p>🕐 Her gün 11:00 - 23:00</p>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2026 Koala Kaktüs - Antakya Mutfağı</p>
+    </footer>
+</body>
+</html>

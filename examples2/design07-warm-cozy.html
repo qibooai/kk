@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Sıcak & Samimi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #fdfbf7;
+            color: #4a3f35;
+        }
+
+        /* Simple Header */
+        header {
+            padding: 1.5rem 2rem;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-warm {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            color: #8b6f47;
+        }
+
+        .nav-menu-warm {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu-warm a {
+            color: #7a6a5a;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Warm Hero */
+        .hero-warm {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero-warm h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            color: #8b6f47;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .hero-warm p {
+            font-size: 1.2rem;
+            color: #7a6a5a;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-image-warm {
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #d4b896 0%, #c9a88a 100%);
+            margin: 3rem auto;
+            border-radius: 10px;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            background: #f5efe8;
+            padding: 5rem 2rem;
+        }
+
+        .welcome-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .welcome h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            color: #8b6f47;
+            margin-bottom: 2rem;
+        }
+
+        .welcome p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #6a5a4a;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Menu Cards */
+        .menu-cards {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .menu-cards h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.8rem;
+            color: #8b6f47;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .menu-subtitle {
+            text-align: center;
+            color: #9a8a7a;
+            font-size: 1.05rem;
+            margin-bottom: 4rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card-warm {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .card-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-warm h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            color: #8b6f47;
+            margin-bottom: 1rem;
+        }
+
+        .card-warm p {
+            color: #7a6a5a;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Why Us */
+        .why-us {
+            background: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .why-us-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .why-us h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            color: #8b6f47;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .reason {
+            text-align: center;
+        }
+
+        .reason-icon {
+            width: 80px;
+            height: 80px;
+            background: #f5efe8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .reason h4 {
+            font-size: 1.2rem;
+            color: #8b6f47;
+            margin-bottom: 0.8rem;
+        }
+
+        .reason p {
+            color: #7a6a5a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact {
+            background: #8b6f47;
+            color: #fff;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin: 0.8rem 0;
+        }
+
+        .contact-btn {
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background: #fff;
+            color: #8b6f47;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hero-warm h1 { font-size: 2.5rem; }
+            .reasons { grid-template-columns: 1fr; }
+            .nav-menu-warm { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-warm">🐨 Koala Kaktüs</div>
+            <ul class="nav-menu-warm">
+                <li><a href="#welcome">Hakkımızda</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-warm">
+        <h1>İzmir'in En İyi<br>Antakya Mutfağı</h1>
+        <p>Geleneksel Antakya lezzetlerini, samimi atmosferimizde aileniz ve sevdiklerinizle paylaşın</p>
+        <div class="hero-image-warm"></div>
+    </section>
+
+    <section class="welcome" id="welcome">
+        <div class="welcome-content">
+            <h2>Hoş Geldiniz</h2>
+            <p>Koala Kaktüs, Antakya'nın geleneksel yemeklerini özgün tarifleriyle sunan küçük ama özel bir restorandır.</p>
+            <p>Her yemeğimiz, nesillerdir aktarılan tariflerle ve taze malzemelerle özenle hazırlanır. Amacımız, sizi evinizin sıcaklığında ağırlamak ve Antakya mutfağının zenginliğini tattırmaktır.</p>
+        </div>
+    </section>
+
+    <section class="menu-cards" id="menu">
+        <h2>Özel Lezzetlerimiz</h2>
+        <p class="menu-subtitle">Her biri özenerek hazırlanmış</p>
+        <div class="cards-grid">
+            <div class="card-warm">
+                <div class="card-emoji">🥙</div>
+                <h3>İçli Köfte</h3>
+                <p>Antakya usulü, taş fırında pişmiş geleneksel içli köfte</p>
+            </div>
+            <div class="card-warm">
+                <div class="card-emoji">🌶️</div>
+                <h3>Muhammara</h3>
+                <p>Ceviz ve biberle hazırlanan özel meze</p>
+            </div>
+            <div class="card-warm">
+                <div class="card-emoji">🍖</div>
+                <h3>Kağıt Kebabı</h3>
+                <p>Özel baharatlarla marine edilmiş kebap</p>
+            </div>
+            <div class="card-warm">
+                <div class="card-emoji">✨</div>
+                <h3>Künefe</h3>
+                <p>Tuzsuz peynirli Antakya künefesi</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="why-us-content">
+            <h2>Neden Bizi Seçmelisiniz?</h2>
+            <div class="reasons">
+                <div class="reason">
+                    <div class="reason-icon">👨‍🍳</div>
+                    <h4>Usta Eller</h4>
+                    <p>Deneyimli aşçılarımız her yemeği özenle hazırlar</p>
+                </div>
+                <div class="reason">
+                    <div class="reason-icon">🌿</div>
+                    <h4>Taze Malzeme</h4>
+                    <p>Her gün taze ve kaliteli malzemeler kullanıyoruz</p>
+                </div>
+                <div class="reason">
+                    <div class="reason-icon">💚</div>
+                    <h4>Samimi Ortam</h4>
+                    <p>Ailenizle rahatça vakit geçirebileceğiniz sıcak atmosfer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Bizi Ziyaret Edin</h2>
+        <p>İzmir, Türkiye</p>
+        <p>Telefon: +90 XXX XXX XX XX</p>
+        <p>Açık: Her gün 11:00 - 23:00</p>
+        <button class="contact-btn">Rezervasyon Yapın</button>
+    </section>
+</body>
+</html>

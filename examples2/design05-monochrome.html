@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Monochromatic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f9f7f4;
+            color: #3a3a3a;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #2a2a2a;
+        }
+
+        .menu-btn {
+            padding: 0.8rem 2rem;
+            background: #2a2a2a;
+            color: #f9f7f4;
+            border: none;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero-mono {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 4rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-mono h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 6rem;
+            line-height: 1;
+            color: #2a2a2a;
+            margin-bottom: 2rem;
+        }
+
+        .hero-mono p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .hero-image-mono {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #d4c4b0 0%, #e8dcc5 100%);
+        }
+
+        /* Stats */
+        .stats {
+            background: #2a2a2a;
+            color: #f9f7f4;
+            padding: 5rem 4rem;
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Menu Showcase */
+        .menu-showcase {
+            max-width: 1200px;
+            margin: 8rem auto;
+            padding: 0 4rem;
+        }
+
+        .menu-showcase h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: #2a2a2a;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .showcase-item {
+            padding: 3rem;
+            background: #fff;
+            border: 1px solid #e8dcc5;
+        }
+
+        .showcase-item h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2a2a2a;
+        }
+
+        .showcase-item p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .showcase-item .icon {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+
+        /* Quote */
+        .quote-section {
+            background: #f0ebe4;
+            padding: 8rem 4rem;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #2a2a2a;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            margin-top: 2rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 4rem;
+            background: #2a2a2a;
+            color: #f9f7f4;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-content h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-mono { grid-template-columns: 1fr; }
+            .hero-mono h1 { font-size: 3rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .showcase-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">Koala Kaktüs</div>
+        <button class="menu-btn">Rezervasyon</button>
+    </header>
+
+    <section class="hero-mono">
+        <div>
+            <h1>Sadelik<br>Lezzette</h1>
+            <p>Antakya mutfağının zengin tatlarını, sade ve zarif bir sunumla deneyimleyin. Her yemek, geleneksel tariflerin modern yorumu.</p>
+            <button class="menu-btn">Menüyü Keşfet</button>
+        </div>
+        <div class="hero-image-mono"></div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number">30+</div>
+                <div class="stat-label">Özel Yemek</div>
+            </div>
+            <div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Taze Malzeme</div>
+            </div>
+            <div>
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Yıl Deneyim</div>
+            </div>
+            <div>
+                <div class="stat-number">5★</div>
+                <div class="stat-label">Müşteri Puanı</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-showcase">
+        <h2>Özel Lezzetler</h2>
+        <div class="showcase-grid">
+            <div class="showcase-item">
+                <div class="icon">🥙</div>
+                <h3>İçli Köfte</h3>
+                <p>Antakya'nın meşhur içli köftesi, taş fırında özenle pişirilerek servis edilir.</p>
+            </div>
+            <div class="showcase-item">
+                <div class="icon">🌶️</div>
+                <h3>Muhammara</h3>
+                <p>Ceviz, biber ve özel baharatlarla hazırlanan geleneksel meze.</p>
+            </div>
+            <div class="showcase-item">
+                <div class="icon">🍖</div>
+                <h3>Kağıt Kebabı</h3>
+                <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen enfes kebap.</p>
+            </div>
+            <div class="showcase-item">
+                <div class="icon">✨</div>
+                <h3>Künefe</h3>
+                <p>Tuzsuz peynir ve kadayıf ile hazırlanan Antakya'nın meşhur tatlısı.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <blockquote>
+            "Yemek sadece karın doyurmak değil,<br>ruhunuzu tatmin etmektir."
+        </blockquote>
+        <p class="quote-author">— Koala Kaktüs Felsefesi</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>Koala Kaktüs</h4>
+                <p>Antakya'nın geleneksel lezzetlerini modern bir yaklaşımla İzmir'e taşıyoruz.</p>
+            </div>
+            <div>
+                <h4>İletişim</h4>
+                <p>İzmir, Türkiye</p>
+                <p>+90 XXX XXX XX XX</p>
+            </div>
+            <div>
+                <h4>Saatler</h4>
+                <p>Pazartesi - Pazar</p>
+                <p>11:00 - 23:00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

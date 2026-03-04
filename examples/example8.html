@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Art Deco Luxury</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Montserrat:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        /* Art Deco Pattern Background */
+        .deco-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(30deg, transparent 40%, rgba(212, 175, 55, 0.05) 40%, rgba(212, 175, 55, 0.05) 60%, transparent 60%),
+                linear-gradient(-30deg, transparent 40%, rgba(212, 175, 55, 0.05) 40%, rgba(212, 175, 55, 0.05) 60%, transparent 60%);
+            background-size: 60px 100px;
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-bottom: 3px solid #d4af37;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-deco {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-deco .ornament-top {
+            font-size: 1.2rem;
+            color: #d4af37;
+            letter-spacing: 10px;
+            margin-bottom: 0.3rem;
+        }
+
+        .logo-deco .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e6a6 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+        }
+
+        .logo-deco .ornament-bottom {
+            font-size: 1rem;
+            color: #d4af37;
+            letter-spacing: 8px;
+            margin-top: 0.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '◆';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f9e6a6;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-ornament-top {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 7rem;
+            font-weight: 900;
+            letter-spacing: 10px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e6a6 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #b8975a;
+            letter-spacing: 5px;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .hero-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .hero-divider .line {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .hero-divider .diamond {
+            font-size: 1.5rem;
+            color: #d4af37;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #c0c0c0;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        .btn-luxury {
+            display: inline-block;
+            padding: 1.8rem 5rem;
+            background: transparent;
+            border: 3px solid #d4af37;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #d4af37;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-luxury:hover {
+            color: #0a0a0a;
+        }
+
+        .btn-luxury:hover::before {
+            left: 0;
+        }
+
+        /* Geometric Section */
+        .geometric-section {
+            max-width: 1400px;
+            margin: 8rem auto;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #d4af37;
+            border-left: none;
+            border-right: none;
+            position: relative;
+            z-index: 10;
+        }
+
+        .geometric-section::before,
+        .geometric-section::after {
+            content: '◆';
+            position: absolute;
+            font-size: 3rem;
+            color: #d4af37;
+        }
+
+        .geometric-section::before {
+            top: 2rem;
+            left: 3rem;
+        }
+
+        .geometric-section::after {
+            bottom: 2rem;
+            right: 3rem;
+        }
+
+        .geometric-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            text-align: center;
+            color: #d4af37;
+            margin-bottom: 5rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .features-deco {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .feature-deco {
+            text-align: center;
+            padding: 3rem;
+            border: 2px solid #d4af37;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
+            background: rgba(212, 175, 55, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-deco:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: scale(1.05);
+        }
+
+        .feature-icon-deco {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-deco h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .feature-deco p {
+            color: #c0c0c0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+
+        /* Menu Showcase */
+        .menu-luxury {
+            max-width: 1200px;
+            margin: 8rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-luxury h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            text-align: center;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .menu-luxury-subtitle {
+            text-align: center;
+            color: #b8975a;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 5rem;
+            text-transform: uppercase;
+        }
+
+        .menu-grid-luxury {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .menu-category-luxury {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 2px solid #d4af37;
+            padding: 3rem;
+        }
+
+        .menu-category-luxury h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 1.5rem;
+        }
+
+        .menu-item-luxury {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .menu-item-luxury:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-info {
+            flex: 1;
+        }
+
+        .menu-item-luxury h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: #f5f5f5;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .menu-item-luxury p {
+            color: #b8975a;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item-icon-luxury {
+            font-size: 2.5rem;
+            margin-left: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-top: 3px solid #d4af37;
+            padding: 5rem 2rem;
+            margin-top: 8rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-deco {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 2rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .footer-ornament {
+            font-size: 2rem;
+            color: #d4af37;
+            margin: 2rem 0;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .footer-section-deco h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-section-deco p {
+            color: #c0c0c0;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: #b8975a;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .features-deco { grid-template-columns: 1fr; }
+            .menu-grid-luxury { grid-template-columns: 1fr; }
+            .footer-info { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="deco-bg"></div>
+
+    <header>
+        <nav>
+            <div class="logo-deco">
+                <div class="ornament-top">◆ ◆ ◆</div>
+                <div class="logo-text">Koala Kaktüs</div>
+                <div class="ornament-bottom">— ◆ —</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">Rezervasyon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-ornament-top">◆ ◆ ◆</div>
+        <h1>Lüks<br>Antakya<br>Deneyimi</h1>
+        <p class="hero-subtitle">İzmir'in En Prestijli Mutfağı</p>
+        <div class="hero-divider">
+            <div class="line"></div>
+            <span class="diamond">◆</span>
+            <div class="line"></div>
+        </div>
+        <p>Antakya'nın asil geleneklerini modern lüksle buluşturduk. Her tabak bir sanat eseri, her an unutulmaz bir deneyim.</p>
+        <a href="#rezervasyon" class="btn-luxury">Rezervasyon</a>
+    </section>
+
+    <section class="geometric-section">
+        <h2>Öne Çıkanlar</h2>
+        <div class="features-deco">
+            <div class="feature-deco">
+                <div class="feature-icon-deco">👑</div>
+                <h3>Seçkin Lezzetler</h3>
+                <p>En kaliteli malzemelerle, usta ellerde hazırlanan otantik Antakya yemekleri</p>
+            </div>
+            <div class="feature-deco">
+                <div class="feature-icon-deco">✨</div>
+                <h3>Özel Atmosfer</h3>
+                <p>Art Deco zarafetinde, prestijli ve konforlu bir yemek deneyimi</p>
+            </div>
+            <div class="feature-deco">
+                <div class="feature-icon-deco">🎩</div>
+                <h3>Mükemmel Servis</h3>
+                <p>Profesyonel ekibimizle kusursuz hizmet ve unutulmaz anlar</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-luxury">
+        <h2>Menümüz</h2>
+        <p class="menu-luxury-subtitle">— Seçkin Antakya Lezzetleri —</p>
+        <div class="menu-grid-luxury">
+            <div class="menu-category-luxury">
+                <h3>Mezeler</h3>
+                <div class="menu-item-luxury">
+                    <div class="menu-item-info">
+                        <h4>Muhammara</h4>
+                        <p>Ceviz ve özel baharatlarla</p>
+                    </div>
+                    <div class="menu-item-icon-luxury">🌶️</div>
+                </div>
+                <div class="menu-item-luxury">
+                    <div class="menu-item-info">
+                        <h4>Mütebbel</h4>
+                        <p>Közlenmiş patlıcan, tahin ve nar ekşisi</p>
+                    </div>
+                    <div class="menu-item-icon-luxury">🍆</div>
+                </div>
+                <div class="menu-item-luxury">
+                    <div class="menu-item-info">
+                        <h4>Humus Royale</h4>
+                        <p>Premium nohut ve tahin</p>
+                    </div>
+                    <div class="menu-item-icon-luxury">👑</div>
+                </div>
+            </div>
+
+            <div class="menu-category-luxury">
+                <h3>Ana Yemekler</h3>
+                <div class="menu-item-luxury">
+                    <div class="menu-item-info">
+                        <h4>İçli Köfte Deluxe</h4>
+                        <p>Taş fırında özel pişirim</p>
+                    </div>
+                    <div class="menu-item-icon-luxury">🥙</div>
+                </div>
+                <div class="menu-item-luxury">
+                    <div class="menu-item-info">
+                        <h4>Kağıt Kebabı Premium</h4>
+                        <p>Özel baharatlarla marine</p>
+                    </div>
+                    <div class="menu-item-icon-luxury">🍖</div>
+                </div>
+                <div class="menu-item-luxury">
+                    <div class="menu-item-info">
+                        <h4>Künefe Suprême</h4>
+                        <p>Tuzsuz peynir, fıstık ve şerbet</p>
+                    </div>
+                    <div class="menu-item-icon-luxury">✨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-deco">
+            <div class="footer-logo">KOALA KAKTÜS</div>
+            <div class="footer-ornament">◆ ◆ ◆</div>
+            <div class="footer-info">
+                <div class="footer-section-deco">
+                    <h4>Lokasyon</h4>
+                    <p>İzmir, Türkiye</p>
+                    <p>Prestij Bölgesi</p>
+                </div>
+                <div class="footer-section-deco">
+                    <h4>Rezervasyon</h4>
+                    <p>+90 XXX XXX XX XX</p>
+                    <p>reservation@koalakaktus.com</p>
+                </div>
+                <div class="footer-section-deco">
+                    <h4>Açılış Saatleri</h4>
+                    <p>Pazartesi - Pazar</p>
+                    <p>18:00 - 00:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 KOALA KAKTÜS · ANTAKYA MUTFAĞI · TÜM HAKLARI SAKLIDIR</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

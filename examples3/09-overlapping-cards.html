@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Overlapping Cards</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: #fdfbf7;
+            color: #3d352e;
+            overflow-x: hidden;
+        }
+
+        /* Minimal Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(253, 251, 247, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-overlap {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.6rem;
+            color: #a6825f;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .header-nav a {
+            color: #6b5d52;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Hero with Overlapping Cards */
+        .hero-overlap {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .overlap-stack {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+        }
+
+        .overlap-card {
+            position: absolute;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .overlap-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+            z-index: 100 !important;
+        }
+
+        /* Card 1 - Main Hero */
+        .card-1 {
+            width: 600px;
+            height: 500px;
+            top: 50px;
+            left: 0;
+            z-index: 3;
+            background: linear-gradient(135deg, #a6825f 0%, #856548 100%);
+            padding: 4rem;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-1 h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .card-1 p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Card 2 - Image */
+        .card-2 {
+            width: 500px;
+            height: 400px;
+            top: 0;
+            right: 50px;
+            z-index: 2;
+            background: linear-gradient(135deg, #d4c4b0 0%, #b8a594 100%);
+        }
+
+        /* Card 3 - Info */
+        .card-3 {
+            width: 400px;
+            height: 350px;
+            bottom: 0;
+            right: 200px;
+            z-index: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-3 h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            color: #a6825f;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-3 p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #6b5d52;
+        }
+
+        /* Menu Cards Section */
+        .menu-overlap-section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem;
+            text-align: center;
+            color: #a6825f;
+            margin-bottom: 6rem;
+        }
+
+        .menu-overlap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            padding: 0 2rem;
+        }
+
+        .menu-overlap-item {
+            position: relative;
+            height: 450px;
+        }
+
+        .menu-card-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            background: #e8dfd5;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .menu-card-front {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            z-index: 2;
+            transition: all 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-overlap-item:hover .menu-card-front {
+            transform: translate(-10px, -10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .menu-card-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-card-front h4 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            color: #a6825f;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-card-front p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #6b5d52;
+            flex-grow: 1;
+        }
+
+        .menu-card-tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(166, 130, 95, 0.1);
+            color: #a6825f;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Features Overlap */
+        .features-overlap {
+            padding: 8rem 2rem;
+            background: #f5f0ea;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            height: 500px;
+        }
+
+        .feature-card {
+            position: absolute;
+            width: 350px;
+            padding: 3rem;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            z-index: 10 !important;
+        }
+
+        .feature-card:nth-child(1) {
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+
+        .feature-card:nth-child(2) {
+            top: 100px;
+            left: 300px;
+            z-index: 2;
+        }
+
+        .feature-card:nth-child(3) {
+            top: 200px;
+            left: 600px;
+            z-index: 1;
+        }
+
+        .feature-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 5rem;
+            color: rgba(166, 130, 95, 0.2);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h5 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            color: #a6825f;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #6b5d52;
+        }
+
+        /* CTA Overlap */
+        .cta-overlap {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 5rem 4rem;
+            background: #a6825f;
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .cta-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            background: #e8dfd5;
+            border-radius: 30px;
+            z-index: -1;
+        }
+
+        .cta-content h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            padding: 1.3rem 3.5rem;
+            background: #fff;
+            color: #a6825f;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            padding: 3rem;
+            text-align: center;
+            color: #8a7968;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .overlap-stack { height: auto; }
+            .overlap-card { position: relative !important; margin-bottom: 2rem; }
+            .card-1, .card-2, .card-3 { width: 100% !important; height: auto !important; top: 0 !important; left: 0 !important; right: 0 !important; }
+            .menu-overlap-grid { grid-template-columns: 1fr; }
+            .features-container { height: auto; }
+            .feature-card { position: relative !important; width: 100% !important; margin-bottom: 2rem; top: 0 !important; left: 0 !important; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-overlap">Koala Kaktüs</div>
+        <nav class="header-nav">
+            <a href="#menu">Menü</a>
+            <a href="#hakkimizda">Hakkımızda</a>
+            <a href="#iletisim">İletişim</a>
+        </nav>
+    </header>
+
+    <section class="hero-overlap">
+        <div class="overlap-stack">
+            <div class="overlap-card card-1">
+                <h1>Antakya<br>Lezzetleri</h1>
+                <p>İzmir'de en özgün Antakya mutfağı deneyimi</p>
+            </div>
+            <div class="overlap-card card-2"></div>
+            <div class="overlap-card card-3">
+                <h3>Küçük Ama Özel</h3>
+                <p>Samimi atmosferimizde, geleneksel tariflerle hazırlanmış özel yemeklerimizi keşfedin.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-overlap-section" id="menu">
+        <h2 class="section-title">Menümüzden</h2>
+        <div class="menu-overlap-grid">
+            <div class="menu-overlap-item">
+                <div class="menu-card-back"></div>
+                <div class="menu-card-front">
+                    <div class="menu-card-icon">🥙</div>
+                    <h4>İçli Köfte</h4>
+                    <p>Antakya usulü taş fırında pişmiş, içi nefis kıymalı bulgur köftesi</p>
+                    <span class="menu-card-tag">Geleneksel</span>
+                </div>
+            </div>
+
+            <div class="menu-overlap-item">
+                <div class="menu-card-back"></div>
+                <div class="menu-card-front">
+                    <div class="menu-card-icon">🌶️</div>
+                    <h4>Muhammara</h4>
+                    <p>Ceviz, biber ve özel baharatlarla hazırlanan enfes meze</p>
+                    <span class="menu-card-tag">Acılı</span>
+                </div>
+            </div>
+
+            <div class="menu-overlap-item">
+                <div class="menu-card-back"></div>
+                <div class="menu-card-front">
+                    <div class="menu-card-icon">✨</div>
+                    <h4>Künefe</h4>
+                    <p>Tuzsuz peynir ve kadayıf ile hazırlanan meşhur Antakya tatlısı</p>
+                    <span class="menu-card-tag">Tatlı</span>
+                </div>
+            </div>
+
+            <div class="menu-overlap-item">
+                <div class="menu-card-back"></div>
+                <div class="menu-card-front">
+                    <div class="menu-card-icon">🍢</div>
+                    <h4>Kağıt Kebabı</h4>
+                    <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen kebap</p>
+                    <span class="menu-card-tag">Popüler</span>
+                </div>
+            </div>
+
+            <div class="menu-overlap-item">
+                <div class="menu-card-back"></div>
+                <div class="menu-card-front">
+                    <div class="menu-card-icon">🥗</div>
+                    <h4>Mütebbel</h4>
+                    <p>Közlenmiş patlıcan, tahin, sarımsak ve nar ekşisi ile</p>
+                    <span class="menu-card-tag">Vegan</span>
+                </div>
+            </div>
+
+            <div class="menu-overlap-item">
+                <div class="menu-card-back"></div>
+                <div class="menu-card-front">
+                    <div class="menu-card-icon">🍖</div>
+                    <h4>Oruk Köftesi</h4>
+                    <p>Ekşi aşı ile servis edilen geleneksel Antakya köftesi</p>
+                    <span class="menu-card-tag">Özel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-overlap" id="hakkimizda">
+        <h2 class="section-title">Neden Koala Kaktüs?</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h5>Taze Malzeme</h5>
+                <p>Her gün en taze ve kaliteli malzemeler kullanarak yemeklerimizi hazırlıyoruz</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h5>Geleneksel Tarifler</h5>
+                <p>Nesillerdir aktarılan özgün Antakya tariflerini koruyoruz</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h5>Samimi Atmosfer</h5>
+                <p>Küçük ama özel restoranımızda sıcak ve samimi bir ortam sunuyoruz</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-overlap" id="iletisim">
+        <div class="cta-content">
+            <h2>Sizi Bekliyoruz</h2>
+            <p>📍 İzmir, Türkiye<br>📞 +90 XXX XXX XX XX<br>🕐 11:00 - 23:00</p>
+            <button class="cta-btn">Rezervasyon Yap</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Koala Kaktüs - Antakya Mutfağı</p>
+    </footer>
+</body>
+</html>

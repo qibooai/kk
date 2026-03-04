@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Full-Screen Photography</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            color: #2c2c2c;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: 'Cormorant', serif;
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Hero Full Screen */
+        .hero-fullscreen {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><rect fill="%23c4916a" width="1600" height="900"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-text {
+            text-align: center;
+            color: #fff;
+            max-width: 1000px;
+            padding: 0 2rem;
+        }
+
+        .hero-text h1 {
+            font-family: 'Cormorant', serif;
+            font-size: 7rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-primary {
+            padding: 1.2rem 3.5rem;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-primary:hover {
+            background: #fff;
+            color: #2c2c2c;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .story-image {
+            aspect-ratio: 3/4;
+            background: #e8dcc5;
+        }
+
+        .story-content h2 {
+            font-family: 'Cormorant', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .story-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Menu Highlight */
+        .menu-highlight {
+            background: #f8f5f0;
+            padding: 8rem 4rem;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .menu-container h2 {
+            font-family: 'Cormorant', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+        }
+
+        .dishes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .dish {
+            text-align: center;
+        }
+
+        .dish-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #e0d5c7;
+            margin-bottom: 1.5rem;
+            border-radius: 50%;
+        }
+
+        .dish h3 {
+            font-family: 'Cormorant', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .dish p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Contact */
+        footer {
+            padding: 6rem 4rem;
+            background: #2c2c2c;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: 'Cormorant', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 3.5rem; }
+            .story { grid-template-columns: 1fr; }
+            .dishes { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Koala Kaktüs</div>
+        <ul class="nav-links">
+            <li><a href="#story">Hikaye</a></li>
+            <li><a href="#menu">Menü</a></li>
+            <li><a href="#contact">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-fullscreen">
+        <div class="hero-text">
+            <h1>Antakya'nın<br>Eşsiz Tatları</h1>
+            <p>HER LOKMA BİR YOLCULUK</p>
+            <button class="cta-primary">Rezervasyon</button>
+        </div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-image"></div>
+        <div class="story-content">
+            <h2>Gelenekten<br>Geleceğe</h2>
+            <p>Koala Kaktüs'te, Antakya'nın yüzyıllık mutfak geleneğini modern bir yorumla sunuyoruz.</p>
+            <p>Her yemek, en kaliteli malzemelerle hazırlanır ve özgün tariflerine sadık kalınarak servis edilir.</p>
+        </div>
+    </section>
+
+    <section class="menu-highlight" id="menu">
+        <div class="menu-container">
+            <h2>Öne Çıkan Lezzetler</h2>
+            <div class="dishes">
+                <div class="dish">
+                    <div class="dish-image"></div>
+                    <h3>İçli Köfte</h3>
+                    <p>Antakya usulü</p>
+                </div>
+                <div class="dish">
+                    <div class="dish-image"></div>
+                    <h3>Muhammara</h3>
+                    <p>Özel tarif</p>
+                </div>
+                <div class="dish">
+                    <div class="dish-image"></div>
+                    <h3>Kağıt Kebabı</h3>
+                    <p>Taş fırın</p>
+                </div>
+                <div class="dish">
+                    <div class="dish-image"></div>
+                    <h3>Künefe</h3>
+                    <p>Özel peynirli</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h3>Koala Kaktüs</h3>
+        <p>İzmir, Türkiye</p>
+        <p>+90 XXX XXX XX XX</p>
+        <p>Her gün 11:00 - 23:00</p>
+    </footer>
+</body>
+</html>

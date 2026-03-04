@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Klasik Zarif</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Nunito+Sans:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: #f8f6f3;
+            color: #453a30;
+        }
+
+        header {
+            background: #fff;
+            padding: 1.5rem 3rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-classic {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            color: #8d6e4f;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #5d4e42;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        /* Hero */
+        .hero-classic {
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .hero-classic h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            color: #8d6e4f;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-classic p {
+            font-size: 1.2rem;
+            color: #6d5e52;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 2px;
+            background: #8d6e4f;
+            margin: 2rem auto;
+        }
+
+        /* About */
+        .about-section {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-image {
+            aspect-ratio: 1;
+            background: #d4c4b0;
+            border-radius: 4px;
+        }
+
+        .about-text h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            color: #8d6e4f;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #6d5e52;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Menu */
+        .menu-classic {
+            background: #fff;
+            padding: 6rem 3rem;
+        }
+
+        .menu-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .menu-container h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 3.5rem;
+            color: #8d6e4f;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .menu-subtitle {
+            text-align: center;
+            color: #8d6e4f;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-list-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid #e8e0d5;
+        }
+
+        .menu-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-list-item h4 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.6rem;
+            color: #453a30;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-list-item p {
+            font-size: 1rem;
+            color: #7a6a5a;
+            line-height: 1.6;
+        }
+
+        /* Info */
+        .info-section {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 4rem 3rem;
+            background: #fff;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .info-section h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            color: #8d6e4f;
+            margin-bottom: 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-item h5 {
+            font-size: 1rem;
+            color: #8d6e4f;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-item p {
+            color: #6d5e52;
+        }
+
+        footer {
+            padding: 3rem;
+            background: #8d6e4f;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .hero-classic h1 { font-size: 2.5rem; }
+            .about-section { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-classic">Koala Kaktüs</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#menu">Menü</a></li>
+                    <li><a href="#info">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-classic">
+        <h1>Antakya'nın<br>Eşsiz Lezzetleri</h1>
+        <div class="hero-divider"></div>
+        <p>Geleneksel Antakya mutfağını, İzmir'in kalbinde deneyimleyin. Her yemek, özgün tariflerle hazırlanır.</p>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-image"></div>
+        <div class="about-text">
+            <h2>Gelenekten Gelen Lezzet</h2>
+            <p>Koala Kaktüs, Antakya mutfağının zengin geleneğini İzmir'e taşıyan küçük ama özel bir restorandır.</p>
+            <p>Her yemeğimiz, nesillerdir aktarılan tariflerle ve en taze malzemelerle özenle hazırlanır.</p>
+        </div>
+    </section>
+
+    <section class="menu-classic" id="menu">
+        <div class="menu-container">
+            <h2>Menümüz</h2>
+            <p class="menu-subtitle">Antakya'nın en özel yemekleri</p>
+
+            <ul class="menu-list">
+                <li class="menu-list-item">
+                    <h4>İçli Köfte</h4>
+                    <p>Antakya usulü, taş fırında pişmiş içli köfte. Bulgur ve kıymayla hazırlanır.</p>
+                </li>
+                <li class="menu-list-item">
+                    <h4>Muhammara</h4>
+                    <p>Ceviz, biber ve özel baharatlarla hazırlanan geleneksel meze.</p>
+                </li>
+                <li class="menu-list-item">
+                    <h4>Kağıt Kebabı</h4>
+                    <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen kebap.</p>
+                </li>
+                <li class="menu-list-item">
+                    <h4>Künefe</h4>
+                    <p>Tuzsuz peynir, kadayıf ve şerbetle hazırlanan Antakya tatlısı.</p>
+                </li>
+                <li class="menu-list-item">
+                    <h4>Mütebbel</h4>
+                    <p>Közlenmiş patlıcan, tahin, sarımsak ve nar ekşisi ile.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="info-section" id="info">
+        <h3>Bizi Ziyaret Edin</h3>
+        <div class="info-grid">
+            <div class="info-item">
+                <h5>Adres</h5>
+                <p>İzmir, Türkiye</p>
+            </div>
+            <div class="info-item">
+                <h5>Telefon</h5>
+                <p>+90 XXX XXX XX XX</p>
+            </div>
+            <div class="info-item">
+                <h5>Saatler</h5>
+                <p>11:00 - 23:00</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Koala Kaktüs</p>
+        <p>Antakya Mutfağı - İzmir</p>
+    </footer>
+</body>
+</html>

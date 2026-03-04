@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Y2K Retro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        @keyframes neon-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 0, 255, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(255, 255, 0, 0.2) 0%, transparent 50%);
+            animation: neon-pulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00) 1;
+            padding: 1.5rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Audiowide', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: neon-pulse 2s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #00ffff;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .nav-links a:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .glitch {
+            font-family: 'Audiowide', cursive;
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            position: relative;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: neon-pulse 3s ease-in-out infinite;
+        }
+
+        .hero-tagline {
+            font-size: 1.8rem;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        .neon-box {
+            display: inline-block;
+            padding: 2rem 4rem;
+            border: 3px solid #ff00ff;
+            background: rgba(255, 0, 255, 0.1);
+            margin-bottom: 3rem;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.6),
+                        inset 0 0 30px rgba(255, 0, 255, 0.2);
+        }
+
+        .neon-box p {
+            font-size: 1.3rem;
+            color: #ffff00;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+        }
+
+        .cta-retro {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(135deg, #ff00ff, #00ffff);
+            color: #000;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .cta-retro:hover {
+            box-shadow: 0 0 60px rgba(255, 0, 255, 1),
+                        0 0 80px rgba(0, 255, 255, 1);
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-box {
+            padding: 3rem;
+            border: 3px solid;
+            background: rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-box:nth-child(1) {
+            border-color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .feature-box:nth-child(2) {
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .feature-box:nth-child(3) {
+            border-color: #ffff00;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px currentColor;
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-box h3 {
+            font-family: 'Audiowide', cursive;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .feature-box:nth-child(1) h3 { color: #ff00ff; }
+        .feature-box:nth-child(2) h3 { color: #00ffff; }
+        .feature-box:nth-child(3) h3 { color: #ffff00; }
+
+        .feature-box p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            max-width: 1400px;
+            margin: 8rem auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-title {
+            font-family: 'Audiowide', cursive;
+            font-size: 4rem;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-item-card:nth-child(odd) {
+            border-color: #ff00ff;
+        }
+
+        .menu-item-card:nth-child(even) {
+            border-color: #00ffff;
+        }
+
+        .menu-item-card:hover {
+            box-shadow: 0 0 40px currentColor;
+            transform: scale(1.05);
+        }
+
+        .menu-item-card h4 {
+            font-family: 'Audiowide', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .menu-item-card:nth-child(odd) h4 { color: #ff00ff; }
+        .menu-item-card:nth-child(even) h4 { color: #00ffff; }
+
+        .menu-item-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00) 1;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-family: 'Audiowide', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            margin: 0.8rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .glitch { font-size: 3rem; }
+            .nav-links { display: none; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="grid-bg"></div>
+
+    <header>
+        <nav>
+            <div class="logo">K O A L A ▲ K A K T Ü S</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">Rezervasyon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="glitch">ANTAKYA 2.0</h1>
+        <p class="hero-tagline">● RETRO FUTURE FLAVORS ●</p>
+        <div class="neon-box">
+            <p>İzmir'de Dijital Lezzet Deneyimi</p>
+        </div>
+        <a href="#rezervasyon" class="cta-retro">▶ Rezervasyon Yap</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-box">
+            <div class="feature-icon">🔮</div>
+            <h3>Otantik Kod</h3>
+            <p>Geleneksel Antakya tariflerini modern teknoloji ile harmanlıyoruz. Her yemek bir data paketi!</p>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon">⚡</div>
+            <h3>Turbo Lezzet</h3>
+            <p>Hızlı servis, maksimum tat! Yüksek performanslı mutfağımızla sınırları zorluyoruz.</p>
+        </div>
+        <div class="feature-box">
+            <div class="feature-icon">🌐</div>
+            <h3>Cyber Atmosfer</h3>
+            <p>Geçmiş ve gelecek buluşuyor. Retro-futuristik mekanımızda zaman yolculuğuna çıkın!</p>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <h2 class="menu-title">► MENÜ DATABASE ◄</h2>
+        <div class="menu-grid">
+            <div class="menu-item-card">
+                <h4>▲ İçli Köfte v1.0</h4>
+                <p>Antakya usulü, taş fırında pişmiş, yüksek enerji seviyeli köfte programı</p>
+            </div>
+            <div class="menu-item-card">
+                <h4>● Kağıt Kebabı XL</h4>
+                <p>Özel baharatlarla optimize edilmiş, premium kebap protokolü</p>
+            </div>
+            <div class="menu-item-card">
+                <h4>▲ Muhammara Pro</h4>
+                <p>Ceviz ve biber bazlı, yüksek performanslı meze algoritması</p>
+            </div>
+            <div class="menu-item-card">
+                <h4>● Künefe Ultra</h4>
+                <p>Tuzsuz peynirli, şerbetli, maksimum tatlılık sistemi</p>
+            </div>
+            <div class="menu-item-card">
+                <h4>▲ Mütebbel 2.0</h4>
+                <p>Patlıcan bazlı, gelişmiş meze interface'i</p>
+            </div>
+            <div class="menu-item-card">
+                <h4>● Oruk Köftesi +</h4>
+                <p>Ekşi aşılı, premium köfte versiyonu</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>◄ K O A L A ▲ K A K T Ü S ►</h3>
+            <p>● ANTAKYA MUTFAĞI 2.0 ●</p>
+            <p>▶ İzmir, Türkiye</p>
+            <p>▶ Tel: +90 XXX XXX XX XX</p>
+            <p>▶ Online 11:00 - 23:00</p>
+            <p style="margin-top: 2rem; opacity: 0.5;">© 2026 KOALA KAKTÜS SYSTEMS</p>
+        </div>
+    </footer>
+</body>
+</html>

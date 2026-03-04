@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Asymmetric Grid</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600&family=Lora:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+        }
+
+        header {
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Asymmetric Grid Layout */
+        .grid-hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 60vh 40vh;
+            gap: 2rem;
+            padding: 2rem 3rem;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grid-large {
+            grid-row: span 2;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000"><rect fill="%23b8956a" width="800" height="1000"/></svg>');
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem;
+        }
+
+        .grid-large-content {
+            color: #fff;
+        }
+
+        .grid-large-content h1 {
+            font-family: 'Lora', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-large-content p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 500px;
+        }
+
+        .grid-small {
+            background: #f5f0eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .grid-small h3 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            padding: 3rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .feature-number {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #b8956a;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 8rem 3rem;
+        }
+
+        .menu-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-content h2 {
+            font-family: 'Lora', serif;
+            font-size: 4rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .menu-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .menu-item h4 {
+            font-family: 'Lora', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-item p {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            padding: 4rem 3rem;
+            text-align: center;
+            background: #f5f0eb;
+        }
+
+        footer p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-hero { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .grid-large { grid-row: span 1; min-height: 60vh; }
+            .menu-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Koala Kaktüs</div>
+        <nav>
+            <ul>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="grid-hero">
+        <div class="grid-item grid-large">
+            <div class="grid-large-content">
+                <h1>Antakya<br>Mutfağı</h1>
+                <p>Geleneksel lezzetler, modern sunum. İzmir'de eşsiz bir gastronomi deneyimi.</p>
+            </div>
+        </div>
+        <div class="grid-item grid-small">
+            <h3>Her Tabak<br>Bir Hikaye</h3>
+        </div>
+        <div class="grid-item grid-small">
+            <h3>Özenle<br>Hazırlanmış</h3>
+        </div>
+    </section>
+
+    <section class="feature-grid" id="about">
+        <div class="feature">
+            <div class="feature-number">01</div>
+            <h3>Otantik Tarifler</h3>
+            <p>Nesillerdir aktarılan Antakya tariflerini koruyarak, özgün lezzetleri sunuyoruz.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-number">02</div>
+            <h3>Kaliteli Malzeme</h3>
+            <p>En taze ve kaliteli malzemelerle, her yemeği özenle hazırlıyoruz.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-number">03</div>
+            <h3>Modern Atmosfer</h3>
+            <p>Geleneksel lezzetleri modern ve rahat bir ortamda deneyimleyin.</p>
+        </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+        <div class="menu-content">
+            <h2>Menümüz</h2>
+            <div class="menu-grid">
+                <div>
+                    <div class="menu-item">
+                        <h4>İçli Köfte</h4>
+                        <p>Antakya usulü, taş fırında pişmiş</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Muhammara</h4>
+                        <p>Ceviz ve biber ezmesi</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Mütebbel</h4>
+                        <p>Közlenmiş patlıcan mezesi</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="menu-item">
+                        <h4>Kağıt Kebabı</h4>
+                        <p>Özel baharatlarla marine</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Künefe</h4>
+                        <p>Tuzsuz peynir ve şerbet</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Oruk Köftesi</h4>
+                        <p>Ekşi aşı ile servis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h3 style="font-family: 'Lora', serif; font-size: 2rem; margin-bottom: 1.5rem;">Koala Kaktüs</h3>
+        <p>İzmir, Türkiye</p>
+        <p>+90 XXX XXX XX XX</p>
+        <p>info@koalakaktus.com</p>
+    </footer>
+</body>
+</html>

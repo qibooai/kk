@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Hand Drawn</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background: #fffef9;
+            color: #2b2520;
+            overflow-x: hidden;
+        }
+
+        /* Paper Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.02) 2px,
+                    rgba(0,0,0,0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Hand-drawn borders */
+        .sketch-border {
+            position: relative;
+        }
+
+        .sketch-border::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 3px solid #2b2520;
+            border-radius: 15px 10px 20px 8px / 10px 18px 12px 15px;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-sketch {
+            font-family: 'Caveat', cursive;
+            font-size: 3rem;
+            color: #a87e4f;
+            font-weight: 700;
+            transform: rotate(-2deg);
+        }
+
+        .nav-sketch {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-sketch a {
+            font-size: 1.3rem;
+            color: #5a4d42;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-sketch a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #a87e4f;
+            transition: width 0.3s;
+        }
+
+        .nav-sketch a:hover {
+            color: #a87e4f;
+        }
+
+        .nav-sketch a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero-sketch {
+            padding: 6rem 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-sketch h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 8rem;
+            line-height: 1;
+            color: #a87e4f;
+            margin-bottom: 2rem;
+            transform: rotate(-1deg);
+            text-shadow: 3px 3px 0px rgba(168, 126, 79, 0.1);
+        }
+
+        .hero-sketch .underline {
+            width: 400px;
+            height: 5px;
+            background: #a87e4f;
+            margin: 0 auto 3rem;
+            border-radius: 50%;
+            transform: rotate(-1deg);
+        }
+
+        .hero-sketch p {
+            font-size: 1.8rem;
+            color: #5a4d42;
+            margin-bottom: 3rem;
+        }
+
+        .hero-sketch .arrow-down {
+            font-size: 4rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(20px); }
+        }
+
+        /* Doodles */
+        .doodle {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.3;
+            transform: rotate(15deg);
+        }
+
+        .doodle-1 { top: 10%; right: 10%; }
+        .doodle-2 { top: 40%; left: 5%; transform: rotate(-15deg); }
+        .doodle-3 { bottom: 20%; right: 15%; }
+
+        /* Menu Cards */
+        .menu-sketch {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-sketch h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 6rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #a87e4f;
+            transform: rotate(-2deg);
+        }
+
+        .menu-sketch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .menu-sketch-card {
+            padding: 3rem;
+            background: #fff;
+            border: 3px solid #2b2520;
+            border-radius: 20px 15px 25px 18px / 18px 25px 15px 20px;
+            box-shadow: 8px 8px 0px rgba(43, 37, 32, 0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .menu-sketch-card:hover {
+            transform: rotate(-2deg) scale(1.02);
+            box-shadow: 12px 12px 0px rgba(168, 126, 79, 0.2);
+        }
+
+        .menu-sketch-card .icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .menu-sketch-card h3 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.8rem;
+            color: #a87e4f;
+            margin-bottom: 1rem;
+            transform: rotate(-1deg);
+        }
+
+        .menu-sketch-card p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #5a4d42;
+        }
+
+        .menu-sketch-card .scribble {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            width: 60px;
+            height: 3px;
+            background: #a87e4f;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        /* Quote Section */
+        .quote-sketch {
+            padding: 8rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff5e6 0%, #fffef9 100%);
+            position: relative;
+            margin: 6rem 0;
+        }
+
+        .quote-sketch::before,
+        .quote-sketch::after {
+            content: '"';
+            position: absolute;
+            font-family: 'Caveat', cursive;
+            font-size: 15rem;
+            color: rgba(168, 126, 79, 0.1);
+            line-height: 1;
+        }
+
+        .quote-sketch::before {
+            top: 2rem;
+            left: 4rem;
+        }
+
+        .quote-sketch::after {
+            bottom: 2rem;
+            right: 4rem;
+            content: '"';
+        }
+
+        .quote-sketch blockquote {
+            font-family: 'Caveat', cursive;
+            font-size: 4rem;
+            color: #a87e4f;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.3;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-sketch cite {
+            font-size: 1.8rem;
+            color: #5a4d42;
+        }
+
+        /* About Section */
+        .about-sketch {
+            padding: 6rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-image-sketch {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #d4c4b0 0%, #b8a594 100%);
+            border: 4px solid #2b2520;
+            border-radius: 50% 40% 50% 40% / 40% 50% 40% 50%;
+            box-shadow: 10px 10px 0px rgba(43, 37, 32, 0.15);
+        }
+
+        .about-text-sketch h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 5rem;
+            color: #a87e4f;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .about-text-sketch p {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #5a4d42;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact */
+        .contact-sketch {
+            padding: 8rem 4rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-sketch-box {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 5rem 4rem;
+            background: #fff;
+            border: 4px solid #2b2520;
+            border-radius: 30px 25px 35px 28px / 28px 35px 25px 30px;
+            box-shadow: 12px 12px 0px rgba(168, 126, 79, 0.2);
+            transform: rotate(-1deg);
+        }
+
+        .contact-sketch-box h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 5rem;
+            color: #a87e4f;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info-sketch {
+            margin-bottom: 3rem;
+        }
+
+        .contact-info-sketch p {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: #5a4d42;
+        }
+
+        .btn-sketch {
+            padding: 1.2rem 3rem;
+            background: #a87e4f;
+            color: #fff;
+            border: 3px solid #2b2520;
+            border-radius: 50px 45px 55px 48px / 48px 55px 45px 50px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px rgba(43, 37, 32, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-sketch:hover {
+            transform: rotate(2deg) scale(1.05);
+            box-shadow: 8px 8px 0px rgba(43, 37, 32, 0.3);
+        }
+
+        footer {
+            padding: 3rem;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #8a7968;
+            border-top: 3px dashed #d4c4b0;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-sketch h1 { font-size: 5rem; }
+            .about-sketch { grid-template-columns: 1fr; }
+            .menu-sketch-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-sketch { display: none; }
+            .hero-sketch h1 { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-sketch">Koala Kaktüs</div>
+        <nav class="nav-sketch">
+            <a href="#menu">Menü</a>
+            <a href="#about">Hakkımızda</a>
+            <a href="#contact">İletişim</a>
+        </nav>
+    </header>
+
+    <section class="hero-sketch">
+        <div class="doodle doodle-1">🥙</div>
+        <div class="doodle doodle-2">🌶️</div>
+        <div class="doodle doodle-3">✨</div>
+
+        <h1>Antakya'nın<br>En Lezzetli Köşesi!</h1>
+        <div class="underline"></div>
+        <p>İzmir'de, en özgün Antakya mutfağı</p>
+        <div class="arrow-down">↓</div>
+    </section>
+
+    <section class="menu-sketch" id="menu">
+        <h2>Menümüz ~</h2>
+        <div class="menu-sketch-grid">
+            <div class="menu-sketch-card">
+                <span class="icon">🥙</span>
+                <h3>İçli Köfte</h3>
+                <p>Taş fırında pişmiş, içi nefis kıymalı bulgur köftesi</p>
+                <div class="scribble"></div>
+            </div>
+
+            <div class="menu-sketch-card">
+                <span class="icon">🌶️</span>
+                <h3>Muhammara</h3>
+                <p>Cevizli, biberli, enfes geleneksel meze</p>
+                <div class="scribble"></div>
+            </div>
+
+            <div class="menu-sketch-card">
+                <span class="icon">🍢</span>
+                <h3>Kağıt Kebabı</h3>
+                <p>Kağıtta pişirilen özel baharatlı kebap</p>
+                <div class="scribble"></div>
+            </div>
+
+            <div class="menu-sketch-card">
+                <span class="icon">✨</span>
+                <h3>Künefe</h3>
+                <p>Tuzsuz peynirli meşhur Antakya tatlısı</p>
+                <div class="scribble"></div>
+            </div>
+
+            <div class="menu-sketch-card">
+                <span class="icon">🥗</span>
+                <h3>Mütebbel</h3>
+                <p>Közlenmiş patlıcan, tahin ve nar ekşisi</p>
+                <div class="scribble"></div>
+            </div>
+
+            <div class="menu-sketch-card">
+                <span class="icon">🍖</span>
+                <h3>Oruk Köftesi</h3>
+                <p>Ekşi aşı ile servis edilen özel köfte</p>
+                <div class="scribble"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-sketch">
+        <blockquote>İzmir'de Antakya'yı hissetmek...</blockquote>
+        <cite>— Mutlu müşterilerimiz</cite>
+    </section>
+
+    <section class="about-sketch" id="about">
+        <div class="about-image-sketch"></div>
+        <div class="about-text-sketch">
+            <h2>Küçük ama<br>çok özel!</h2>
+            <p>Koala Kaktüs, İzmir'in kalbinde Antakya mutfağının en özgün lezzetlerini sunuyor.</p>
+            <p>Her yemeğimiz, nesillerdir aktarılan geleneksel tariflerle ve en taze malzemelerle özenle hazırlanır.</p>
+            <p>Samimi atmosferimizde, kendinizi evinizde gibi hissedeceksiniz!</p>
+        </div>
+    </section>
+
+    <section class="contact-sketch" id="contact">
+        <div class="contact-sketch-box">
+            <h2>Gelin, tanışalım!</h2>
+            <div class="contact-info-sketch">
+                <p>📍 İzmir, Türkiye</p>
+                <p>📞 +90 XXX XXX XX XX</p>
+                <p>🕐 Her gün 11:00 - 23:00</p>
+            </div>
+            <button class="btn-sketch">Rezervasyon Yap</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Koala Kaktüs ~ İzmir'de Antakya Mutfağı ❤️</p>
+    </footer>
+</body>
+</html>

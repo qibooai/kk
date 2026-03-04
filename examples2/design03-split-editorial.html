@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Split Editorial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;700&family=Work+Sans:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+        }
+
+        /* Split Layout */
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .left-pane {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #8b7355 0%, #a0826d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+        }
+
+        .left-content {
+            color: #fff;
+            max-width: 500px;
+        }
+
+        .left-content h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .left-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            margin-bottom: 3rem;
+        }
+
+        .btn-light {
+            padding: 1rem 2.5rem;
+            background: #fff;
+            color: #8b7355;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .right-pane {
+            background: #fafafa;
+            padding: 6rem 4rem;
+        }
+
+        /* Content Sections */
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .section h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Menu Items */
+        .menu-list {
+            list-style: none;
+            margin-top: 3rem;
+        }
+
+        .menu-list li {
+            padding: 2rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .menu-list li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-name {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+
+        .menu-description {
+            font-size: 0.95rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .image-box {
+            aspect-ratio: 4/3;
+            background: #d4c4b0;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: #fff;
+            padding: 3rem;
+            margin-top: 4rem;
+            border-left: 4px solid #8b7355;
+        }
+
+        .contact-info h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .split-container { grid-template-columns: 1fr; }
+            .left-pane { position: relative; height: auto; min-height: 70vh; }
+            .left-content h1 { font-size: 3rem; }
+            .image-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-container">
+        <div class="left-pane">
+            <div class="left-content">
+                <h1>Koala Kaktüs</h1>
+                <p>İzmir'in kalbinde Antakya'nın geleneksel mutfağını modern bir dokunuşla keşfedin.</p>
+                <button class="btn-light">Rezervasyon Yap</button>
+            </div>
+        </div>
+
+        <div class="right-pane">
+            <section class="section">
+                <p class="section-header">Hikayemiz</p>
+                <h2>Geleneksel Lezzetler, Modern Yaklaşım</h2>
+                <p>Koala Kaktüs, Antakya'nın zengin mutfak kültürünü İzmir'e taşıyan özel bir destinasyon. Nesillerdir aktarılan geleneksel tarifleri, en kaliteli malzemelerle buluşturuyoruz.</p>
+                <p>Her tabak, özenle hazırlanmış bir hikayedir. Her lokma, Antakya'nın ruhunu yansıtır.</p>
+            </section>
+
+            <div class="image-grid">
+                <div class="image-box"></div>
+                <div class="image-box"></div>
+            </div>
+
+            <section class="section">
+                <p class="section-header">Menü</p>
+                <h2>Öne Çıkan Lezzetlerimiz</h2>
+
+                <ul class="menu-list">
+                    <li>
+                        <div>
+                            <div class="menu-name">İçli Köfte</div>
+                            <div class="menu-description">Antakya usulü, taş fırında pişmiş</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div class="menu-name">Muhammara</div>
+                            <div class="menu-description">Ceviz ve biber ezmesi, özel tarif</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div class="menu-name">Kağıt Kebabı</div>
+                            <div class="menu-description">Özel baharatlarla marine edilmiş</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <div class="menu-name">Künefe</div>
+                            <div class="menu-description">Tuzsuz peynir, kadayıf ve şerbet</div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="contact-info">
+                <h3>Ziyaret Edin</h3>
+                <p><strong>Adres:</strong> İzmir, Türkiye</p>
+                <p><strong>Telefon:</strong> +90 XXX XXX XX XX</p>
+                <p><strong>Saatler:</strong> Pazartesi - Pazar, 11:00 - 23:00</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

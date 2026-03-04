@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - 3D Perspective</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            perspective: 1000px;
+        }
+
+        /* 3D Scene */
+        .scene-3d {
+            width: 100%;
+            min-height: 100vh;
+            transform-style: preserve-3d;
+        }
+
+        /* Floating Header */
+        .header-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(209, 165, 96, 0.3);
+        }
+
+        .logo-3d {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #d1a560;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(209, 165, 96, 0.5);
+        }
+
+        .nav-3d {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-3d a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .nav-3d a:hover {
+            color: #d1a560;
+            text-shadow: 0 0 10px rgba(209, 165, 96, 0.5);
+        }
+
+        /* Hero 3D */
+        .hero-3d {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+            position: relative;
+        }
+
+        .hero-content-3d {
+            text-align: center;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateZ(0px) rotateX(0deg); }
+            50% { transform: translateZ(50px) rotateX(5deg); }
+        }
+
+        .hero-3d h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10rem;
+            font-weight: 900;
+            line-height: 0.9;
+            color: #d1a560;
+            text-shadow:
+                0 0 30px rgba(209, 165, 96, 0.8),
+                10px 10px 40px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            transform: translateZ(100px);
+        }
+
+        .hero-3d .tagline {
+            font-size: 2rem;
+            color: #b0b0b0;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            transform: translateZ(50px);
+            text-shadow: 0 0 20px rgba(176, 176, 176, 0.5);
+        }
+
+        /* Grid with perspective */
+        .grid-3d {
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid-3d h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 6rem;
+            text-align: center;
+            margin-bottom: 6rem;
+            color: #d1a560;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 30px rgba(209, 165, 96, 0.5);
+        }
+
+        .cards-3d {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            perspective: 1500px;
+        }
+
+        .card-3d {
+            background: linear-gradient(135deg, rgba(209, 165, 96, 0.1) 0%, rgba(10, 10, 15, 0.8) 100%);
+            padding: 3rem;
+            border: 2px solid rgba(209, 165, 96, 0.3);
+            border-radius: 20px;
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .card-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(209, 165, 96, 0.2) 0%, transparent 100%);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .card-3d:hover {
+            transform: translateZ(80px) rotateY(10deg);
+            border-color: #d1a560;
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.5),
+                0 0 40px rgba(209, 165, 96, 0.3);
+        }
+
+        .card-3d:hover::before {
+            opacity: 1;
+        }
+
+        .card-3d:nth-child(even):hover {
+            transform: translateZ(80px) rotateY(-10deg);
+        }
+
+        .card-3d .icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            display: block;
+            transform: translateZ(40px);
+            filter: drop-shadow(0 0 10px rgba(209, 165, 96, 0.5));
+        }
+
+        .card-3d h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #d1a560;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transform: translateZ(30px);
+        }
+
+        .card-3d p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            line-height: 1.7;
+            transform: translateZ(20px);
+        }
+
+        /* Layered Section */
+        .layered-3d {
+            padding: 10rem 4rem;
+            background: linear-gradient(180deg, #0a0a0f 0%, #1a1520 100%);
+            position: relative;
+            perspective: 1500px;
+        }
+
+        .layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .layer-1 {
+            background: radial-gradient(circle at 30% 50%, rgba(209, 165, 96, 0.1) 0%, transparent 60%);
+            transform: translateZ(-100px);
+        }
+
+        .layer-2 {
+            background: radial-gradient(circle at 70% 50%, rgba(100, 70, 150, 0.1) 0%, transparent 60%);
+            transform: translateZ(-50px);
+        }
+
+        .layered-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+        }
+
+        .layered-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 7rem;
+            color: #d1a560;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            transform: translateZ(100px);
+            text-shadow: 0 0 40px rgba(209, 165, 96, 0.6);
+        }
+
+        .layered-content p {
+            font-size: 1.8rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            transform: translateZ(70px);
+        }
+
+        /* Stats 3D */
+        .stats-3d {
+            padding: 8rem 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            perspective: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .stat-3d {
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .stat-3d:hover {
+            transform: translateZ(60px) scale(1.1);
+        }
+
+        .stat-3d .number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 8rem;
+            font-weight: 900;
+            color: #d1a560;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(209, 165, 96, 0.8);
+            transform: translateZ(50px);
+        }
+
+        .stat-3d .label {
+            font-size: 1.5rem;
+            color: #b0b0b0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transform: translateZ(25px);
+        }
+
+        /* CTA 3D */
+        .cta-3d {
+            padding: 10rem 4rem;
+            text-align: center;
+            perspective: 1200px;
+        }
+
+        .cta-box-3d {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 4rem;
+            background: linear-gradient(135deg, rgba(209, 165, 96, 0.2) 0%, rgba(100, 70, 150, 0.1) 100%);
+            border: 3px solid rgba(209, 165, 96, 0.5);
+            border-radius: 30px;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+            transition: all 0.5s;
+        }
+
+        .cta-box-3d:hover {
+            transform: translateZ(100px) rotateX(5deg);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        .cta-box-3d h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            color: #d1a560;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            transform: translateZ(50px);
+        }
+
+        .cta-box-3d p {
+            font-size: 1.5rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            transform: translateZ(40px);
+        }
+
+        .btn-3d {
+            padding: 1.5rem 4rem;
+            background: #d1a560;
+            color: #0a0a0f;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            border-radius: 10px;
+            transform: translateZ(60px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(209, 165, 96, 0.4);
+        }
+
+        .btn-3d:hover {
+            transform: translateZ(80px) scale(1.1);
+            box-shadow: 0 20px 50px rgba(209, 165, 96, 0.6);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-3d h1 { font-size: 6rem; }
+            .cards-3d { grid-template-columns: 1fr; }
+            .stats-3d { flex-direction: column; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-3d h1 { font-size: 4rem; }
+            .nav-3d { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-3d">
+        <div class="logo-3d">KOALA_KAKTÜS</div>
+        <nav class="nav-3d">
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="scene-3d">
+        <section class="hero-3d">
+            <div class="hero-content-3d">
+                <h1>ANTAKYA<br>CUISINE</h1>
+                <p class="tagline">İzmir × Innovation</p>
+            </div>
+        </section>
+
+        <section class="grid-3d" id="menu">
+            <h2>Our Menu</h2>
+            <div class="cards-3d">
+                <div class="card-3d">
+                    <span class="icon">🥙</span>
+                    <h3>İçli Köfte</h3>
+                    <p>Stone oven baked traditional bulgur meatballs</p>
+                </div>
+
+                <div class="card-3d">
+                    <span class="icon">🌶️</span>
+                    <h3>Muhammara</h3>
+                    <p>Walnut and pepper traditional spread</p>
+                </div>
+
+                <div class="card-3d">
+                    <span class="icon">🍢</span>
+                    <h3>Kağıt Kebabı</h3>
+                    <p>Paper-wrapped spiced kebab</p>
+                </div>
+
+                <div class="card-3d">
+                    <span class="icon">✨</span>
+                    <h3>Künefe</h3>
+                    <p>Unsalted cheese pastry dessert</p>
+                </div>
+
+                <div class="card-3d">
+                    <span class="icon">🥗</span>
+                    <h3>Mütebbel</h3>
+                    <p>Smoked eggplant with tahini</p>
+                </div>
+
+                <div class="card-3d">
+                    <span class="icon">🍖</span>
+                    <h3>Oruk Köftesi</h3>
+                    <p>Traditional meatball with sour broth</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="layered-3d" id="about">
+            <div class="layer layer-1"></div>
+            <div class="layer layer-2"></div>
+            <div class="layered-content">
+                <h2>Experience</h2>
+                <p>İzmir'in kalbinde, Antakya mutfağının en özgün lezzetlerini modern bir yaklaşımla sunuyoruz.</p>
+                <p>Küçük ama özel restoranımızda, geleneksel tarifler ve taze malzemelerle unutulmaz bir deneyim yaşayın.</p>
+            </div>
+        </section>
+
+        <section class="stats-3d">
+            <div class="stat-3d">
+                <div class="number">5.0</div>
+                <div class="label">Rating</div>
+            </div>
+
+            <div class="stat-3d">
+                <div class="number">30+</div>
+                <div class="label">Dishes</div>
+            </div>
+
+            <div class="stat-3d">
+                <div class="number">8+</div>
+                <div class="label">Years</div>
+            </div>
+        </section>
+
+        <section class="cta-3d" id="contact">
+            <div class="cta-box-3d">
+                <h2>Visit Us</h2>
+                <p>📍 İzmir, Türkiye<br>📞 +90 XXX XXX XX XX<br>🕐 11:00 - 23:00</p>
+                <button class="btn-3d">Make Reservation</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

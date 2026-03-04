@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Mediterranean Warm</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Raleway:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #f8f5f0;
+            color: #3e2723;
+        }
+
+        /* Mosaic Pattern Background */
+        .mosaic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(209, 135, 75, 0.05) 35px, rgba(209, 135, 75, 0.05) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(183, 110, 58, 0.05) 35px, rgba(183, 110, 58, 0.05) 70px);
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #d1874b 0%, #b76e3a 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(183, 110, 58, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo-ornament {
+            font-size: 2rem;
+            color: #ffd54f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #ffd54f;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1300px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: #b76e3a;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .hero-content .accent {
+            color: #d1874b;
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            color: #5d4037;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .btn-mediterranean {
+            display: inline-block;
+            padding: 1.5rem 3.5rem;
+            background: linear-gradient(135deg, #d1874b 0%, #b76e3a 100%);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(183, 110, 58, 0.3);
+        }
+
+        .btn-mediterranean:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(183, 110, 58, 0.4);
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, rgba(209, 135, 75, 0.2) 0%, rgba(183, 110, 58, 0.2) 100%);
+            border-radius: 20px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            border: 10px solid #fff;
+            box-shadow: 0 15px 50px rgba(183, 110, 58, 0.3);
+        }
+
+        /* Tile Section */
+        .tile-section {
+            max-width: 1300px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #b76e3a;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 800;
+        }
+
+        .section-ornament {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 2rem;
+            color: #d1874b;
+            margin-bottom: 3rem;
+        }
+
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .tile {
+            background: #fff;
+            border: 8px solid #d1874b;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(183, 110, 58, 0.2);
+        }
+
+        .tile:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(183, 110, 58, 0.3);
+            border-color: #b76e3a;
+        }
+
+        .tile-icon {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .tile h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #b76e3a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tile p {
+            color: #5d4037;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Menu Showcase */
+        .menu-showcase {
+            max-width: 1300px;
+            margin: 7rem auto;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #d1874b 0%, #b76e3a 100%);
+            border-radius: 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-showcase::before,
+        .menu-showcase::after {
+            content: '◆';
+            position: absolute;
+            font-size: 3rem;
+            color: #ffd54f;
+        }
+
+        .menu-showcase::before {
+            top: 2rem;
+            left: 2rem;
+        }
+
+        .menu-showcase::after {
+            bottom: 2rem;
+            right: 2rem;
+        }
+
+        .menu-showcase h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 800;
+        }
+
+        .menu-categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .menu-category {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border: 5px solid #ffd54f;
+        }
+
+        .menu-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #b76e3a;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 3px solid #d1874b;
+            padding-bottom: 1rem;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(183, 110, 58, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-list li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #3e2723;
+            font-weight: 600;
+        }
+
+        .menu-icon {
+            font-size: 2rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            max-width: 900px;
+            margin: 7rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .experience h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #b76e3a;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .experience-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .experience-divider span {
+            font-size: 2rem;
+            color: #d1874b;
+        }
+
+        .experience-divider .line {
+            width: 100px;
+            height: 2px;
+            background: #d1874b;
+        }
+
+        .experience p {
+            font-size: 1.3rem;
+            color: #5d4037;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #3e2723 0%, #5d4037 100%);
+            color: #f8f5f0;
+            padding: 5rem 2rem;
+            margin-top: 7rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #ffd54f;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .footer-ornament {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255, 213, 79, 0.3);
+        }
+
+        .footer-ornament p {
+            color: #d1874b;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .tiles { grid-template-columns: 1fr; }
+            .menu-categories { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mosaic-bg"></div>
+
+    <header>
+        <nav>
+            <div class="logo-container">
+                <span class="logo-ornament">◆</span>
+                <div class="logo">Koala Kaktüs</div>
+                <span class="logo-ornament">◆</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+                <li><a href="#rezervasyon">Rezervasyon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Akdeniz'in<br><span class="accent">Sıcak</span><br>Lezzetleri</h1>
+            <p>Antakya'nın zengin mutfak kültürünü, Akdeniz'in sıcaklığıyla harmanladık. Her tabak bir yolculuk, her lokma bir anı.</p>
+            <a href="#rezervasyon" class="btn-mediterranean">Rezervasyon Yapın</a>
+        </div>
+        <div class="hero-image">
+            ☀️
+        </div>
+    </section>
+
+    <section class="tile-section">
+        <h2 class="section-title">Özel Lezzetlerimiz</h2>
+        <div class="section-ornament">
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+        </div>
+        <div class="tiles">
+            <div class="tile">
+                <span class="tile-icon">🏺</span>
+                <h3>Geleneksel Tarifler</h3>
+                <p>Nesillerdir aktarılan otantik Antakya tariflerini özenle koruyoruz</p>
+            </div>
+            <div class="tile">
+                <span class="tile-icon">🌊</span>
+                <h3>Akdeniz Esintisi</h3>
+                <p>Taze deniz ürünleri ve yerel malzemelerle zenginleştirilmiş menü</p>
+            </div>
+            <div class="tile">
+                <span class="tile-icon">🎭</span>
+                <h3>Kültürel Deneyim</h3>
+                <p>Sadece yemek değil, bir kültür ve tarih yolculuğu sunuyoruz</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-showcase">
+        <h2>Menümüzden Seçmeler</h2>
+        <div class="menu-categories">
+            <div class="menu-category">
+                <h3>Mezeler</h3>
+                <ul class="menu-list">
+                    <li>
+                        <span class="menu-name">Muhammara</span>
+                        <span class="menu-icon">🌶️</span>
+                    </li>
+                    <li>
+                        <span class="menu-name">Mütebbel</span>
+                        <span class="menu-icon">🍆</span>
+                    </li>
+                    <li>
+                        <span class="menu-name">Humus</span>
+                        <span class="menu-icon">🥣</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-category">
+                <h3>Ana Yemekler</h3>
+                <ul class="menu-list">
+                    <li>
+                        <span class="menu-name">İçli Köfte</span>
+                        <span class="menu-icon">🥙</span>
+                    </li>
+                    <li>
+                        <span class="menu-name">Kağıt Kebabı</span>
+                        <span class="menu-icon">🍖</span>
+                    </li>
+                    <li>
+                        <span class="menu-name">Oruk Köftesi</span>
+                        <span class="menu-icon">🍲</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience">
+        <h2>Unutulmaz Bir Deneyim</h2>
+        <div class="experience-divider">
+            <div class="line"></div>
+            <span>◆</span>
+            <div class="line"></div>
+        </div>
+        <p>Koala Kaktüs'te her öğün özel bir deneyimdir. Akdeniz'in sıcaklığını ve Antakya'nın zengin kültürünü bir araya getiren mekanımızda, unutulmaz anılar biriktirin.</p>
+        <p>Geleneksel tariflerimiz, modern dokunuşlarla harmanlayarak sizlere eşsiz bir lezzet yolculuğu sunuyoruz.</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Koala Kaktüs</h3>
+                <p>Antakya'nın geleneksel lezzetleri</p>
+                <p>Akdeniz'in sıcaklığıyla</p>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p>📍 İzmir, Türkiye</p>
+                <p>📞 +90 XXX XXX XX XX</p>
+                <p>📧 info@koalakaktus.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Çalışma Saatleri</h3>
+                <p>Pazartesi - Cuma: 11:00 - 23:00</p>
+                <p>Cumartesi - Pazar: 10:00 - 00:00</p>
+            </div>
+        </div>
+        <div class="footer-ornament">
+            <p>◆ ◆ ◆</p>
+            <p style="font-size: 1rem; color: rgba(255, 213, 79, 0.7);">© 2026 Koala Kaktüs. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+</body>
+</html>

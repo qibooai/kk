@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Brutalist Bold</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #f0f0f0;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        /* Grid Background */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(#000 1px, transparent 1px),
+                linear-gradient(90deg, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            background: #000;
+            color: #fff;
+            padding: 0;
+            border-bottom: 8px solid #000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .logo-brutal {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            border: 4px solid #fff;
+            padding: 1rem 2rem;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            list-style: none;
+        }
+
+        .nav-links li {
+            border-right: 2px solid #fff;
+        }
+
+        .nav-links li:last-child {
+            border-right: none;
+        }
+
+        .nav-links a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero-brutal {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-brutal h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -5px;
+        }
+
+        .hero-brutal .highlight-box {
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+        }
+
+        .hero-content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+            border-left: 8px solid #000;
+            padding-left: 2rem;
+        }
+
+        .hero-info {
+            background: #000;
+            color: #fff;
+            padding: 3rem;
+        }
+
+        .hero-info h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-brutal {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 4px solid #000;
+            margin-top: 2rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-brutal:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Block Section */
+        .block-section {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            background: #000;
+            color: #fff;
+            display: inline-block;
+        }
+
+        .blocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 4px solid #000;
+        }
+
+        .block {
+            aspect-ratio: 1;
+            padding: 3rem;
+            border-right: 4px solid #000;
+            border-bottom: 4px solid #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        .block:nth-child(3n) {
+            border-right: none;
+        }
+
+        .block:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+
+        .block:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .block-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .block h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .block p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Menu Section */
+        .menu-brutal {
+            background: #000;
+            color: #fff;
+            padding: 8rem 2rem;
+            margin-top: 6rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu-brutal-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-brutal h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+            letter-spacing: -3px;
+        }
+
+        .menu-grid-brutal {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            border: 4px solid #fff;
+        }
+
+        .menu-category-brutal {
+            padding: 4rem;
+            border-right: 4px solid #fff;
+            border-bottom: 4px solid #fff;
+        }
+
+        .menu-category-brutal:nth-child(2n) {
+            border-right: none;
+        }
+
+        .menu-category-brutal:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .menu-category-brutal h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #fff;
+        }
+
+        .menu-items-brutal {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .menu-item-brutal {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .menu-item-brutal:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-brutal h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-brutal p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .menu-item-brutal .emoji {
+            font-size: 2.5rem;
+        }
+
+        /* Data Section */
+        .data-section {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border: 4px solid #000;
+        }
+
+        .data-box {
+            aspect-ratio: 1;
+            background: #000;
+            color: #fff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-right: 4px solid #000;
+        }
+
+        .data-box:last-child {
+            border-right: none;
+        }
+
+        .data-box:nth-child(odd) {
+            background: #fff;
+            color: #000;
+        }
+
+        .data-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .data-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 6rem 2rem;
+            margin-top: 8rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-brutal {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-section-brutal {
+            border-left: 4px solid #fff;
+            padding-left: 2rem;
+        }
+
+        .footer-section-brutal h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-section-brutal p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid #fff;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .hero-brutal h1 { font-size: 3rem; }
+            .blocks { grid-template-columns: 1fr; }
+            .menu-grid-brutal { grid-template-columns: 1fr; }
+            .data-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-brutal { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-overlay"></div>
+
+    <header>
+        <nav>
+            <div class="logo-brutal">KOALA<br>KAKTÜS</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">İletişim</a></li>
+                <li><a href="#rezervasyon">Rezervasyon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-brutal">
+        <h1>
+            <span class="highlight-box">ANTAKYA</span><br>
+            MUTFAĞININ<br>
+            <span class="highlight-box">YENİ ADRESİ</span>
+        </h1>
+        <div class="hero-content-grid">
+            <div class="hero-text">
+                <p>Geleneksel Antakya lezzetlerini modern ve cesur bir yaklaşımla sunuyoruz. Her tabak bir manifesto, her lokma bir deneyim.</p>
+            </div>
+            <div class="hero-info">
+                <h3>Konum</h3>
+                <p>İzmir, Türkiye</p>
+                <p>Merkezi Lokasyon</p>
+                <a href="#rezervasyon" class="btn-brutal">Rezervasyon</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="block-section">
+        <div class="section-label">/// Özellikler</div>
+        <div class="blocks">
+            <div class="block">
+                <div class="block-number">01</div>
+                <div>
+                    <h3>Otantik</h3>
+                    <p>Geleneksel Antakya tariflerini koruyoruz</p>
+                </div>
+            </div>
+            <div class="block">
+                <div class="block-number">02</div>
+                <div>
+                    <h3>Kaliteli</h3>
+                    <p>En iyi malzemelerle hazırlanan yemekler</p>
+                </div>
+            </div>
+            <div class="block">
+                <div class="block-number">03</div>
+                <div>
+                    <h3>Modern</h3>
+                    <p>Çağdaş sunumlar ve yaklaşımlar</p>
+                </div>
+            </div>
+            <div class="block">
+                <div class="block-number">04</div>
+                <div>
+                    <h3>Benzersiz</h3>
+                    <p>İzmir'de tek Antakya deneyimi</p>
+                </div>
+            </div>
+            <div class="block">
+                <div class="block-number">05</div>
+                <div>
+                    <h3>Hızlı</h3>
+                    <p>Profesyonel ve hızlı servis</p>
+                </div>
+            </div>
+            <div class="block">
+                <div class="block-number">06</div>
+                <div>
+                    <h3>Konforlu</h3>
+                    <p>Rahat ve modern atmosfer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-brutal">
+        <div class="menu-brutal-inner">
+            <h2>MENÜ</h2>
+            <div class="menu-grid-brutal">
+                <div class="menu-category-brutal">
+                    <h3>Mezeler</h3>
+                    <div class="menu-items-brutal">
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Muhammara</h4>
+                                <p>Ceviz ve biber bazlı geleneksel meze</p>
+                            </div>
+                            <div class="emoji">🌶️</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Mütebbel</h4>
+                                <p>Közlenmiş patlıcan, tahin, nar ekşisi</p>
+                            </div>
+                            <div class="emoji">🍆</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Humus</h4>
+                                <p>Nohut ve tahin karışımı</p>
+                            </div>
+                            <div class="emoji">🥣</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category-brutal">
+                    <h3>Ana Yemekler</h3>
+                    <div class="menu-items-brutal">
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>İçli Köfte</h4>
+                                <p>Taş fırında pişmiş Antakya usulü</p>
+                            </div>
+                            <div class="emoji">🥙</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Kağıt Kebabı</h4>
+                                <p>Özel baharatlarla marine edilmiş</p>
+                            </div>
+                            <div class="emoji">🍖</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Oruk Köftesi</h4>
+                                <p>Ekşi aşı ile servis</p>
+                            </div>
+                            <div class="emoji">🍲</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category-brutal">
+                    <h3>Tatlılar</h3>
+                    <div class="menu-items-brutal">
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Künefe</h4>
+                                <p>Tuzsuz peynir ve kadayıf</p>
+                            </div>
+                            <div class="emoji">✨</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Peynirli Helva</h4>
+                                <p>Geleneksel irmik helvası</p>
+                            </div>
+                            <div class="emoji">🍯</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Kömbe</h4>
+                                <p>Antakya kurabiyesi</p>
+                            </div>
+                            <div class="emoji">🍪</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category-brutal">
+                    <h3>İçecekler</h3>
+                    <div class="menu-items-brutal">
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Türk Kahvesi</h4>
+                                <p>Geleneksel demlik</p>
+                            </div>
+                            <div class="emoji">☕</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Ayran</h4>
+                                <p>Taze yapılmış</p>
+                            </div>
+                            <div class="emoji">🥛</div>
+                        </div>
+                        <div class="menu-item-brutal">
+                            <div>
+                                <h4>Çay</h4>
+                                <p>Sıcak veya soğuk</p>
+                            </div>
+                            <div class="emoji">🍵</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="data-section">
+        <div class="section-label">/// İstatistikler</div>
+        <div class="data-grid">
+            <div class="data-box">
+                <div class="data-number">50+</div>
+                <div class="data-label">Yemek Çeşidi</div>
+            </div>
+            <div class="data-box">
+                <div class="data-number">100%</div>
+                <div class="data-label">Taze Malzeme</div>
+            </div>
+            <div class="data-box">
+                <div class="data-number">12H</div>
+                <div class="data-label">Günlük Açık</div>
+            </div>
+            <div class="data-box">
+                <div class="data-number">5★</div>
+                <div class="data-label">Müşteri Puanı</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-brutal">
+            <div class="footer-section-brutal">
+                <h4>Adres</h4>
+                <p>İzmir</p>
+                <p>Türkiye</p>
+            </div>
+            <div class="footer-section-brutal">
+                <h4>İletişim</h4>
+                <p>Tel: +90 XXX XXX XX XX</p>
+                <p>info@koalakaktus.com</p>
+            </div>
+            <div class="footer-section-brutal">
+                <h4>Çalışma Saatleri</h4>
+                <p>Pazartesi - Pazar</p>
+                <p>11:00 - 23:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 KOALA KAKTÜS / Antakya Mutfağı / Tüm Hakları Saklıdır</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Fullscreen Slides</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Slide Container */
+        .slides-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Fixed UI Elements */
+        .slide-nav {
+            position: fixed;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .slide-dot {
+            width: 50px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slide-dot.active {
+            background: #fff;
+            width: 80px;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 3rem;
+            right: 4rem;
+            z-index: 1000;
+            color: #fff;
+            font-size: 1.2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .slide-arrows {
+            position: fixed;
+            bottom: 3rem;
+            right: 4rem;
+            z-index: 1000;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .arrow {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Slide 1 - Hero */
+        .slide-1 {
+            background: linear-gradient(135deg, #1a1612 0%, #2d2520 100%);
+            color: #fff;
+        }
+
+        .slide-1-content {
+            text-align: center;
+        }
+
+        .slide-1-content .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 12rem;
+            letter-spacing: 15px;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #d4a574 0%, #f5d4a9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-1-content .tagline {
+            font-size: 2rem;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Slide 2 - About */
+        .slide-2 {
+            background: #d4a574;
+            color: #1a1612;
+        }
+
+        .slide-2-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .slide-2-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            letter-spacing: 8px;
+            margin-bottom: 3rem;
+        }
+
+        .slide-2-content p {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Slide 3 - Menu Grid */
+        .slide-3 {
+            background: #2d2520;
+            color: #fff;
+        }
+
+        .menu-grid-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1300px;
+            padding: 4rem;
+        }
+
+        .menu-grid-full h2 {
+            grid-column: 1 / -1;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            letter-spacing: 6px;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #d4a574;
+        }
+
+        .menu-slide-item {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid rgba(212, 165, 116, 0.3);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .menu-slide-item:hover {
+            border-color: #d4a574;
+            transform: translateY(-10px);
+        }
+
+        .menu-slide-item .icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-slide-item h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: #d4a574;
+            margin-bottom: 1rem;
+        }
+
+        .menu-slide-item p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Slide 4 - Stats */
+        .slide-4 {
+            background: linear-gradient(135deg, #f5d4a9 0%, #d4a574 100%);
+            color: #1a1612;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5rem;
+            max-width: 1200px;
+        }
+
+        .stat-slide {
+            text-align: center;
+        }
+
+        .stat-slide .number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 10rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-slide .label {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 300;
+        }
+
+        /* Slide 5 - Gallery */
+        .slide-5 {
+            background: #1a1612;
+        }
+
+        .gallery-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            height: 100%;
+            padding: 4rem;
+        }
+
+        .gallery-img {
+            background: linear-gradient(135deg, #d4a574 0%, #a87e4f 100%);
+            border-radius: 12px;
+        }
+
+        .gallery-img:first-child {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        .gallery-img:nth-child(2) {
+            grid-column: 2 / 4;
+            grid-row: 1 / 2;
+        }
+
+        .gallery-img:nth-child(3) {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        .gallery-img:nth-child(4) {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+
+        /* Slide 6 - Contact */
+        .slide-6 {
+            background: #2d2520;
+            color: #fff;
+        }
+
+        .contact-slide {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .contact-slide h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 7rem;
+            letter-spacing: 10px;
+            margin-bottom: 3rem;
+            color: #d4a574;
+        }
+
+        .contact-slide .info {
+            font-size: 1.8rem;
+            margin: 1.5rem 0;
+            font-weight: 300;
+        }
+
+        .reservation-slide-btn {
+            margin-top: 3rem;
+            padding: 1.5rem 5rem;
+            background: #d4a574;
+            color: #1a1612;
+            border: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .reservation-slide-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(212, 165, 116, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .slide-1-content .logo { font-size: 6rem; }
+            .menu-grid-full { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .gallery-full { grid-template-columns: 1fr; padding: 2rem; }
+            .gallery-img:first-child { grid-column: 1; grid-row: auto; }
+            .gallery-img:nth-child(2) { grid-column: 1; grid-row: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-counter">
+        <span id="current-slide">01</span> / 06
+    </div>
+
+    <div class="slide-nav">
+        <div class="slide-dot active" data-slide="0"></div>
+        <div class="slide-dot" data-slide="1"></div>
+        <div class="slide-dot" data-slide="2"></div>
+        <div class="slide-dot" data-slide="3"></div>
+        <div class="slide-dot" data-slide="4"></div>
+        <div class="slide-dot" data-slide="5"></div>
+    </div>
+
+    <div class="slide-arrows">
+        <div class="arrow" id="prev-slide">←</div>
+        <div class="arrow" id="next-slide">→</div>
+    </div>
+
+    <div class="slides-container">
+        <!-- Slide 1: Hero -->
+        <div class="slide active">
+            <div class="slide-1-content">
+                <h1 class="logo">KOALA<br>KAKTÜS</h1>
+                <p class="tagline">Antakya × İzmir</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: About -->
+        <div class="slide slide-2">
+            <div class="slide-2-content">
+                <h2>İZMİR'DE ANTAKYA</h2>
+                <p>Küçük ama özel restoranımızda, Antakya mutfağının en özgün lezzetlerini bulacaksınız. Her tabak, geleneksel tariflerle ve en taze malzemelerle özenle hazırlanır.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Menu -->
+        <div class="slide slide-3">
+            <div class="menu-grid-full">
+                <h2>MENÜMÜZ</h2>
+
+                <div class="menu-slide-item">
+                    <div class="icon">🥙</div>
+                    <h4>İÇLİ KÖFTE</h4>
+                    <p>Antakya usulü taş fırında pişmiş</p>
+                </div>
+
+                <div class="menu-slide-item">
+                    <div class="icon">🌶️</div>
+                    <h4>MUHAMMARA</h4>
+                    <p>Cevizli biber ezmesi</p>
+                </div>
+
+                <div class="menu-slide-item">
+                    <div class="icon">🍢</div>
+                    <h4>KAĞIT KEBABI</h4>
+                    <p>Kağıtta pişirilen kebap</p>
+                </div>
+
+                <div class="menu-slide-item">
+                    <div class="icon">✨</div>
+                    <h4>KÜNEFE</h4>
+                    <p>Tuzsuz peynirli tatlı</p>
+                </div>
+
+                <div class="menu-slide-item">
+                    <div class="icon">🥗</div>
+                    <h4>MÜTEBBEL</h4>
+                    <p>Közlenmiş patlıcan mezesi</p>
+                </div>
+
+                <div class="menu-slide-item">
+                    <div class="icon">🍖</div>
+                    <h4>ORUK KÖFTESİ</h4>
+                    <p>Ekşi aşı ile servis</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Stats -->
+        <div class="slide slide-4">
+            <div class="stats-grid">
+                <div class="stat-slide">
+                    <div class="number">5.0</div>
+                    <div class="label">Müşteri Puanı</div>
+                </div>
+
+                <div class="stat-slide">
+                    <div class="number">30+</div>
+                    <div class="label">Özel Yemek</div>
+                </div>
+
+                <div class="stat-slide">
+                    <div class="number">8+</div>
+                    <div class="label">Yıl Deneyim</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Gallery -->
+        <div class="slide slide-5">
+            <div class="gallery-full">
+                <div class="gallery-img"></div>
+                <div class="gallery-img"></div>
+                <div class="gallery-img"></div>
+                <div class="gallery-img"></div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Contact -->
+        <div class="slide slide-6">
+            <div class="contact-slide">
+                <h2>SİZİ BEKLİYORUZ</h2>
+                <p class="info">📍 İzmir, Türkiye</p>
+                <p class="info">📞 +90 XXX XXX XX XX</p>
+                <p class="info">🕐 11:00 - 23:00</p>
+                <button class="reservation-slide-btn">REZERVASYON</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        const counter = document.getElementById('current-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            counter.textContent = (index + 1).toString().padStart(2, '0');
+        }
+
+        document.getElementById('next-slide').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        });
+
+        document.getElementById('prev-slide').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentSlide = parseInt(dot.dataset.slide);
+                showSlide(currentSlide);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            } else if (e.key === 'ArrowLeft') {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+        });
+    </script>
+</body>
+</html>

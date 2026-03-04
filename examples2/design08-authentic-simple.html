@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Otantik & Samimi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prata&family=Karla:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Karla', sans-serif;
+            background: #fffdf8;
+            color: #3e3428;
+        }
+
+        /* Simple Nav */
+        nav {
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            border-bottom: 2px solid #e8d5c4;
+        }
+
+        .brand-simple {
+            font-family: 'Prata', serif;
+            font-size: 1.5rem;
+            color: #8b6914;
+        }
+
+        .menu-simple {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .menu-simple a {
+            color: #6b5d4f;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero-simple {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 3rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Prata', serif;
+            font-size: 3rem;
+            color: #8b6914;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #6b5d4f;
+            margin-bottom: 2rem;
+        }
+
+        .btn-simple {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            background: #8b6914;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .hero-img {
+            aspect-ratio: 4/3;
+            background: #e8d5c4;
+            border-radius: 8px;
+        }
+
+        /* Info Boxes */
+        .info-boxes {
+            background: #f9f5f0;
+            padding: 4rem 2.5rem;
+        }
+
+        .boxes-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .box-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-box h3 {
+            font-size: 1.3rem;
+            color: #8b6914;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-box p {
+            color: #7a6a5a;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Menu List */
+        .menu-list-section {
+            max-width: 1100px;
+            margin: 5rem auto;
+            padding: 0 2.5rem;
+        }
+
+        .menu-list-section h2 {
+            font-family: 'Prata', serif;
+            font-size: 2.5rem;
+            color: #8b6914;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .dishes-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .dish-item {
+            padding: 2rem;
+            background: #fff;
+            border: 1px solid #e8d5c4;
+            border-radius: 6px;
+        }
+
+        .dish-item h4 {
+            font-family: 'Prata', serif;
+            font-size: 1.4rem;
+            color: #8b6914;
+            margin-bottom: 0.8rem;
+        }
+
+        .dish-item p {
+            color: #7a6a5a;
+            line-height: 1.6;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            background: #8b6914;
+            color: #fff;
+            padding: 4rem 2.5rem;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-family: 'Prata', serif;
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .testimonial cite {
+            font-style: normal;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2.5rem;
+            background: #fff;
+            border-top: 2px solid #e8d5c4;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: 'Prata', serif;
+            font-size: 1.8rem;
+            color: #8b6914;
+            margin-bottom: 1.5rem;
+        }
+
+        footer p {
+            color: #6b5d4f;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-simple { grid-template-columns: 1fr; }
+            .boxes-container { grid-template-columns: 1fr; }
+            .dishes-list { grid-template-columns: 1fr; }
+            .menu-simple { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="brand-simple">Koala Kaktüs</div>
+        <ul class="menu-simple">
+            <li><a href="#about">Hakkımızda</a></li>
+            <li><a href="#menu">Menü</a></li>
+            <li><a href="#contact">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-simple">
+        <div class="hero-text">
+            <h1>Antakya'nın Özgün Lezzetleri</h1>
+            <p>Küçük ama özel restoranımızda, Antakya mutfağının en otantik yemeklerini bulacaksınız. Her tabak, geleneksel tariflerle özenle hazırlanır.</p>
+            <a href="#" class="btn-simple">Rezervasyon</a>
+        </div>
+        <div class="hero-img"></div>
+    </section>
+
+    <section class="info-boxes" id="about">
+        <div class="boxes-container">
+            <div class="info-box">
+                <div class="box-icon">🏠</div>
+                <h3>Samimi Ortam</h3>
+                <p>Ailenizle rahatça vakit geçirebileceğiniz sıcak bir atmosfer</p>
+            </div>
+            <div class="info-box">
+                <div class="box-icon">👨‍🍳</div>
+                <h3>Geleneksel Tarifler</h3>
+                <p>Nesillerdir aktarılan özgün Antakya tarifleri</p>
+            </div>
+            <div class="info-box">
+                <div class="box-icon">🌟</div>
+                <h3>İzmir'in En İyisi</h3>
+                <p>İzmir'deki en iyi Antakya mutfağı</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-list-section" id="menu">
+        <h2>Özel Yemeklerimiz</h2>
+        <div class="dishes-list">
+            <div class="dish-item">
+                <h4>İçli Köfte</h4>
+                <p>Antakya usulü, taş fırında pişmiş içli köfte. Özel baharatlarla hazırlanır.</p>
+            </div>
+            <div class="dish-item">
+                <h4>Muhammara</h4>
+                <p>Ceviz, biber ve baharatlarla hazırlanan geleneksel meze.</p>
+            </div>
+            <div class="dish-item">
+                <h4>Kağıt Kebabı</h4>
+                <p>Özel marine edilmiş, kağıtta pişirilen enfes kebap.</p>
+            </div>
+            <div class="dish-item">
+                <h4>Künefe</h4>
+                <p>Tuzsuz peynir ve kadayıf ile hazırlanan Antakya künefesi.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial">
+        <blockquote>
+            "İzmir'de Antakya mutfağının en otantik halini burada bulabilirsiniz."
+        </blockquote>
+        <cite>— Müşterilerimiz</cite>
+    </section>
+
+    <footer id="contact">
+        <h3>Bizi Ziyaret Edin</h3>
+        <p>📍 İzmir, Türkiye</p>
+        <p>📞 +90 XXX XXX XX XX</p>
+        <p>🕐 Her gün 11:00 - 23:00</p>
+    </footer>
+</body>
+</html>

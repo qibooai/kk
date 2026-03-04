@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Organic Nature</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #f4f1e8 0%, #e8dcc5 100%);
+            color: #4a3f35;
+            line-height: 1.7;
+        }
+
+        /* Organic shapes background */
+        .bg-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: #8b7355;
+            top: 10%;
+            left: 5%;
+        }
+
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            background: #a0826d;
+            top: 60%;
+            right: 10%;
+        }
+
+        .shape3 {
+            width: 150px;
+            height: 150px;
+            background: #c9a88a;
+            bottom: 20%;
+            left: 15%;
+        }
+
+        /* Header */
+        header {
+            background: rgba(244, 241, 232, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            box-shadow: 0 2px 20px rgba(139, 115, 85, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #6b5847;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #6b5847;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #8b7355;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 4rem;
+            color: #6b5847;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: #a0826d;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #7a6a5a;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-organic {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #8b7355;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+        }
+
+        .btn-organic:hover {
+            background: #6b5847;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        .hero-image {
+            background: rgba(160, 130, 109, 0.15);
+            border-radius: 30px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(139, 115, 85, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .features h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            color: #6b5847;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(139, 115, 85, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: rgba(139, 115, 85, 0.25);
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: #6b5847;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #7a6a5a;
+            font-size: 1.05rem;
+        }
+
+        /* Menu Section */
+        .menu {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .menu h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: #6b5847;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .menu-categories {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .menu-category {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 25px rgba(139, 115, 85, 0.1);
+        }
+
+        .menu-category h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            color: #8b7355;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            padding: 1.5rem;
+            background: rgba(244, 241, 232, 0.8);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.2);
+        }
+
+        .menu-item h4 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            color: #6b5847;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item p {
+            color: #7a6a5a;
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: rgba(160, 130, 109, 0.1);
+            border-radius: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .about h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            color: #6b5847;
+            margin-bottom: 2rem;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: #7a6a5a;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #6b5847 0%, #8b7355 100%);
+            color: #f4f1e8;
+            padding: 4rem 2rem;
+            margin-top: 6rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(244, 241, 232, 0.3);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                Koala Kaktüs
+            </div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+                <li><a href="#rezervasyon">Rezervasyon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Doğanın <span class="highlight">Lezzetini</span> Keşfedin</h1>
+            <p>Antakya'nın geleneksel mutfağını taze, organik malzemelerle buluşturuyoruz. Her tabakta doğallık ve samimiyet var.</p>
+            <a href="#rezervasyon" class="btn-organic">Rezervasyon Yapın</a>
+        </div>
+        <div class="hero-image">
+            🍃
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Neden Biz?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌾</div>
+                <h3>Organik Malzemeler</h3>
+                <p>Yerel üreticilerden temin ettiğimiz organik ürünlerle hazırlanmış yemekler</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🍯</div>
+                <h3>Geleneksel Tarifler</h3>
+                <p>Nesillerdir aktarılan otantik Antakya tariflerini koruyoruz</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌿</div>
+                <h3>Doğal Atmosfer</h3>
+                <p>Huzur dolu, doğal bir ortamda keyifli yemek deneyimi</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu">
+        <h2>Menümüz</h2>
+        <div class="menu-categories">
+            <div class="menu-category">
+                <h3><span class="category-icon">🥗</span> Mezeler</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Muhammara</h4>
+                        <p>Ceviz ve biberle hazırlanan geleneksel meze</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Mütebbel</h4>
+                        <p>Közlenmiş patlıcan, tahin ve nar ekşisi</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Humus</h4>
+                        <p>Nohut, tahin ve özel baharatlarla</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3><span class="category-icon">🍖</span> Ana Yemekler</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>İçli Köfte</h4>
+                        <p>Antakya usulü, taş fırında pişmiş</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Kağıt Kebabı</h4>
+                        <p>Özel baharatlarla marine edilmiş</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Oruk Köftesi</h4>
+                        <p>Ekşi aşı ile servis edilen köfte</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3><span class="category-icon">🍯</span> Tatlılar</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Künefe</h4>
+                        <p>Tuzsuz peynir ve kadayıf ile</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Peynirli Helva</h4>
+                        <p>Geleneksel irmik helvası</p>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Kömbe</h4>
+                        <p>Antakya'nın meşhur kurabiyesi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>Hikayemiz</h2>
+        <p>Koala Kaktüs, doğallığı ve geleneği bir araya getiren özel bir restoran. Antakya'nın zengin mutfak mirasını, modern ve sağlıklı bir yaklaşımla sunuyoruz.</p>
+        <p>Taze, yerel ve organik malzemelerle hazırlanan yemeklerimiz, hem damağınıza hem de ruhunuza iyi gelecek.</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Koala Kaktüs</h3>
+                <p>Doğal ve geleneksel Antakya mutfağı</p>
+                <p>İzmir, Türkiye</p>
+            </div>
+            <div class="footer-section">
+                <h3>İletişim</h3>
+                <p>Tel: +90 XXX XXX XX XX</p>
+                <p>Email: info@koalakaktus.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Açılış Saatleri</h3>
+                <p>Pazartesi - Pazar</p>
+                <p>11:00 - 23:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Koala Kaktüs. Doğal lezzetler.</p>
+        </div>
+    </footer>
+</body>
+</html>

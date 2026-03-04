@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Kart Tabanlı</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Lora:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background: #f4f0ea;
+            color: #3d3026;
+        }
+
+        /* Nav */
+        nav {
+            background: #fff;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-card {
+            font-family: 'Lora', serif;
+            font-size: 1.6rem;
+            color: #9c7a5c;
+            font-weight: 600;
+        }
+
+        .nav-menu-card {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu-card a {
+            color: #6b5742;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Card */
+        .hero-card {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero-card-main {
+            background: #fff;
+            padding: 5rem 4rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .hero-card-main h1 {
+            font-family: 'Lora', serif;
+            font-size: 3.5rem;
+            color: #9c7a5c;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card-main p {
+            font-size: 1.2rem;
+            color: #6b5742;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .btn-card {
+            padding: 1rem 3rem;
+            background: #9c7a5c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #f4f0ea;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            color: #9c7a5c;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #6b5742;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Menu Cards */
+        .menu-cards {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .menu-cards h2 {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            color: #9c7a5c;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            display: flex;
+            gap: 2rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .menu-card-img {
+            width: 120px;
+            height: 120px;
+            background: #f4f0ea;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .menu-card-content h4 {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            color: #9c7a5c;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-card-content p {
+            color: #6b5742;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            max-width: 800px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .contact-card-inner {
+            background: #fff;
+            padding: 4rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .contact-card-inner h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            color: #9c7a5c;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card-inner p {
+            color: #6b5742;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #6b5742;
+        }
+
+        @media (max-width: 768px) {
+            .hero-card-main h1 { font-size: 2.5rem; }
+            .menu-cards-grid { grid-template-columns: 1fr; }
+            .nav-menu-card { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="brand-card">Koala Kaktüs</div>
+            <ul class="nav-menu-card">
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-card">
+        <div class="hero-card-main">
+            <h1>Antakya'nın Tadı</h1>
+            <p>İzmir'de özgün Antakya mutfağını deneyimleyin. Küçük restoranımızda, her yemek özenle hazırlanır.</p>
+            <button class="btn-card">Rezervasyon Yap</button>
+        </div>
+    </section>
+
+    <section class="cards-grid" id="about">
+        <div class="card">
+            <div class="card-icon">🍽️</div>
+            <h3>Geleneksel</h3>
+            <p>Antakya'nın geleneksel tariflerini koruyoruz</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🌿</div>
+            <h3>Taze</h3>
+            <p>Her gün taze malzemeler kullanıyoruz</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">👨‍🍳</div>
+            <h3>Usta</h3>
+            <p>Deneyimli şeflerimiz her tabağı özenle hazırlar</p>
+        </div>
+    </section>
+
+    <section class="menu-cards" id="menu">
+        <h2>Menümüzden</h2>
+        <div class="menu-cards-grid">
+            <div class="menu-card">
+                <div class="menu-card-img"></div>
+                <div class="menu-card-content">
+                    <h4>İçli Köfte</h4>
+                    <p>Antakya usulü taş fırında pişmiş içli köfte</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-img"></div>
+                <div class="menu-card-content">
+                    <h4>Muhammara</h4>
+                    <p>Ceviz ve biberle hazırlanan özel meze</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-img"></div>
+                <div class="menu-card-content">
+                    <h4>Kağıt Kebabı</h4>
+                    <p>Özel baharatlarla marine edilmiş kebap</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-img"></div>
+                <div class="menu-card-content">
+                    <h4>Künefe</h4>
+                    <p>Tuzsuz peynirli Antakya künefesi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-card" id="contact">
+        <div class="contact-card-inner">
+            <h2>Sizi Bekliyoruz</h2>
+            <p><strong>Adres:</strong> İzmir, Türkiye</p>
+            <p><strong>Telefon:</strong> +90 XXX XXX XX XX</p>
+            <p><strong>Saatler:</strong> Her gün 11:00 - 23:00</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Koala Kaktüs - Antakya Mutfağı</p>
+    </footer>
+</body>
+</html>

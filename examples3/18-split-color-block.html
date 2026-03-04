@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Split Color Block</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Split Screen Hero */
+        .split-hero {
+            height: 100vh;
+            display: flex;
+        }
+
+        .split-left {
+            width: 50%;
+            background: #2d1f16;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .split-right {
+            width: 50%;
+            background: #e8a05d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .split-left h1,
+        .split-right h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 10rem;
+            line-height: 0.9;
+            letter-spacing: -3px;
+        }
+
+        .split-left h1 {
+            color: #e8a05d;
+            text-align: right;
+        }
+
+        .split-right h1 {
+            color: #2d1f16;
+            text-align: left;
+        }
+
+        /* Logo positioned at split */
+        .split-logo {
+            position: absolute;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 1rem 3rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            color: #2d1f16;
+            z-index: 100;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Color Block Grid */
+        .block-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 400px;
+        }
+
+        .color-block {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .color-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s;
+        }
+
+        .color-block:hover::before {
+            left: 0;
+        }
+
+        .color-block:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        /* Color variations */
+        .block-brown { background: #2d1f16; color: #fff; }
+        .block-orange { background: #e8a05d; color: #2d1f16; }
+        .block-beige { background: #d4c4a8; color: #2d1f16; }
+        .block-dark-orange { background: #c47850; color: #fff; }
+        .block-light { background: #f5e6d3; color: #2d1f16; }
+        .block-terracotta { background: #c85e3a; color: #fff; }
+
+        .block-icon {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .color-block h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .color-block p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Large blocks */
+        .block-large {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .block-tall {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        .block-mega {
+            grid-column: span 2;
+            grid-row: span 2;
+            font-size: 1.3rem;
+        }
+
+        .block-mega h3 {
+            font-size: 5rem;
+        }
+
+        .block-mega p {
+            font-size: 1.5rem;
+            max-width: 600px;
+        }
+
+        /* Stats blocks */
+        .stat-block {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-number {
+            font-family: 'Anton', sans-serif;
+            font-size: 8rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Contact Block */
+        .contact-block {
+            padding: 8rem 4rem;
+            background: #2d1f16;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .contact-block h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 8rem;
+            color: #e8a05d;
+            letter-spacing: -2px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .contact-item {
+            padding: 3rem 2rem;
+            background: #e8a05d;
+            color: #2d1f16;
+        }
+
+        .contact-item h4 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item p {
+            font-size: 1.3rem;
+        }
+
+        .btn-block {
+            padding: 2rem 6rem;
+            background: #e8a05d;
+            color: #2d1f16;
+            border: none;
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-block:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 40px rgba(232, 160, 93, 0.5);
+        }
+
+        @media (max-width: 1200px) {
+            .block-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .block-large,
+            .block-tall,
+            .block-mega {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .split-hero {
+                flex-direction: column;
+            }
+            .split-left,
+            .split-right {
+                width: 100%;
+                height: 50vh;
+            }
+            .split-left h1,
+            .split-right h1 {
+                font-size: 5rem;
+            }
+            .block-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="split-logo">KOALA KAKTÜS</div>
+
+    <section class="split-hero">
+        <div class="split-left">
+            <h1>ANTAKYA</h1>
+        </div>
+        <div class="split-right">
+            <h1>İZMİR</h1>
+        </div>
+    </section>
+
+    <div class="block-grid">
+        <!-- Menu items -->
+        <div class="color-block block-large block-orange">
+            <span class="block-icon">🥙</span>
+            <h3>İÇLİ KÖFTE</h3>
+            <p>Taş fırında pişmiş bulgur köftesi</p>
+        </div>
+
+        <div class="color-block block-brown">
+            <span class="block-icon">🌶️</span>
+            <h3>MUHAMMARA</h3>
+            <p>Cevizli biber ezmesi</p>
+        </div>
+
+        <div class="color-block block-beige">
+            <span class="block-icon">🍢</span>
+            <h3>KAĞIT KEBABI</h3>
+            <p>Kağıtta pişirilen kebap</p>
+        </div>
+
+        <div class="color-block block-brown stat-block block-tall">
+            <div class="stat-number">5.0</div>
+            <div class="stat-label">Puan</div>
+        </div>
+
+        <div class="color-block block-dark-orange">
+            <span class="block-icon">✨</span>
+            <h3>KÜNEFE</h3>
+            <p>Peynirli tatlı</p>
+        </div>
+
+        <div class="color-block block-light block-mega">
+            <h3>İZMİR'İN EN İYİ ANTAKYA MUTFAĞI</h3>
+            <p>Küçük ama özel restoranımızda, geleneksel tariflerle hazırlanan özgün Antakya yemeklerini deneyimleyin. Her tabak, nesillerdir aktarılan tariflerle ve en taze malzemelerle özenle hazırlanır.</p>
+        </div>
+
+        <div class="color-block block-orange stat-block">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">Yemek</div>
+        </div>
+
+        <div class="color-block block-terracotta">
+            <span class="block-icon">🥗</span>
+            <h3>MÜTEBBEL</h3>
+            <p>Patlıcan mezesi</p>
+        </div>
+
+        <div class="color-block block-beige block-large">
+            <span class="block-icon">🍖</span>
+            <h3>ORUK KÖFTESİ</h3>
+            <p>Ekşi aşı ile servis</p>
+        </div>
+
+        <div class="color-block block-brown stat-block">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Yıl</div>
+        </div>
+    </div>
+
+    <section class="contact-block">
+        <h2>BİZİ ZİYARET EDİN</h2>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h4>ADRES</h4>
+                <p>İzmir, Türkiye</p>
+            </div>
+
+            <div class="contact-item">
+                <h4>TELEFON</h4>
+                <p>+90 XXX XXX XX XX</p>
+            </div>
+
+            <div class="contact-item">
+                <h4>SAATLER</h4>
+                <p>11:00 - 23:00</p>
+            </div>
+        </div>
+
+        <button class="btn-block">Rezervasyon</button>
+    </section>
+</body>
+</html>

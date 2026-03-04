@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Masonry Grid</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf9f7;
+            color: #2b2520;
+        }
+
+        /* Floating Header */
+        .floating-header {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .floating-header .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: #b8956a;
+        }
+
+        .floating-header nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .floating-header a {
+            color: #5a4d42;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Masonry Container */
+        .masonry-container {
+            max-width: 1400px;
+            margin: 8rem auto 4rem;
+            padding: 0 2rem;
+            column-count: 4;
+            column-gap: 1.5rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Hero Card */
+        .hero-masonry {
+            background: linear-gradient(135deg, #b8956a 0%, #8a6d47 100%);
+            padding: 4rem 3rem;
+            color: #fff;
+        }
+
+        .hero-masonry h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-masonry p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Image Cards */
+        .image-card {
+            aspect-ratio: auto;
+        }
+
+        .image-card img,
+        .image-placeholder {
+            width: 100%;
+            display: block;
+        }
+
+        .image-placeholder {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #d4c4b0 0%, #b8a594 100%);
+        }
+
+        .tall-placeholder {
+            aspect-ratio: 3/4;
+        }
+
+        .wide-placeholder {
+            aspect-ratio: 16/9;
+        }
+
+        /* Text Cards */
+        .text-card {
+            padding: 2.5rem;
+        }
+
+        .text-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: #b8956a;
+            margin-bottom: 1rem;
+        }
+
+        .text-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #5a4d42;
+        }
+
+        /* Quote Cards */
+        .quote-card {
+            background: #2b2520;
+            color: #fff;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .quote-card blockquote {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-card cite {
+            font-size: 0.9rem;
+            font-style: normal;
+            opacity: 0.8;
+        }
+
+        /* Menu Item Cards */
+        .menu-item-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, #fff5e6 0%, #fff 100%);
+        }
+
+        .menu-item-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item-card h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: #b8956a;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-item-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #5a4d42;
+        }
+
+        /* Stat Cards */
+        .stat-card {
+            padding: 2.5rem;
+            text-align: center;
+            background: #f5f0ea;
+        }
+
+        .stat-card .number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4rem;
+            color: #b8956a;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card .label {
+            font-size: 0.95rem;
+            color: #5a4d42;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Card */
+        .contact-card {
+            padding: 3rem;
+            background: #b8956a;
+            color: #fff;
+        }
+
+        .contact-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card .info {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-card .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: #fff;
+            color: #b8956a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1200px) {
+            .masonry-container { column-count: 3; }
+        }
+
+        @media (max-width: 768px) {
+            .masonry-container {
+                column-count: 2;
+                margin-top: 6rem;
+            }
+            .floating-header {
+                padding: 1rem 2rem;
+                gap: 1.5rem;
+            }
+            .floating-header nav { display: none; }
+            .hero-masonry h1 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .masonry-container { column-count: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="floating-header">
+        <div class="logo">Koala Kaktüs</div>
+        <nav>
+            <a href="#menu">Menü</a>
+            <a href="#hakkimizda">Hakkımızda</a>
+            <a href="#iletisim">İletişim</a>
+        </nav>
+    </header>
+
+    <div class="masonry-container">
+        <!-- Hero Card -->
+        <div class="masonry-item hero-masonry">
+            <h1>Antakya'nın<br>Kalbi<br>İzmir'de</h1>
+            <p>Her tabak bir hikaye, her lokma bir anı</p>
+        </div>
+
+        <!-- Image Cards -->
+        <div class="masonry-item image-card">
+            <div class="image-placeholder"></div>
+        </div>
+
+        <!-- Menu Item -->
+        <div class="masonry-item menu-item-card">
+            <div class="emoji">🥙</div>
+            <h4>İçli Köfte</h4>
+            <p>Antakya usulü taş fırında pişmiş, içi nefis kıymalı bulgur köftesi</p>
+        </div>
+
+        <!-- Quote -->
+        <div class="masonry-item quote-card">
+            <blockquote>"İzmir'de Antakya'yı bulmak"</blockquote>
+            <cite>— Müşterilerimiz</cite>
+        </div>
+
+        <!-- Tall Image -->
+        <div class="masonry-item image-card">
+            <div class="image-placeholder tall-placeholder"></div>
+        </div>
+
+        <!-- Text Card -->
+        <div class="masonry-item text-card">
+            <h3>Geleneksel Lezzetler</h3>
+            <p>Nesillerdir süregelen tariflerle, en taze malzemeler kullanarak hazırladığımız yemeklerimiz, Antakya mutfağının özgünlüğünü korur.</p>
+        </div>
+
+        <!-- Menu Item -->
+        <div class="masonry-item menu-item-card">
+            <div class="emoji">🌶️</div>
+            <h4>Muhammara</h4>
+            <p>Ceviz ve biberle hazırlanan enfes Antakya mezesi</p>
+        </div>
+
+        <!-- Stat -->
+        <div class="masonry-item stat-card">
+            <div class="number">5★</div>
+            <div class="label">Müşteri Puanı</div>
+        </div>
+
+        <!-- Wide Image -->
+        <div class="masonry-item image-card">
+            <div class="image-placeholder wide-placeholder"></div>
+        </div>
+
+        <!-- Menu Item -->
+        <div class="masonry-item menu-item-card">
+            <div class="emoji">🍢</div>
+            <h4>Kağıt Kebabı</h4>
+            <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen nefis kebap</p>
+        </div>
+
+        <!-- Text Card -->
+        <div class="masonry-item text-card">
+            <h3>Küçük Ama Özel</h3>
+            <p>Koala Kaktüs, samimi atmosferiyle misafirlerine kendilerini evlerinde gibi hissettirir. İzmir'in en iyi Antakya mutfağı deneyimi burada.</p>
+        </div>
+
+        <!-- Image -->
+        <div class="masonry-item image-card">
+            <div class="image-placeholder"></div>
+        </div>
+
+        <!-- Menu Item -->
+        <div class="masonry-item menu-item-card">
+            <div class="emoji">✨</div>
+            <h4>Künefe</h4>
+            <p>Tuzsuz peynirli, kadayıflı geleneksel Antakya tatlısı</p>
+        </div>
+
+        <!-- Stat -->
+        <div class="masonry-item stat-card">
+            <div class="number">30+</div>
+            <div class="label">Özel Yemek</div>
+        </div>
+
+        <!-- Menu Item -->
+        <div class="masonry-item menu-item-card">
+            <div class="emoji">🥗</div>
+            <h4>Mütebbel</h4>
+            <p>Közlenmiş patlıcan, tahin ve özel baharatlarla</p>
+        </div>
+
+        <!-- Image -->
+        <div class="masonry-item image-card">
+            <div class="image-placeholder tall-placeholder"></div>
+        </div>
+
+        <!-- Text Card -->
+        <div class="masonry-item text-card">
+            <h3>Özenle Hazırlanır</h3>
+            <p>Her yemeğimiz, deneyimli şeflerimiz tarafından geleneksel yöntemlerle ve en taze malzemelerle özenle hazırlanır.</p>
+        </div>
+
+        <!-- Contact Card -->
+        <div class="masonry-item contact-card">
+            <h3>Sizi Bekliyoruz</h3>
+            <div class="info">📍 İzmir, Türkiye</div>
+            <div class="info">📞 +90 XXX XXX XX XX</div>
+            <div class="info">🕐 11:00 - 23:00</div>
+            <a href="#rezervasyon" class="btn">Rezervasyon Yap</a>
+        </div>
+
+        <!-- Menu Item -->
+        <div class="masonry-item menu-item-card">
+            <div class="emoji">🍖</div>
+            <h4>Oruk Köftesi</h4>
+            <p>Ekşi aşı ile servis edilen özel köfte</p>
+        </div>
+
+        <!-- Image -->
+        <div class="masonry-item image-card">
+            <div class="image-placeholder wide-placeholder"></div>
+        </div>
+    </div>
+</body>
+</html>

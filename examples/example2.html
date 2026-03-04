@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Bold & Vibrant</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Inter:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ff006e, #fb5607, #ffbe0b, #8338ec);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 2rem;
+            border-bottom: 4px solid #ff006e;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff006e, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            border: 3px solid #ff006e;
+            background: rgba(255, 0, 110, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 7rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(135deg, #ff006e, #fb5607, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            color: #8338ec;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff006e, #fb5607);
+            color: white;
+            padding: 2rem 4rem;
+            border: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(255, 0, 110, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 0, 110, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 2rem 4rem;
+            border: 4px solid #ffbe0b;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #ffbe0b;
+            color: #000;
+        }
+
+        /* Features Grid */
+        .features {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4rem;
+            border: 4px solid;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:nth-child(1) { border-color: #ff006e; }
+        .feature-card:nth-child(2) { border-color: #fb5607; }
+        .feature-card:nth-child(3) { border-color: #ffbe0b; }
+        .feature-card:nth-child(4) { border-color: #8338ec; }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 0, 110, 0.3);
+        }
+
+        .feature-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            opacity: 0.2;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .feature-card p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            max-width: 1400px;
+            margin: 8rem auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ff006e, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-left: 6px solid;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-card:nth-child(odd) { border-left-color: #ff006e; }
+        .menu-card:nth-child(even) { border-left-color: #ffbe0b; }
+
+        .menu-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .menu-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .menu-card p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .menu-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffbe0b;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 4px solid #ff006e;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ff006e, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-content p {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .features { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <header>
+        <nav>
+            <div class="logo">KOALA KAKTÜS</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>
+            <span>ANTAKYA</span>
+            <span>LEZZETLERİ</span>
+        </h1>
+        <p class="hero-subtitle">İzmir'de Hatay Mutfağı Deneyimi</p>
+        <div class="hero-cta">
+            <a href="#rezervasyon" class="btn-primary">Rezervasyon</a>
+            <a href="#menu" class="btn-secondary">Menü İncele</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-number">01</div>
+            <h3>Otantik Tatlar</h3>
+            <p>Antakya'nın geleneksel lezzetlerini özgün tarifleriyle sunuyoruz. Her lokma bir yolculuk!</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-number">02</div>
+            <h3>Usta Eller</h3>
+            <p>Yılların deneyimine sahip şeflerimiz, her yemeği özenle hazırlıyor.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-number">03</div>
+            <h3>Taze Malzeme</h3>
+            <p>Her gün taptaze malzemelerle, doğal ve lezzetli yemekler yapıyoruz.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-number">04</div>
+            <h3>Sıcak Atmosfer</h3>
+            <p>Samimi ve keyifli ortamımızda unutulmaz anılar biriktirin.</p>
+        </div>
+    </section>
+
+    <section class="menu-section">
+        <h2 class="section-title">Öne Çıkan Lezzetler</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h4>İçli Köfte</h4>
+                <p>Antakya usulü, taş fırında pişmiş, içi kıymalı özel içli köftelerimiz</p>
+                <div class="menu-price">₺XXX</div>
+            </div>
+            <div class="menu-card">
+                <h4>Kağıt Kebabı</h4>
+                <p>Özel baharatlarla marine edilmiş, kağıtta pişmiş enfes kebap</p>
+                <div class="menu-price">₺XXX</div>
+            </div>
+            <div class="menu-card">
+                <h4>Muhammara</h4>
+                <p>Ceviz, biber ve baharatlarla hazırlanan geleneksel meze</p>
+                <div class="menu-price">₺XXX</div>
+            </div>
+            <div class="menu-card">
+                <h4>Künefe</h4>
+                <p>Tuzsuz peynir, kadayıf ve şerbetli meşhur Antakya tatlısı</p>
+                <div class="menu-price">₺XXX</div>
+            </div>
+            <div class="menu-card">
+                <h4>Oruk Köftesi</h4>
+                <p>Ekşi aşı ile servis edilen özel köfte çeşidimiz</p>
+                <div class="menu-price">₺XXX</div>
+            </div>
+            <div class="menu-card">
+                <h4>Peynirli Helva</h4>
+                <p>Tuzsuz peynir ile yapılan özel irmik helvası</p>
+                <div class="menu-price">₺XXX</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>KOALA KAKTÜS</h3>
+            <p>Antakya Mutfağı - İzmir</p>
+            <p>Tel: +90 XXX XXX XX XX</p>
+            <p>Adres: İzmir, Türkiye</p>
+            <p>Açılış Saatleri: 11:00 - 23:00</p>
+            <p style="margin-top: 3rem; opacity: 0.5;">© 2026 Koala Kaktüs. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+</body>
+</html>

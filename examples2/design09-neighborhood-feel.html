@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Mahalle Restoranı</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: #faf8f5;
+            color: #3c342b;
+        }
+
+        /* Header */
+        header {
+            background: #ebe6de;
+            padding: 1.2rem 2rem;
+            border-bottom: 3px solid #d4a574;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-neighborhood {
+            font-family: 'Spectral', serif;
+            font-size: 1.6rem;
+            color: #8b5e3c;
+            font-weight: 600;
+        }
+
+        .logo-neighborhood span {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #6a5642;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Banner */
+        .banner {
+            background: linear-gradient(135deg, #d4a574 0%, #c49461 100%);
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .banner h1 {
+            font-family: 'Spectral', serif;
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 4rem;
+        }
+
+        .intro h2 {
+            font-family: 'Spectral', serif;
+            font-size: 2.2rem;
+            color: #8b5e3c;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #6a5642;
+        }
+
+        /* Features */
+        .features-simple {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-simple {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #d4a574;
+        }
+
+        .feature-simple-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-simple h3 {
+            font-size: 1.3rem;
+            color: #8b5e3c;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-simple p {
+            color: #7a6a5a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Menu Section */
+        .menu-simple-section {
+            background: #fff;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+            margin: 4rem 0;
+        }
+
+        .menu-simple-section h2 {
+            font-family: 'Spectral', serif;
+            font-size: 2.5rem;
+            color: #8b5e3c;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-items-simple {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .menu-item-simple {
+            padding: 1.5rem;
+            border-bottom: 1px solid #ebe6de;
+        }
+
+        .menu-item-simple h4 {
+            font-family: 'Spectral', serif;
+            font-size: 1.4rem;
+            color: #8b5e3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-simple p {
+            color: #7a6a5a;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #8b5e3c;
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-family: 'Spectral', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            padding: 1rem 3rem;
+            background: #fff;
+            color: #8b5e3c;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #ebe6de;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-info h3 {
+            font-family: 'Spectral', serif;
+            font-size: 2rem;
+            color: #8b5e3c;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-info p {
+            color: #6a5642;
+            margin: 0.8rem 0;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-items-simple { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-neighborhood"><span>🐨</span> Koala Kaktüs</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#menu">Menü</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <h1>Antakya'nın Sıcak Lezzetleri</h1>
+        <p>İzmir'de evinizin sıcaklığında</p>
+    </section>
+
+    <main class="main-content">
+        <div class="intro" id="about">
+            <h2>Mahalle Restoranınız</h2>
+            <p>Koala Kaktüs, Antakya mutfağının geleneksel tariflerini en saf haliyle sunan küçük ve samimi bir restorandır. Siz de ailenizi alıp, güzel bir yemek için bizi ziyaret edin.</p>
+        </div>
+
+        <div class="features-simple">
+            <div class="feature-simple">
+                <div class="feature-simple-icon">🍲</div>
+                <h3>Ev Yemekleri Gibi</h3>
+                <p>Her yemeğimiz evde yapılmış gibi özenerek hazırlanır</p>
+            </div>
+            <div class="feature-simple">
+                <div class="feature-simple-icon">👨‍👩‍👧‍👦</div>
+                <h3>Aile Dostu</h3>
+                <p>Tüm ailenizle rahatça gelebileceğiniz sıcak bir ortam</p>
+            </div>
+            <div class="feature-simple">
+                <div class="feature-simple-icon">💯</div>
+                <h3>Kalite Garantili</h3>
+                <p>En taze ve kaliteli malzemeler kullanıyoruz</p>
+            </div>
+        </div>
+
+        <div class="menu-simple-section" id="menu">
+            <h2>Menümüzden Seçmeler</h2>
+            <div class="menu-items-simple">
+                <div class="menu-item-simple">
+                    <h4>İçli Köfte</h4>
+                    <p>Antakya usulü taş fırında pişmiş</p>
+                </div>
+                <div class="menu-item-simple">
+                    <h4>Muhammara</h4>
+                    <p>Cevizli biber ezmesi</p>
+                </div>
+                <div class="menu-item-simple">
+                    <h4>Kağıt Kebabı</h4>
+                    <p>Özel baharatlarla marine</p>
+                </div>
+                <div class="menu-item-simple">
+                    <h4>Künefe</h4>
+                    <p>Tuzsuz peynirli tatlımız</p>
+                </div>
+                <div class="menu-item-simple">
+                    <h4>Mütebbel</h4>
+                    <p>Közlenmiş patlıcan mezesi</p>
+                </div>
+                <div class="menu-item-simple">
+                    <h4>Humus</h4>
+                    <p>Geleneksel nohut ezmesi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section" id="contact">
+            <h2>Sizi Bekliyoruz!</h2>
+            <p>Rezervasyon yapmak veya bilgi almak için bizi arayın</p>
+            <button class="cta-btn">Hemen Ara: +90 XXX XXX XX XX</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <h3>Koala Kaktüs</h3>
+            <p><strong>Adres:</strong> İzmir, Türkiye</p>
+            <p><strong>Telefon:</strong> +90 XXX XXX XX XX</p>
+            <p><strong>Açık:</strong> Her gün 11:00 - 23:00</p>
+        </div>
+    </footer>
+</body>
+</html>

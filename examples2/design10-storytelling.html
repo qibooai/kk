@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Hikaye Anlatımı</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;600&family=Lato:wght@300;400;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #fff;
+            color: #2c2416;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .logo-story {
+            font-family: 'Bitter', serif;
+            font-size: 1.7rem;
+            color: #a67c52;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #5a4a3a;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Story Hero */
+        .story-hero {
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 0 2.5rem;
+            text-align: center;
+        }
+
+        .story-hero h1 {
+            font-family: 'Bitter', serif;
+            font-size: 3.5rem;
+            color: #a67c52;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .story-hero .subtitle {
+            font-size: 1.3rem;
+            color: #6a5a4a;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .story-hero .lead {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #5a4a3a;
+            margin-bottom: 2rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 0 2.5rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-year {
+            font-family: 'Bitter', serif;
+            font-size: 2.5rem;
+            color: #a67c52;
+            font-weight: 600;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Bitter', serif;
+            font-size: 1.6rem;
+            color: #2c2416;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #6a5a4a;
+        }
+
+        /* Values */
+        .values {
+            background: #f9f6f2;
+            padding: 6rem 2.5rem;
+        }
+
+        .values-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .values h2 {
+            font-family: 'Bitter', serif;
+            font-size: 3rem;
+            color: #a67c52;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: #a67c52;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .value-item h4 {
+            font-size: 1.3rem;
+            color: #2c2416;
+            margin-bottom: 0.8rem;
+        }
+
+        .value-item p {
+            color: #6a5a4a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Menu Highlight */
+        .menu-highlight {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 2.5rem;
+        }
+
+        .menu-highlight h2 {
+            font-family: 'Bitter', serif;
+            font-size: 3rem;
+            color: #a67c52;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .dish-card {
+            padding: 2rem;
+            background: #fff;
+            border: 2px solid #e8dcc5;
+            border-radius: 8px;
+        }
+
+        .dish-card h4 {
+            font-family: 'Bitter', serif;
+            font-size: 1.6rem;
+            color: #a67c52;
+            margin-bottom: 1rem;
+        }
+
+        .dish-card p {
+            color: #6a5a4a;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2416;
+            color: #f9f6f2;
+            padding: 4rem 2.5rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: 'Bitter', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        footer p {
+            margin: 0.8rem 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .story-hero h1 { font-size: 2.5rem; }
+            .timeline-item { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr; }
+            .dishes-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-story">Koala Kaktüs</div>
+        <nav>
+            <ul>
+                <li><a href="#hikaye">Hikayemiz</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="story-hero" id="hikaye">
+        <h1>Bir Lezzet Yolculuğu</h1>
+        <p class="subtitle">Antakya'dan İzmir'e Uzanan Bir Hikaye</p>
+        <p class="lead">Koala Kaktüs, Antakya'nın zengin mutfak geleneğini İzmir'e taşıyan bir tutkudur. Her yemek, nesillerdir aktarılan tariflerin ve özenin ürünüdür.</p>
+    </section>
+
+    <section class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-content">
+                <h3>Başlangıç</h3>
+                <p>Antakya mutfağına duyduğumuz sevgi ve saygıyla yola çıktık. Hedefimiz, bu eşsiz lezzetleri İzmir'de yaşayan herkesle paylaşmaktı.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2022</div>
+            <div class="timeline-content">
+                <h3>Büyüme</h3>
+                <p>Müşterilerimizin desteğiyle, İzmir'in en sevilen Antakya restoranlarından biri haline geldik.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-content">
+                <h3>Bugün</h3>
+                <p>Küçük ama özel restoranımızda, her gün yüzlerce müşterimize hizmet veriyoruz. Amacımız hala aynı: en iyi Antakya lezzetlerini sunmak.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="values-container">
+            <h2>Değerlerimiz</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🍴</div>
+                    <h4>Kalite</h4>
+                    <p>En taze ve kaliteli malzemeleri kullanıyoruz</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">❤️</div>
+                    <h4>Özen</h4>
+                    <p>Her yemeği sevgiyle hazırlıyoruz</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h4>Samimiyet</h4>
+                    <p>Sizi ailemizin bir parçası olarak görüyoruz</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-highlight" id="menu">
+        <h2>Özel Lezzetlerimiz</h2>
+        <div class="dishes-grid">
+            <div class="dish-card">
+                <h4>İçli Köfte</h4>
+                <p>Antakya'nın en meşhur yemeği. Taş fırında pişmiş, içi kıymalı bulgur köftesi.</p>
+            </div>
+            <div class="dish-card">
+                <h4>Muhammara</h4>
+                <p>Ceviz, biber ve baharatlarla hazırlanan geleneksel meze.</p>
+            </div>
+            <div class="dish-card">
+                <h4>Kağıt Kebabı</h4>
+                <p>Özel baharatlarla marine edilmiş, kağıtta pişirilen kebap.</p>
+            </div>
+            <div class="dish-card">
+                <h4>Künefe</h4>
+                <p>Tuzsuz peynir ve kadayıf ile hazırlanan Antakya tatlısı.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="iletisim">
+        <h3>Koala Kaktüs</h3>
+        <p>İzmir, Türkiye</p>
+        <p>Telefon: +90 XXX XXX XX XX</p>
+        <p>Her gün 11:00 - 23:00</p>
+    </footer>
+</body>
+</html>

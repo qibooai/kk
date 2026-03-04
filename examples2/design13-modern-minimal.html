@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Modern Minimal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Fraunces:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: #fefefe;
+            color: #1a1a1a;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-minimal {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Hero Minimal */
+        .hero-minimal {
+            max-width: 1100px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero-minimal h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .hero-minimal p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .btn-minimal {
+            padding: 1rem 3rem;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-minimal:hover {
+            background: #333;
+        }
+
+        /* Grid Section */
+        .grid-section {
+            max-width: 1300px;
+            margin: 8rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        .grid-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .grid-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .grid-image {
+            aspect-ratio: 3/2;
+            background: #e8e8e8;
+        }
+
+        /* Menu Grid */
+        .menu-grid-minimal {
+            max-width: 1300px;
+            margin: 8rem auto;
+            padding: 0 2rem;
+        }
+
+        .menu-grid-minimal h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .dishes-minimal {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 0;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .dish-minimal {
+            padding: 3rem 2rem;
+            border-right: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .dish-minimal h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .dish-minimal p {
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background: #f8f8f8;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .info-bar h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .info-items {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .info-item p {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-item h5 {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .hero-minimal h1 { font-size: 3rem; }
+            .grid-section { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-minimal">Koala Kaktüs</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#menu">Menü</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-minimal">
+        <h1>Antakya Mutfağı<br>İzmir'de</h1>
+        <p>Geleneksel lezzetler, modern bir yaklaşımla. Küçük restoranımızda özel yemeklerimizi keşfedin.</p>
+        <button class="btn-minimal">Rezervasyon</button>
+    </section>
+
+    <section class="grid-section" id="about">
+        <div class="grid-content">
+            <h2>Basit ve<br>Özgün</h2>
+            <p>Koala Kaktüs'te, Antakya mutfağının en özgün tariflerini bulacaksınız.</p>
+            <p>Her yemeğimiz, geleneksel yöntemlerle ve en taze malzemelerle hazırlanır.</p>
+        </div>
+        <div class="grid-image"></div>
+    </section>
+
+    <section class="menu-grid-minimal" id="menu">
+        <h2>Menü</h2>
+        <div class="dishes-minimal">
+            <div class="dish-minimal">
+                <h4>İçli Köfte</h4>
+                <p>Antakya usulü, taş fırında pişmiş</p>
+            </div>
+            <div class="dish-minimal">
+                <h4>Muhammara</h4>
+                <p>Cevizli biber ezmesi</p>
+            </div>
+            <div class="dish-minimal">
+                <h4>Kağıt Kebabı</h4>
+                <p>Özel baharatlarla marine</p>
+            </div>
+            <div class="dish-minimal">
+                <h4>Künefe</h4>
+                <p>Tuzsuz peynirli tatlı</p>
+            </div>
+            <div class="dish-minimal">
+                <h4>Mütebbel</h4>
+                <p>Közlenmiş patlıcan mezesi</p>
+            </div>
+            <div class="dish-minimal">
+                <h4>Oruk Köftesi</h4>
+                <p>Ekşi aşı ile servis</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-bar" id="contact">
+        <h3>Bizi Ziyaret Edin</h3>
+        <div class="info-items">
+            <div class="info-item">
+                <p>Adres</p>
+                <h5>İzmir, Türkiye</h5>
+            </div>
+            <div class="info-item">
+                <p>Telefon</p>
+                <h5>+90 XXX XXX XX XX</h5>
+            </div>
+            <div class="info-item">
+                <p>Saatler</p>
+                <h5>11:00 - 23:00</h5>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Koala Kaktüs — Antakya Mutfağı</p>
+    </footer>
+</body>
+</html>

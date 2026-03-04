@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koala Kaktüs - Horizontal Scroll</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #1a1612;
+            color: #e8e4df;
+            overflow-x: hidden;
+        }
+
+        /* Vertical Navigation */
+        .vertical-nav {
+            position: fixed;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .vertical-nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4a574;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #d4a574;
+            font-size: 0.9rem;
+        }
+
+        .scroll-arrow {
+            font-size: 1.5rem;
+            animation: slide 2s infinite;
+        }
+
+        @keyframes slide {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        /* Horizontal Container */
+        .horizontal-container {
+            display: flex;
+            height: 100vh;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .horizontal-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .horizontal-container::-webkit-scrollbar-track {
+            background: #2a2520;
+        }
+
+        .horizontal-container::-webkit-scrollbar-thumb {
+            background: #d4a574;
+            border-radius: 10px;
+        }
+
+        /* Sections */
+        .h-section {
+            min-width: 100vw;
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        /* Hero Section */
+        .hero-horizontal {
+            background: linear-gradient(135deg, #2a2520 0%, #1a1612 100%);
+            text-align: center;
+        }
+
+        .hero-horizontal h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: #d4a574;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .hero-horizontal .subtitle {
+            font-size: 1.5rem;
+            color: #a89179;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        /* About Section */
+        .about-horizontal {
+            background: #242018;
+        }
+
+        .about-content {
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(135deg, #d4a574 0%, #a87e4f 100%);
+            border-radius: 200px 200px 0 0;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #d4a574;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c4b8aa;
+        }
+
+        /* Menu Section */
+        .menu-horizontal {
+            background: #1a1612;
+        }
+
+        .menu-scroll {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .menu-card-h {
+            min-width: 350px;
+            height: 500px;
+            background: #2a2520;
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.3s;
+        }
+
+        .menu-card-h:hover {
+            border-color: #d4a574;
+            transform: scale(1.05);
+        }
+
+        .menu-card-h .icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-card-h h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #d4a574;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-card-h p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #c4b8aa;
+        }
+
+        .menu-card-h .price {
+            margin-top: auto;
+            font-size: 1.3rem;
+            color: #d4a574;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features-horizontal {
+            background: #242018;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .feature-box .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: #d4a574;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h4 {
+            font-size: 1.3rem;
+            color: #e8e4df;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+            color: #a89179;
+            line-height: 1.6;
+        }
+
+        /* Gallery Section */
+        .gallery-horizontal {
+            background: #1a1612;
+            padding: 0 !important;
+        }
+
+        .gallery-images {
+            display: flex;
+            gap: 2rem;
+            height: 100%;
+        }
+
+        .gallery-img {
+            width: 400px;
+            height: 600px;
+            background: linear-gradient(135deg, #d4a574 0%, #8a6d47 100%);
+            border-radius: 20px;
+        }
+
+        /* Contact Section */
+        .contact-horizontal {
+            background: #d4a574;
+            color: #1a1612;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .contact-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-btn {
+            padding: 1.5rem 4rem;
+            background: #1a1612;
+            color: #d4a574;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-horizontal h1 { font-size: 4rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .menu-card-h { min-width: 280px; }
+            .vertical-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="vertical-nav">
+        <div class="logo">KOALA KAKTÜS</div>
+    </div>
+
+    <div class="scroll-indicator">
+        <span>Kaydır</span>
+        <span class="scroll-arrow">→</span>
+    </div>
+
+    <div class="horizontal-container">
+        <!-- Hero -->
+        <section class="h-section hero-horizontal">
+            <div>
+                <h1>KOALA<br>KAKTÜS</h1>
+                <p class="subtitle">Antakya × İzmir</p>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="h-section about-horizontal">
+            <div class="about-content">
+                <div class="about-image"></div>
+                <div class="about-text">
+                    <h2>İzmir'de<br>Antakya</h2>
+                    <p>Küçük ama özel restoranımızda, Antakya mutfağının en özgün lezzetlerini bulacaksınız. Her yemek bir hikaye, her lokma bir anı.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <section class="h-section menu-horizontal">
+            <div class="menu-scroll">
+                <div class="menu-card-h">
+                    <div class="icon">🥙</div>
+                    <h3>İçli Köfte</h3>
+                    <p>Antakya usulü taş fırında pişmiş içli köfte</p>
+                </div>
+
+                <div class="menu-card-h">
+                    <div class="icon">🌶️</div>
+                    <h3>Muhammara</h3>
+                    <p>Cevizli biber ezmesi, geleneksel Antakya mezesi</p>
+                </div>
+
+                <div class="menu-card-h">
+                    <div class="icon">🍢</div>
+                    <h3>Kağıt Kebabı</h3>
+                    <p>Özel baharatlarla marine edilmiş kebap</p>
+                </div>
+
+                <div class="menu-card-h">
+                    <div class="icon">✨</div>
+                    <h3>Künefe</h3>
+                    <p>Tuzsuz peynirli Antakya künefesi</p>
+                </div>
+
+                <div class="menu-card-h">
+                    <div class="icon">🥗</div>
+                    <h3>Mütebbel</h3>
+                    <p>Közlenmiş patlıcan mezesi</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="h-section features-horizontal">
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="number">01</div>
+                    <h4>Taze Malzeme</h4>
+                    <p>Her gün en taze malzemelerle hazırlanır</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="number">02</div>
+                    <h4>Geleneksel Tarifler</h4>
+                    <p>Nesillerdir aktarılan özgün tarifler</p>
+                </div>
+
+                <div class="feature-box">
+                    <div class="number">03</div>
+                    <h4>Samimi Ortam</h4>
+                    <p>Sıcak ve samimi bir atmosfer</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="h-section gallery-horizontal">
+            <div class="gallery-images">
+                <div class="gallery-img"></div>
+                <div class="gallery-img"></div>
+                <div class="gallery-img"></div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="h-section contact-horizontal">
+            <div class="contact-content">
+                <h2>Sizi<br>Bekliyoruz</h2>
+                <div class="contact-info">📍 İzmir, Türkiye</div>
+                <div class="contact-info">📞 +90 XXX XXX XX XX</div>
+                <div class="contact-info">🕐 11:00 - 23:00</div>
+                <button class="contact-btn">Rezervasyon Yap</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
